@@ -269,6 +269,68 @@ Three
     </item>
     
     <item>
+      <title>KiloBot MultiAgent Reinforcement Learning</title>
+      <link>https://hex-plex.github.io/project/kilobot-multiagentrl/</link>
+      <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
+      <guid>https://hex-plex.github.io/project/kilobot-multiagentrl/</guid>
+      <description>&lt;p&gt;This is an experimentation to learn about Swarm Robotics with help of MultiAgent Reinforcement learning. We have used KiloBot as a platform as these are very simple in the actions space and have very high degree of symmetry. The Main inspiration of this project is this paper&lt;a href=&#34;#1&#34;&gt;[1]&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;setting-up&#34;&gt;Setting Up&lt;/h2&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;git clone https://github.com/hex-plex/KiloBot-MultiAgent-RL
+cd KiloBot-MultiAgent-RL
+pip install --upgrade absl-python \
+                      tensorflow \
+                      gym \
+                      opencv-python \
+                      tensorflow_probability \
+                      keras \
+                      pygame
+pip install -e gym-kiloBot
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This should fetch and install the basics packages needed and should install the environment&lt;/p&gt;
+&lt;h3 id=&#34;sample-of-environment&#34;&gt;Sample of environment&lt;/h3&gt;
+&lt;p&gt;These envs are running on a constant dummy actions&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;strong&gt;Env with Graph Objective&lt;/strong&gt;&lt;/th&gt;
+&lt;th&gt;Env with Localization Objective&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;img src=&#34;https://github.com/hex-plex/KiloBot-MultiAgent-RL/blob/master/env_test_graph_compress.gif?raw=true&#34; alt=&#34;Output-1&#34;&gt;&lt;/td&gt;
+&lt;td&gt;&lt;img src=&#34;https://github.com/hex-plex/KiloBot-MultiAgent-RL/blob/master/env_test_localize_compress.gif?raw=true&#34; alt=&#34;Output-2&#34;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;usage&#34;&gt;Usage&lt;/h2&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;python env-test.py ## This will help you check the functionality of the environement and should give the sample code to understand the apis as well.
+python model-train.py \
+        --headless=True \             ## for headless training default False
+        --objective=&amp;quot;localization&amp;quot; \  ## defines the objective default is graph
+        --modules=10 \                ## This defines the no of modules to be initialized default 10
+        --time_steps=100000 \         ## This is the total no of steps the agent will take while learning
+        --histRange=10 \              ## This is the no of mu values for the histograms
+        --logdir=&amp;quot;logs&amp;quot; \             ## This specifies the log location for TensorBoard
+        --checkpoints=&amp;quot;checkpoints&amp;quot;   ## This is for defining the location where the model is to be saved
+        --load_checkpoint=&amp;quot;checkpoints/iter-500&amp;quot; ## This loads the specified iteration
+
+python play-model.py \ ## This should load trained weights and show the performance
+        --load_checkpoint=&amp;quot;checkpoints/graphs/10&amp;quot; \ ## loads this model
+        --modules=10  \                             ## no of modules in the env
+        --objective=&amp;quot;localization&amp;quot; \                ## Sets the objective function
+        --time_steps=10000 \                        ## No of iterations to be run
+        --histRange=10                              ## Same def as above
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;training&#34;&gt;Training&lt;/h2&gt;
+&lt;p&gt;This is underconstruction hope to see you on the other side &amp;hellip;&amp;hellip; 😄&lt;/p&gt;
+&lt;h2 id=&#34;references&#34;&gt;References&lt;/h2&gt;
+&lt;p&gt;&lt;a id=&#34;1&#34;&gt;[1]&lt;/a&gt;
+&lt;strong&gt;Guided Deep Reinforcement Learning for Swarm Systems&lt;/strong&gt; &lt;a href=&#34;https://arxiv.org/abs/1709.06011&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;[arXiv:1709.06011v1]&lt;/a&gt; [cs.MA] 18 Sep 2017&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Light Gun</title>
       <link>https://hex-plex.github.io/project/light-gun/</link>
       <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
