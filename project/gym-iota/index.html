@@ -34,10 +34,10 @@
   
     
   
-  <meta name="description" content="Deep MultiAgent Reinforcement Learning on &#34;KiloBot&#34; by Havard University">
+  <meta name="description" content="Developing an indigenious modular bot platform.">
 
   
-  <link rel="alternate" hreflang="en-us" href="https://hex-plex.github.io/project/kilobot-multiagentrl/">
+  <link rel="alternate" hreflang="en-us" href="https://hex-plex.github.io/project/gym-iota/">
 
   
 
@@ -263,7 +263,7 @@
   <link rel="icon" type="image/png" href="/images/icon_hucffb9d42d7c693bd257413760c4b1fda_31806_32x32_fill_lanczos_center_2.png">
   <link rel="apple-touch-icon" type="image/png" href="/images/icon_hucffb9d42d7c693bd257413760c4b1fda_31806_180x180_fill_lanczos_center_2.png">
 
-  <link rel="canonical" href="https://hex-plex.github.io/project/kilobot-multiagentrl/">
+  <link rel="canonical" href="https://hex-plex.github.io/project/gym-iota/">
 
   
   
@@ -279,9 +279,9 @@
   <meta property="twitter:card" content="summary">
   
   <meta property="og:site_name" content="Somnath Kumar">
-  <meta property="og:url" content="https://hex-plex.github.io/project/kilobot-multiagentrl/">
-  <meta property="og:title" content="KiloBot MultiAgent Reinforcement Learning | Somnath Kumar">
-  <meta property="og:description" content="Deep MultiAgent Reinforcement Learning on &#34;KiloBot&#34; by Havard University"><meta property="og:image" content="https://hex-plex.github.io/images/icon_hucffb9d42d7c693bd257413760c4b1fda_31806_512x512_fill_lanczos_center_2.png">
+  <meta property="og:url" content="https://hex-plex.github.io/project/gym-iota/">
+  <meta property="og:title" content="iOTA - Modular Bot | Somnath Kumar">
+  <meta property="og:description" content="Developing an indigenious modular bot platform."><meta property="og:image" content="https://hex-plex.github.io/images/icon_hucffb9d42d7c693bd257413760c4b1fda_31806_512x512_fill_lanczos_center_2.png">
   <meta property="twitter:image" content="https://hex-plex.github.io/images/icon_hucffb9d42d7c693bd257413760c4b1fda_31806_512x512_fill_lanczos_center_2.png"><meta property="og:locale" content="en-us">
   
     
@@ -309,9 +309,9 @@
   "@type": "Article",
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "https://hex-plex.github.io/project/kilobot-multiagentrl/"
+    "@id": "https://hex-plex.github.io/project/gym-iota/"
   },
-  "headline": "KiloBot MultiAgent Reinforcement Learning",
+  "headline": "iOTA - Modular Bot",
   
   "datePublished": "2016-04-27T00:00:00Z",
   "dateModified": "2016-04-27T00:00:00Z",
@@ -329,7 +329,7 @@
       "url": "https://hex-plex.github.io/images/icon_hucffb9d42d7c693bd257413760c4b1fda_31806_192x192_fill_lanczos_center_2.png"
     }
   },
-  "description": "Deep MultiAgent Reinforcement Learning on \"KiloBot\" by Havard University"
+  "description": "Developing an indigenious modular bot platform."
 }
 </script>
 
@@ -347,7 +347,7 @@
 
 
 
-  <title>KiloBot MultiAgent Reinforcement Learning | Somnath Kumar</title>
+  <title>iOTA - Modular Bot | Somnath Kumar</title>
 
 </head>
 
@@ -706,7 +706,7 @@
   
   
 <div class="article-container pt-3">
-  <h1>KiloBot MultiAgent Reinforcement Learning</h1>
+  <h1>iOTA - Modular Bot</h1>
 
   
 
@@ -790,7 +790,7 @@
   
     
   
-  <a class="btn btn-outline-primary btn-page-header" href="https://github.com/hex-plex/KiloBot-MultiAgent-RL" target="_blank" rel="noopener">
+  <a class="btn btn-outline-primary btn-page-header" href="https://github.com/Robotics-Club-IIT-BHU/gym-iOTA/" target="_blank" rel="noopener">
     <i class="fab fa-github mr-1"></i>
     Code and Details
   </a>
@@ -807,60 +807,154 @@
   <div class="article-container">
 
     <div class="article-style">
-      <p>This is an experimentation to learn about Swarm Robotics with help of MultiAgent Reinforcement learning. We have used KiloBot as a platform as these are very simple in the actions space and have very high degree of symmetry. The Main inspiration of this project is this paper<a href="#1">[1]</a></p>
-<h2 id="setting-up">Setting Up</h2>
-<pre><code class="language-bash">git clone https://github.com/hex-plex/KiloBot-MultiAgent-RL
-cd KiloBot-MultiAgent-RL
-pip install --upgrade absl-python \
-                      tensorflow \
-                      gym \
-                      opencv-python \
-                      tensorflow_probability \
-                      keras \
-                      pygame
-pip install -e gym-kiloBot
+      <p>This is an Open-AI gym environment developed with a modular bot platform named &lsquo;<strong>iOTA</strong>&rsquo;. The motive of this gym is to allow us to test out and develop Algorithms for such a MultiAgent System. This is further used to learn heirarchial planning of such a MultiAgent systems to develop a generalized swarm behaviour in the robots (i.e., Colabortively working towards achieving a objective). This is an project that is being developed under the <strong>RoBoReG division of the Robotics Club, IIT Varanasi.</strong></p>
+<p>Here the robot is designed in <em>SolidWorks</em> and being Simulated in <em>pybullet</em>.</p>
+<p align="center"><img src="https://github.com/Robotics-Club-IIT-BHU/gym-iOTA/blob/master/media/Random.gif"/></p><br/>
+<p align="center">Here the robots where controlled to form into this specified constellation.</p>
+<h2 id="iota">IOTA</h2>
+<p><img src="https://github.com/Robotics-Club-IIT-BHU/gym-iOTA/blob/master/media/bRoll.gif" width=300 align="right"></img></p>
+<p>This is a cost effective modular robot platform developed by us, This contains two docking plates enabling it to dock with other robots at those locations. This has got a very antique WW1 tank inspired designed which allows the bot too with enough traction when used with catpillar tracks.</p>
+<p>For more info on the bot hardware and designs please visit this page <a href="https://github.com/Robotics-Club-IIT-BHU/gym-iOTA/blob/master/hardware_Designs/README.md" target="_blank" rel="noopener">here</a> or <a href="https://onedrive.live.com/view.aspx?resid=3B7945FE006E67D!4175&amp;ithint=file%2cdocx&amp;authkey=!AA_ziTqK6vYo80c" target="_blank" rel="noopener">doc</a>
+<br/><br/></p>
+<h2 id="installation">Installation</h2>
+<p>To install the latest features one could clone and install like so.</p>
+<pre><code class="language-bash">git clone https://github.com/Robotics-Club-IIT-BHU/gym-iOTA
+cd gym-iOTA
+pip install -e gym-iOTA
 </code></pre>
-<p>This should fetch and install the basics packages needed and should install the environment</p>
-<h3 id="sample-of-environment">Sample of environment</h3>
-<p>These envs are running on a constant dummy actions</p>
-<table>
-<thead>
-<tr>
-<th><strong>Env with Graph Objective</strong></th>
-<th>Env with Localization Objective</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><img src="https://github.com/hex-plex/KiloBot-MultiAgent-RL/blob/master/env_test_graph_compress.gif?raw=true" alt="Output-1"></td>
-<td><img src="https://github.com/hex-plex/KiloBot-MultiAgent-RL/blob/master/env_test_localize_compress.gif?raw=true" alt="Output-2"></td>
-</tr>
-</tbody>
-</table>
+<p>else for stable releases. the below would work fine.</p>
+<pre><code class="language-bash">pip install gym-iOTA
+</code></pre>
+<h4 id="depedencies">Depedencies</h4>
+<ul>
+<li>gym</li>
+<li>pybullet</li>
+<li>opencv-python</li>
+<li>Pillow</li>
+</ul>
 <h2 id="usage">Usage</h2>
-<pre><code class="language-bash">python env-test.py ## This will help you check the functionality of the environement and should give the sample code to understand the apis as well.
-python model-train.py \
-        --headless=True \             ## for headless training default False
-        --objective=&quot;localization&quot; \  ## defines the objective default is graph
-        --modules=10 \                ## This defines the no of modules to be initialized default 10
-        --time_steps=100000 \         ## This is the total no of steps the agent will take while learning
-        --histRange=10 \              ## This is the no of mu values for the histograms
-        --logdir=&quot;logs&quot; \             ## This specifies the log location for TensorBoard
-        --checkpoints=&quot;checkpoints&quot;   ## This is for defining the location where the model is to be saved
-        --load_checkpoint=&quot;checkpoints/iter-500&quot; ## This loads the specified iteration
+<p>This environment can be accessed using gym api, and a small demo scipt is given below.</p>
+<h4 id="demopy">demo.py</h4>
+<pre><code class="language-python">import gym
+import gym_iOTA
 
-python play-model.py \ ## This should load trained weights and show the performance
-        --load_checkpoint=&quot;checkpoints/graphs/10&quot; \ ## loads this model
-        --modules=10  \                             ## no of modules in the env
-        --objective=&quot;localization&quot; \                ## Sets the objective function
-        --time_steps=10000 \                        ## No of iterations to be run
-        --histRange=10                              ## Same def as above
+env = gym.make('iOTA-v0',
+                render=True,                  ## This runs the simulator in GUI mode
+                no_of_modules=10,             ## This spawns so many no of robots
+                no_of_clusters=10,            ## This is for subdividing the total no of robots in cluster for efficient accessing.
+                arena=(2,2),                  ## This sets the dimension of the forseeable space for the system
+                low_control=True,             ## This flag enables the low level control of the bot to the user.
+                )
+while True:
+  action = np.ones((env.no_of_modules, 4))    ## Where for each row we have four velocities
+  dock = np.zeros(
+              (env.no_of_modules,
+              env.no_of_modules))             ## This is the adjancy matrix storing all the docking relationships
+
+  observation, reward, done, info = env.step(action, dock)
+
+  observation                                 ## This is the coordinates+orientation of each bot
+  env.render(mode='cluster')                  ## This would return the image and even render if was not in GUI mode earlier.
+
+  if done:
+    break
+env.close()                                   ## simply removes all the docks and the bots and disconnects from the simulator.
 </code></pre>
-<h2 id="training">Training</h2>
-<p>This is underconstruction hope to see you on the other side &hellip;&hellip; 😄</p>
+<h2 id="objective">Objective</h2>
+<p>The objective of the environment is to use these robots to push the box from one side of the arena to the other. The below is a dry run with classical localization algorithm - <strong>Particle Swarm Optimization Algorithm</strong>.</p>
+<p align="center"><img src="https://github.com/Robotics-Club-IIT-BHU/gym-iOTA/blob/master/media/Objective.gif"/> </p><br/>
+<p align="center">Here the swarm of bots try to localize the box in the 3D environment</p><br/>
+<p>The Reward function is defined as the negetive of the distance between the position of the cube to the end point which is on the other side of the arena.</p>
+<p align="center"><a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\bg_white&space;\fn_phv&space;\large&space;R&space;=&space;-&space;\sum&space;_{axes}&space;(Cube_{pos}&space;-&space;End_{pos})^{2}" target="_blank"><img src="https://latex.codecogs.com/png.latex?\dpi{150}&space;\bg_white&space;\fn_phv&space;\large&space;R&space;=&space;-&space;\sum&space;_{axes}&space;(Cube_{pos}&space;-&space;End_{pos})^{2}" title="\large R = - \sum _{axes} (Cube_{pos} - End_{pos})^{2}" /></a>
+</p>
+<h2 id="info">Info</h2>
+<p>This section contains details about the environment API&rsquo;s and utils available in it for developement.</p>
+<h4 id="low_control-boolean-"><code>low_control</code> <em>(Boolean)</em> :</h4>
+<p>rather confusing term is present to allow the user to get low level control of individual bot that is the to set the desired velocities of each wheel touching the ground. else the environment would by itself control the robot and listen to the planner that plans trajectory to the given setpoint.</p>
+<h4 id="envaction_space-gymbox-"><code>env.action_space</code> <em>(gym.Box)</em> :</h4>
+<p>The action space varies if one chooses <code>low_control</code> to be <strong>True</strong> or <strong>False</strong>, if the low_control is set True then action space is vector of velocities of 4 wheel for each robot.<br/>
+i.e., action_space shape = (no_of_modules, 4) <br/>
+for each row [right_forward_wheel, left_forward_wheel, right_back_wheel, left_back_wheel] of that bot.</p>
+<h4 id="envdockmatrix-npndarray-"><code>env.dockMatrix</code> <em>(np.ndarray)</em> :</h4>
+<p>This contains all the joints or dockings that exist in the system, this a array containing if a bot is connected with another.<br/>
+i.e., dockMatrix shape = (no_of_modules, no_of_modules)<br/>
+So if <strong>env.dockMatrix[i][j]</strong> =  0 then it means there is no joint or docking between robot number i and j. similarly if <strong>env.dockMatrix[i][j]</strong> = 1 then it means these two robots are docked together.<br/>
+<strong>note</strong> : <strong>env.dockMatrix[i][j]</strong> = <strong>env.dockMatrix[j][i]</strong> are same as they can have only one constrain between them. And no self docking is possible i.e., <strong>env.dockMatrix[i][i]</strong> = 1 is not possible.<br/>
+We pass a similar matrix to <a href="#envstep-gymenvstep-"><code>env.step</code></a> function where-in we denote new joints that we want to make.</p>
+<h4 id="envobservation_space-gymbox-"><code>env.observation_space</code> <em>(gym.Box)</em> :</h4>
+<p>The observation space is simply vector of position and orientation of each robot.<br/>
+i.e., observation_space shape = (no_of_modules, 6)<br/>
+for each row [x_coor, y_coor, z_coor, roll, pitch, yaw] of that bot.</p>
+<h4 id="enviotas-class-iota-"><code>env.iotas</code> <em>(class iOTA)</em> :</h4>
+<p>This is a list of robots that have been spawned into the simulator and gives us individual control over each robot. A list API&rsquo;s and variables are given <a href="/gym-iOTA/gym_iOTA/envs">here</a>. <br/>
+The index of each robot in the list the robot number assigned to it which is the convection we use through out.</p>
+<h4 id="envstep-gymenvstep-"><code>env.step</code> <em>(gym.Env.step)</em> :</h4>
+<p>This takes in two inputs one action being the <a href="#envaction_space-gymbox-"><code>env.action_space</code></a> and a dock matrix similar to the <a href="#envdockmatrix-npndarray-"><code>env.dockingMatrix</code></a> <br/>
+it returns the usual <br/>
+<em><code>observation, reward, done, info</code></em></p>
+<h4 id="envrender-npndarray-"><code>env.render</code> <em>(np.ndarray)</em> :</h4>
+<p>This returns the image of the top view of the arena. The image is also rendered using PIL&rsquo;s Image class if <code>mode = 'human'</code></p>
+<h4 id="envclose-gymenvclose"><code>env.close</code> <em>(gym.Env.close)</em>:</h4>
+<p>This simply removes all the joints and dockings and removes all the bodies and closes the connection to the physics server.</p>
+<h2 id="the-team">The Team</h2>
+<table>
+ <td align="center">
+     <a href="https://github.com/hex-plex">
+    <img src="https://avatars0.githubusercontent.com/u/56990337?s=460&v=4" width="100px;" alt=""/><br /><sub><b>Somnath Sendhil Kumar </b></sub></a><br />
+    </td>
+    <td align="center">
+     <a href="https://github.com/surabhit-08">
+    <img src="https://avatars3.githubusercontent.com/u/62366465?s=460&v=4" width="100px;" alt=""/><br /><sub><b>Surabhit Gupta</b></sub></a><br />
+	</td>
+	<td align="center">
+     <a href="https://github.com/rtharungowda">
+    <img src="https://avatars1.githubusercontent.com/u/55887709?s=460&v=4" width="100px;" alt=""/><br /><sub><b>R Tharun Gowda</b></sub></a><br />
+	</td>
+	<td align="center">
+     <a href="https://github.com/Kritika-Bansal">
+    <img src="https://avatars2.githubusercontent.com/u/57754061?s=460&v=4" width="100px;" alt=""/><br /><sub><b>Kritika Bansal</b></sub></a><br />
+	</td>
+</table>
+<h2 id="mentors">Mentors</h2>
+<table>
+ <td align="center">
+     <a href="https://github.com/lok-i">
+    <img src="https://avatars1.githubusercontent.com/u/54435909?s=460&u=29af076049dab351b2e43621e9a433919bf50fb1&v=4" width="100px;" alt=""/><br /><sub><b>Lokesh Krishna</b></sub></a><br />
+    </td>
+    <td align="center">
+     <a href="https://github.com/NiranthS">
+    <img src="https://media-exp1.licdn.com/dms/image/C4D03AQE0VSQ1pjwEJQ/profile-displayphoto-shrink_200_200/0/1597415223546?e=1616025600&v=beta&t=MLymy6q1n58MV2aL2l-13cnGJytixf5qnQV7HhZ4itE" width="100px;" alt=""/><br /><sub><b>Niranth Sai</b></sub></a><br />
+	</td>
+</table>
 <h2 id="references">References</h2>
 <p><a id="1">[1]</a>
-<strong>Guided Deep Reinforcement Learning for Swarm Systems</strong> <a href="https://arxiv.org/abs/1709.06011" target="_blank" rel="noopener">[arXiv:1709.06011v1]</a> [cs.MA] 18 Sep 2017</p>
+<strong>Swarmbot-Hardware</strong>: Mondada, F., Pettinaro, G.C., Guignard, A. et al. Swarm-Bot: A New Distributed Robotic Concept. Autonomous Robots 17, 193–221 (2004). doi: 10.1023/B:AURO.0000033972.50769.1c.<br/>
+This contains the Idea behind Swarmbot which was the bot we are inspired by. <a href="http://people.idsia.ch/~luca/swarmbot-hardware.pdf" target="_blank" rel="noopener">[Link]</a> &amp; <a href="https://www.youtube.com/watch?v=77SEQ-kj8PI" target="_blank" rel="noopener">[Video]</a><br/></p>
+<p><a id="2">[2]</a>
+<strong>Self-reconfiguring modular robot.</strong> This contains all the pre-existing works in Modular robots and information of their prototypes <a href="https://en.wikipedia.org/wiki/Self-reconfiguring_modular_robot" target="_blank" rel="noopener">[Wikipedia]</a><br/></p>
+<p><a id="3">[3]</a>
+<strong>SMORES-EP</strong> : Researchers develop modular bots that combine to form a single flexible machine. This article contains few bot ideas we adopted <a href="https://www.engadget.com/2019-07-23-modular-robots-configure-smores.html" target="_blank" rel="noopener">[Link]</a><br/></p>
+<p><a id="4">[4]</a>
+<strong>Modular Self-Reconfiguring Robots</strong> Rus Robotics laboratory&rsquo;s work in the field Modular Robots <a href="https://groups.csail.mit.edu/drl/modular_robots/modular_robots.html" target="_blank" rel="noopener">[MIT]</a>.</p>
+<p><a id="5">[5]</a>
+<strong>An integrated system for perception-driven autonomy with modular robots</strong> J. Daudelin, G. Jing, T. Tosun, et al. An integrated system for perception-driven autonomy with modular robots Science Robotics  31 Oct 2018: Vol. 3, Issue 23, eaat4983 DOI: 10.1126/scirobotics.aat4983 <a href="https://robotics.sciencemag.org/content/3/23/eaat4983.full?ijkey=iBq7yW7Z8vmjE&amp;keytype=ref&amp;siteid=robotics" target="_blank" rel="noopener">[Link]</a><br/></p>
+<p><a id="6">[6]</a>
+<strong>Symbrion</strong> S. Kernbach, E. Meister, F. Schlauter, et al. Symbiotic robot organisms: Replicator and Symbrion projects January 2008 DOI: 10.1145/1774674.1774685 Conference: Proceedings of the 8th Workshop on Performance Metrics for Intelligent Systems. This is one such project from which we have been immensily inspired <a href="https://www.researchgate.net/publication/234116421_Symbiotic_robot_organisms_Replicator_and_Symbrion_projects" target="_blank" rel="noopener">[Paper]</a><br/></p>
+<p><a id="7">[7]</a>
+<strong>Modular Bot Algorithm</strong> H. Ahmadzadeh, E. Masehian, Modular robotic systems: Methods and algorithms for abstraction, planning, control, and synchronization, Volume 223, 2015, Pages 27-64, ISSN 0004-3702, doi: 10.1016/j.artint.2015.02.004. <a href="https://www.sciencedirect.com/science/article/pii/S0004370215000260" target="_blank" rel="noopener">[Paper]</a><br/></p>
+<p><a id="8">[8]</a>
+<strong>KiloBots</strong> by Self-Organizing Systems Research Group <a href="https://ssr.seas.harvard.edu/kilobots" target="_blank" rel="noopener">[Link]</a> This is the most simplest swarm system by which we were able to learn about the real problems that we would face in a MultiAgent System.<br/></p>
+<p><a id="9">[9]</a>
+<strong>KiloBots-MARL</strong> by Somnath Sendhil Kumar, This is a MultiAgent Reinforcement Learning solution presented for the Kilobots system <a href="https://github.com/hex-plex/KiloBot-MultiAgent-RL" target="_blank" rel="noopener">[Code]</a><br/></p>
+<p><a id="10">[10]</a>
+<strong>pyBullet</strong>, This is the simulator that we used to simulate our Robots physics in and built The enviroment on top of it. <a href="https://pybullet.org/wordpress/" target="_blank" rel="noopener">[Link]</a> <a href="https://docs.google.com/document/d/10sXEhzFRSnvFcl3XxNGhnD4N2SedqwdAvK3dsihxVUA/edit#heading=h.2ye70wns7io3" target="_blank" rel="noopener">[Docs]</a> <a href="https://github.com/bulletphysics/bullet3" target="_blank" rel="noopener">[Code]</a><br/></p>
+<p><a id="11">[11]</a>
+<strong>Open-AI gym</strong>, This framework connected the simulators to API&rsquo;s that are standard form in implementing Reinforcement Learning.
+<a href="https://gym.openai.com/" target="_blank" rel="noopener">[Link]</a> <a href="https://gym.openai.com/docs/" target="_blank" rel="noopener">[Docs]</a> <a href="https://github.com/openai/gym" target="_blank" rel="noopener">[Code]</a><br/></p>
+<p><a id="12">[12]</a>
+<strong>Pybullet and OpenAI gym</strong>, This is a tutorial which helps in implementing Pybullet as the backend with OpenAI gym, <a href="https://www.etedal.net/2020/04/pybullet-panda.html" target="_blank" rel="noopener">[Link]</a></p>
+<p><a id="13">[13]</a>
+<strong>SW to URDF</strong>, This is the SolidWorks plugin that we used to convert our SolidWork Designs into importable URDFS which is provided by the ROS community. <a href="http://wiki.ros.org/sw_urdf_exporter" target="_blank" rel="noopener">[Link]</a></p>
 
     </div>
 
@@ -873,15 +967,21 @@ python play-model.py \ ## This should load trained weights and show the performa
 
 <div class="article-tags">
   
+  <a class="badge badge-light" href="/tag/computer-vision/">Computer Vision</a>
+  
   <a class="badge badge-light" href="/tag/reinforcement-learning/">Reinforcement Learning</a>
   
-  <a class="badge badge-light" href="/tag/multiagent-systems/">MultiAgent Systems</a>
+  <a class="badge badge-light" href="/tag/embedded-systems/">Embedded Systems</a>
   
-  <a class="badge badge-light" href="/tag/deep-learning/">Deep Learning</a>
+  <a class="badge badge-light" href="/tag/3d-modelling/">3D Modelling</a>
+  
+  <a class="badge badge-light" href="/tag/solidworks/">SolidWorks</a>
   
   <a class="badge badge-light" href="/tag/openai-gym/">OpenAI gym</a>
   
-  <a class="badge badge-light" href="/tag/pygame/">PyGame</a>
+  <a class="badge badge-light" href="/tag/multiagent-systems/">MultiAgent Systems</a>
+  
+  <a class="badge badge-light" href="/tag/heirarchial-reinforcement-learning/">Heirarchial Reinforcement Learning</a>
   
 </div>
 
@@ -898,7 +998,7 @@ python play-model.py \ ## This should load trained weights and show the performa
       
       
       <li>
-        <a href="https://twitter.com/intent/tweet?url=https://hex-plex.github.io/project/kilobot-multiagentrl/&amp;text=KiloBot%20MultiAgent%20Reinforcement%20Learning" target="_blank" rel="noopener" class="share-btn-twitter">
+        <a href="https://twitter.com/intent/tweet?url=https://hex-plex.github.io/project/gym-iota/&amp;text=iOTA%20-%20Modular%20Bot" target="_blank" rel="noopener" class="share-btn-twitter">
           <i class="fab fa-twitter"></i>
         </a>
       </li>
@@ -911,7 +1011,7 @@ python play-model.py \ ## This should load trained weights and show the performa
       
       
       <li>
-        <a href="https://www.facebook.com/sharer.php?u=https://hex-plex.github.io/project/kilobot-multiagentrl/&amp;t=KiloBot%20MultiAgent%20Reinforcement%20Learning" target="_blank" rel="noopener" class="share-btn-facebook">
+        <a href="https://www.facebook.com/sharer.php?u=https://hex-plex.github.io/project/gym-iota/&amp;t=iOTA%20-%20Modular%20Bot" target="_blank" rel="noopener" class="share-btn-facebook">
           <i class="fab fa-facebook"></i>
         </a>
       </li>
@@ -924,7 +1024,7 @@ python play-model.py \ ## This should load trained weights and show the performa
       
       
       <li>
-        <a href="mailto:?subject=KiloBot%20MultiAgent%20Reinforcement%20Learning&amp;body=https://hex-plex.github.io/project/kilobot-multiagentrl/" target="_blank" rel="noopener" class="share-btn-email">
+        <a href="mailto:?subject=iOTA%20-%20Modular%20Bot&amp;body=https://hex-plex.github.io/project/gym-iota/" target="_blank" rel="noopener" class="share-btn-email">
           <i class="fas fa-envelope"></i>
         </a>
       </li>
@@ -937,7 +1037,7 @@ python play-model.py \ ## This should load trained weights and show the performa
       
       
       <li>
-        <a href="https://www.linkedin.com/shareArticle?url=https://hex-plex.github.io/project/kilobot-multiagentrl/&amp;title=KiloBot%20MultiAgent%20Reinforcement%20Learning" target="_blank" rel="noopener" class="share-btn-linkedin">
+        <a href="https://www.linkedin.com/shareArticle?url=https://hex-plex.github.io/project/gym-iota/&amp;title=iOTA%20-%20Modular%20Bot" target="_blank" rel="noopener" class="share-btn-linkedin">
           <i class="fab fa-linkedin-in"></i>
         </a>
       </li>
@@ -950,7 +1050,7 @@ python play-model.py \ ## This should load trained weights and show the performa
       
       
       <li>
-        <a href="whatsapp://send?text=KiloBot%20MultiAgent%20Reinforcement%20Learning%20https://hex-plex.github.io/project/kilobot-multiagentrl/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+        <a href="whatsapp://send?text=iOTA%20-%20Modular%20Bot%20https://hex-plex.github.io/project/gym-iota/" target="_blank" rel="noopener" class="share-btn-whatsapp">
           <i class="fab fa-whatsapp"></i>
         </a>
       </li>
@@ -963,7 +1063,7 @@ python play-model.py \ ## This should load trained weights and show the performa
       
       
       <li>
-        <a href="https://service.weibo.com/share/share.php?url=https://hex-plex.github.io/project/kilobot-multiagentrl/&amp;title=KiloBot%20MultiAgent%20Reinforcement%20Learning" target="_blank" rel="noopener" class="share-btn-weibo">
+        <a href="https://service.weibo.com/share/share.php?url=https://hex-plex.github.io/project/gym-iota/&amp;title=iOTA%20-%20Modular%20Bot" target="_blank" rel="noopener" class="share-btn-weibo">
           <i class="fab fa-weibo"></i>
         </a>
       </li>
@@ -1116,13 +1216,13 @@ python play-model.py \ ## This should load trained weights and show the performa
     <h3>Related</h3>
     <ul>
       
-      <li><a href="/project/gym-iota/">iOTA - Modular Bot</a></li>
-      
       <li><a href="/project/hand-imitation/">Hand Imitation</a></li>
       
-      <li><a href="/project/pong-reinforcementlearning/">Pong Reinforcement Learning</a></li>
+      <li><a href="/project/kilobot-multiagentrl/">KiloBot MultiAgent Reinforcement Learning</a></li>
       
-      <li><a href="/project/example/">Example Project</a></li>
+      <li><a href="/project/light-gun/">Light Gun</a></li>
+      
+      <li><a href="/project/pong-reinforcementlearning/">Pong Reinforcement Learning</a></li>
       
     </ul>
   </div>

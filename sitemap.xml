@@ -113,6 +113,16 @@
   </url>
   
   <url>
+    <loc>https://hex-plex.github.io/tag/heirarchial-reinforcement-learning/</loc>
+    <lastmod>2016-04-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://hex-plex.github.io/project/gym-iota/</loc>
+    <lastmod>2016-04-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://hex-plex.github.io/project/kilobot-multiagentrl/</loc>
     <lastmod>2016-04-27T00:00:00+00:00</lastmod>
   </url>
@@ -164,6 +174,11 @@
   
   <url>
     <loc>https://hex-plex.github.io/tag/reinforcement-learning/</loc>
+    <lastmod>2016-04-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://hex-plex.github.io/tag/solidworks/</loc>
     <lastmod>2016-04-27T00:00:00+00:00</lastmod>
   </url>
   
