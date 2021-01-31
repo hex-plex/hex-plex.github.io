@@ -148,9 +148,6 @@ agent.start()         ## This starts the agent ie., connects to the server and c
 &lt;li&gt;&amp;lsquo;ping&amp;rsquo; ==&amp;gt; This pings the pong server 10 times and returns the average time it took to send and receive packets.
 else with a better score of agent, the model is saved continuosly as save.p.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;this-is-a-demo-of-the-pong-game&#34;&gt;This is a demo of the pong game&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&#34;https://github.com/hex-plex/Pong-ReinforcementLearning/blob/master/images/pong-game.png?raw=true&#34; alt=&#34;Output&#34;&gt;
-This is just the Pong game in action&lt;/p&gt;
 &lt;h2 id=&#34;fast-training&#34;&gt;Fast-training&lt;/h2&gt;
 &lt;p&gt;I have experimented the whole thing with networking sockets and asynchronous methods limiting the training process to human level speed for which I have uploaded the pong-fast-train.tar.gz&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;tar -xvzf pong-fast-train.tar.gz
