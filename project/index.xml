@@ -101,10 +101,10 @@ we have used clips from different versions of trained model and environment so t
       <guid>https://hex-plex.github.io/project/gym-iota/</guid>
       <description>&lt;p&gt;This is an Open-AI gym environment developed with a modular bot platform named &amp;lsquo;&lt;strong&gt;iOTA&lt;/strong&gt;&amp;rsquo;. The motive of this gym is to allow us to test out and develop Algorithms for such a MultiAgent System. This is further used to learn heirarchial planning of such a MultiAgent systems to develop a generalized swarm behaviour in the robots (i.e., Colabortively working towards achieving a objective). This is an project that is being developed under the &lt;strong&gt;RoBoReG division of the Robotics Club, IIT Varanasi.&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Here the robot is designed in &lt;em&gt;SolidWorks&lt;/em&gt; and being Simulated in &lt;em&gt;pybullet&lt;/em&gt;.&lt;/p&gt;
-&lt;p align=&#34;center&#34;&gt;&lt;img src=&#34;https://github.com/Robotics-Club-IIT-BHU/gym-iOTA/blob/master/media/Random.gif&#34;/&gt;&lt;/p&gt;&lt;br/&gt;
+&lt;p align=&#34;center&#34;&gt;&lt;img src=&#34;https://github.com/Robotics-Club-IIT-BHU/gym-iOTA/raw/master/media/Random.gif&#34;/&gt;&lt;/p&gt;&lt;br/&gt;
 &lt;p align=&#34;center&#34;&gt;Here the robots where controlled to form into this specified constellation.&lt;/p&gt;
 &lt;h2 id=&#34;iota&#34;&gt;IOTA&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&#34;https://github.com/Robotics-Club-IIT-BHU/gym-iOTA/blob/master/media/bRoll.gif&#34; width=300 align=&#34;right&#34;&gt;&lt;/img&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Robotics-Club-IIT-BHU/gym-iOTA/raw/master/media/bRoll.gif&#34; width=300 align=&#34;right&#34;&gt;&lt;/img&gt;&lt;/p&gt;
 &lt;p&gt;This is a cost effective modular robot platform developed by us, This contains two docking plates enabling it to dock with other robots at those locations. This has got a very antique WW1 tank inspired designed which allows the bot too with enough traction when used with catpillar tracks.&lt;/p&gt;
 &lt;p&gt;For more info on the bot hardware and designs please visit this page &lt;a href=&#34;https://github.com/Robotics-Club-IIT-BHU/gym-iOTA/blob/master/hardware_Designs/README.md&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt; or &lt;a href=&#34;https://onedrive.live.com/view.aspx?resid=3B7945FE006E67D!4175&amp;amp;ithint=file%2cdocx&amp;amp;authkey=!AA_ziTqK6vYo80c&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;doc&lt;/a&gt;
 &lt;br/&gt;&lt;br/&gt;&lt;/p&gt;
@@ -154,7 +154,7 @@ env.close()                                   ## simply removes all the docks an
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h2 id=&#34;objective&#34;&gt;Objective&lt;/h2&gt;
 &lt;p&gt;The objective of the environment is to use these robots to push the box from one side of the arena to the other. The below is a dry run with classical localization algorithm - &lt;strong&gt;Particle Swarm Optimization Algorithm&lt;/strong&gt;.&lt;/p&gt;
-&lt;p align=&#34;center&#34;&gt;&lt;img src=&#34;https://github.com/Robotics-Club-IIT-BHU/gym-iOTA/blob/master/media/Objective.gif&#34;/&gt; &lt;/p&gt;&lt;br/&gt;
+&lt;p align=&#34;center&#34;&gt;&lt;img src=&#34;https://github.com/Robotics-Club-IIT-BHU/gym-iOTA/raw/master/media/Objective.gif&#34;/&gt; &lt;/p&gt;&lt;br/&gt;
 &lt;p align=&#34;center&#34;&gt;Here the swarm of bots try to localize the box in the 3D environment&lt;/p&gt;&lt;br/&gt;
 &lt;p&gt;The Reward function is defined as the negetive of the distance between the position of the cube to the end point which is on the other side of the arena.&lt;/p&gt;
 &lt;p align=&#34;center&#34;&gt;&lt;a href=&#34;https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&amp;space;\bg_white&amp;space;\fn_phv&amp;space;\large&amp;space;R&amp;space;=&amp;space;-&amp;space;\sum&amp;space;_{axes}&amp;space;(Cube_{pos}&amp;space;-&amp;space;End_{pos})^{2}&#34; target=&#34;_blank&#34;&gt;&lt;img src=&#34;https://latex.codecogs.com/png.latex?\dpi{150}&amp;space;\bg_white&amp;space;\fn_phv&amp;space;\large&amp;space;R&amp;space;=&amp;space;-&amp;space;\sum&amp;space;_{axes}&amp;space;(Cube_{pos}&amp;space;-&amp;space;End_{pos})^{2}&#34; title=&#34;\large R = - \sum _{axes} (Cube_{pos} - End_{pos})^{2}&#34; /&gt;&lt;/a&gt;
