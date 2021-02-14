@@ -5,7 +5,7 @@
     <link>https://hex-plex.github.io/tag/computer-vision/</link>
       <atom:link href="https://hex-plex.github.io/tag/computer-vision/index.xml" rel="self" type="application/rss+xml" />
     <description>Computer Vision</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>© Somnath Sendhil Kumar `2021`</copyright><lastBuildDate>Wed, 27 Apr 2016 00:00:00 +0000</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>© Somnath Sendhil Kumar `2021`</copyright><lastBuildDate>Sat, 06 Jun 2020 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://hex-plex.github.io/images/icon_hucffb9d42d7c693bd257413760c4b1fda_31806_512x512_fill_lanczos_center_2.png</url>
       <title>Computer Vision</title>
@@ -15,7 +15,7 @@
     <item>
       <title>Hand Imitation</title>
       <link>https://hex-plex.github.io/project/hand-imitation/</link>
-      <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 06 Jun 2020 00:00:00 +0000</pubDate>
       <guid>https://hex-plex.github.io/project/hand-imitation/</guid>
       <description>&lt;p&gt;RL-based learning for a robotic arm to imitate a given hand in a image feed
 with &lt;a href=&#34;https://github.com/hex-plex/gym-handOfJustice&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;handOfJustice&lt;/a&gt; as our environment&lt;/p&gt;
@@ -95,9 +95,128 @@ we have used clips from different versions of trained model and environment so t
     </item>
     
     <item>
+      <title>Pong Reinforcement Learning</title>
+      <link>https://hex-plex.github.io/project/pong-reinforcementlearning/</link>
+      <pubDate>Wed, 06 May 2020 00:00:00 +0000</pubDate>
+      <guid>https://hex-plex.github.io/project/pong-reinforcementlearning/</guid>
+      <description>&lt;p&gt;I have tried baking a rudimentary RL environment and a agent recipe to learn more about the eco-system.&lt;br/&gt;
+I have made &lt;a href=&#34;https://github.com/hex-plex/Pong-ReinforcementLearning/blob/master/pong.py&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;pong.py&lt;/a&gt; a environment which one can host either locally (localhost) or on  0.0.0.0 (LAN).Allowing to communicate to &lt;a href=&#34;https://github.com/hex-plex/Pong-ReinforcementLearning/blob/master/mainmodel.py&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;mainmodel.py&lt;/a&gt; which has to be connected to the same host and the same port. &lt;br/&gt;
+I have used a simple socket connection to transfer data rather than a flask/django backend as they are based on it giving a advantage of speed of communication. &lt;br/&gt;
+both the scripts have debug mode which allows one to see in which state or stage they are in. &lt;br/&gt;&lt;/p&gt;
+&lt;h2 id=&#34;output&#34;&gt;Output&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/hex-plex/Pong-ReinforcementLearning/raw/master/trained.gif&#34; alt=&#34;pong-agent&#34;&gt;&lt;/p&gt;
+&lt;hr/&gt;
+The one on the left is a RL agent trained for 3 days and the one on right is a hardcoded AI. This is noticible the they nearly have the same level of skills.
+&lt;h2 id=&#34;requirements&#34;&gt;Requirements&lt;/h2&gt;
+&lt;p&gt;This requires only few basic libraries it only runs on python3, rather a small update can make it compatible with python2.
+The libraries&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;pickle
+numpy
+cv2
+pygame
+# Below are mostly available preinstalled in any python distribution
+socket
+BytesIO # from io in python3 or directly in python2
+_thread # for python 3 and thread in python2
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Which are quite rudimentary and neccessary part of the code.&lt;/p&gt;
+&lt;h2 id=&#34;multithreading&#34;&gt;Multithreading&lt;/h2&gt;
+&lt;p&gt;Here I have use many threads to assure that no data is missed while any other calculation or process is running on the main thread as there might be some unwanted lag between inputs.Also another thread on mainmodel exists which take inputs  from the user for pausing and resuming its learning session&lt;/p&gt;
+&lt;h2 id=&#34;sockets&#34;&gt;Sockets&lt;/h2&gt;
+&lt;p&gt;I have used sockets to send data between scripts rather than using a instance of model and the pong env on the same script well that would work just fine (or better removing all the lag of communication) , but my goal was to make it more appealing and to make me learn more real life skills that is if I train a agent with raspberry pi ( or any other weaker mobile device for that matter ) as a part of the environment or in the environment a more viable option than running both simulation and the RL agent would be to do the computation and send in actions to it. This also gave me a good understanding about data compression and network security ,though here there is none used as it just accepts the first connection to the env. &lt;br/&gt;
+&lt;br/&gt;
+with the use of socket one could manually control the environment with keyboard and also have a RL agent learning (half - Duplex).&lt;/p&gt;
+&lt;h2 id=&#34;demo&#34;&gt;Demo&lt;/h2&gt;
+&lt;p&gt;To launch the env with mostly default values just running &lt;a href=&#34;https://github.com/hex-plex/Pong-ReinforcementLearning/blob/master/pong.py&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;pong.py&lt;/a&gt; directly would start the server with default configs.
+Its always recommended to use its instance, apply your configuration you want it to run and start the server.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;from pong import Pong
+
+env = Pong( levelodiff=1, ## This is the level of the inbuilt AI that plays against you.
+                          ## Set it to 4 and chill out (really try it!!) the scale is 1-3
+            debug=False,  ## If set to True it will print the stage the environment is in and info the data inputs and outputs
+            render=False, ## It would render the image that is sent to the model, This slows down the process so not a good idea to use it.
+            server=True,  ## This is to set server mode on , if set false the environment will be no different from ordinary pong game.
+            host=&amp;quot;&amp;quot;,      ## This is to specify where you want to host it, &amp;quot;&amp;quot; maps to local host &amp;quot;0.0.0.0&amp;quot; doesnt really map
+                          ## to your ip address yet
+            port=12345    ## This your port no. of the connection.
+          )               ## This is to just initiate the environment
+
+env.start()## This starts the env ie., hosts itself as per the given parameter and waits for a connection in async while continuing the game
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;To launch the RL agent running the &lt;a href=&#34;https://github.com/hex-plex/Pong-ReinforcementLearning/blob/master/mainmodel.py&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;mainmodel.py&lt;/a&gt; directly will run it in default config. &lt;br/&gt;
+To customize to your config import and create an instance and run the client. &lt;br/&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;from mainmodel import PolicyGradient
+
+## This uses two hidden layer to out-put 2 probabilities
+agent = PolicyGradient( resume=False,  ## This is usefull to continue training from previos checkpoint.
+                        render=True,   ## This will render the image got through the socket,useful if model is in another computer
+                        host=None,     ## If the value is None it trys to find a localhost , else specific host is to be provided as a str
+                        port=12345,    ## default value is 12345 set is as required.
+                        hiddenUnits=250, ## This no of hiddenUnits in first layer depending on the dimension of input.
+                        batch_size=10, ## This is to set batch size for batch reiforcement learning rather than using single episode.
+                        learningRate=1e-3, ## This is to set learning rate
+                        gamma=0.99,    ## This is to set gamma or the discount
+                        decayRate=0.99 ## This is decayRate for RMSprop
+                      )                ## This creates an instance of PolicyGradient algorithm as a client_socket
+
+agent.start()         ## This starts the agent ie., connects to the server and communicates and learns from its experience.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Running them should launch the env and agent would start leaning. There is a propriety control in mainmodel.py which takes input in its terminal as&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&amp;lsquo;p&amp;rsquo;    ==&amp;gt; Pausing/Resuming the training process&lt;/li&gt;
+&lt;li&gt;&amp;lsquo;q&amp;rsquo;    ==&amp;gt; Quit the training process , But this makes a Checkpoint as interrupt.p&lt;/li&gt;
+&lt;li&gt;&amp;lsquo;ping&amp;rsquo; ==&amp;gt; This pings the pong server 10 times and returns the average time it took to send and receive packets.
+else with a better score of agent, the model is saved continuosly as save.p.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;fast-training&#34;&gt;Fast-training&lt;/h2&gt;
+&lt;p&gt;I have experimented the whole thing with networking sockets and asynchronous methods limiting the training process to human level speed for which I have uploaded the pong-fast-train.tar.gz&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;tar -xvzf pong-fast-train.tar.gz
+cd pong-fast
+python mainmodel.py
+mv save.p ../save.p
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;So this should train the model and save it into the main directory this should load the trained model in the main algo.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Light Gun</title>
+      <link>https://hex-plex.github.io/project/light-gun/</link>
+      <pubDate>Thu, 02 Apr 2020 00:00:00 +0000</pubDate>
+      <guid>https://hex-plex.github.io/project/light-gun/</guid>
+      <description>&lt;p&gt;Bored in the quarantine period, revisiting my old video games with light gun inspired an idea of light gun with a LCD display , I went on to build it mainly as a android package as it would be more accessable to anyone. Then ended up using a Raspberry Pi as a standalone device to enable it&amp;rsquo;s use accross many platforms and devices.&lt;br/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;The Explanation for the working can be found in &lt;a href=&#34;https://github.com/hex-plex/Light-Gun/blob/master/EXPLANATION.md&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;EXPLANATION.md&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&#34;glimpse&#34;&gt;Glimpse:&lt;/h2&gt;
+&lt;p&gt;This is the glimpse of the prototype made with Raspberry pi on a toy gun with all the number-munching done on the Raspberry and transmites messages to the local server through bluetooth. The previous method of running the proccessing and the actions is documented in &lt;strong&gt;Win-Py&lt;/strong&gt; directory.&lt;br/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/hex-plex/Light-Gun/master/images/Complete_setup.jpg&#34; width=&#34;370&#34; align=&#34;right&#34; border=&#34;20&#34;&gt;&lt;/img&gt;
+&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&lt;/p&gt;
+&lt;p align=&#34;left&#34;&gt;This is a prototype of the light gun with a camera module attached onto a toy-gun and with a Raspberry pi 3 b+ (unneccessary I know) and a 7.4 V li-ion battery, regulated with a buck converter to which two switches are connected on the Raspi&#39;s interrupt pins.&lt;/p&gt;&lt;hr/&gt;
+&lt;img src=&#34;https://raw.githubusercontent.com/hex-plex/Light-Gun/master/images/display_setup.jpg&#34; width=&#34;370&#34; align=&#34;left&#34;&gt;&lt;/img&gt;
+&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;
+This is the display setup with 4 IR-LEDs attached to the corners of the display which makes it very easy for detection in a wide range of lighting conditions.&lt;hr/&gt;&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;
+&lt;p&gt;And after Installation the main code using &lt;a href=&#34;https://github.com/hex-plex/Light-Gun/tree/master/Raspi-c&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Raspi&lt;/a&gt; version or &lt;a href=&#34;https://github.com/hex-plex/Light-Gun/tree/master/Win-py&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Local&lt;/a&gt; version, continue using it according to the guide lines for the same which is present in their respective folders itself.&lt;/p&gt;
+&lt;p&gt;The Modules then should create a virtual mouse and start following the edge vector of the camera module.
+The following is a demonstration of it in action&amp;hellip;. (😅 coming up shortly, as I am fixing few deviation errors.)&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://drive.google.com/file/d/1hIYBv8l2JCylOfQS9Cc5D5Hp50Ui55D-/view?usp=sharing&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;strong&gt;Demo Link&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;contribution&#34;&gt;Contribution&lt;/h2&gt;
+&lt;p&gt;Any kind of Contribution is always welcomed. The rules for any Contribution for now is Non existent as I am the only one working on it and I have not really structurized the project so well as mostly in its prototyping stage, So its not possible to do a lot(Anyways feel free to report any errors or bugs 😄 ), Any Idea for a better implementation is also welcomed.&lt;/p&gt;
+&lt;h2 id=&#34;reference&#34;&gt;Reference:&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;This is for getting R and t matrix  &lt;a href=&#34;https://www.learnopencv.com/head-pose-estimation-using-opencv-and-dlib/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;[link]&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;This is for adjusting focal length (approximation) &lt;a href=&#34;https://www.learnopencv.com/approximate-focal-length-for-webcams-and-cell-phone-cameras/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;[link]&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;This is for getting accurate intrensic matrix &lt;a href=&#34;https://www.learnopencv.com/camera-calibration-using-opencv/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;[link]&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Cmake&lt;/li&gt;
+&lt;li&gt;Bluez&lt;/li&gt;
+&lt;li&gt;Raspberry pi interupts&lt;/li&gt;
+&lt;li&gt;Asynchronous coding&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
       <title>iOTA - Modular Bot</title>
       <link>https://hex-plex.github.io/project/gym-iota/</link>
-      <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://hex-plex.github.io/project/gym-iota/</guid>
       <description>&lt;p&gt;This is an Open-AI gym environment developed with a modular bot platform named &amp;lsquo;&lt;strong&gt;iOTA&lt;/strong&gt;&amp;rsquo;. The motive of this gym is to allow us to test out and develop Algorithms for such a MultiAgent System. This is further used to learn heirarchial planning of such a MultiAgent systems to develop a generalized swarm behaviour in the robots (i.e., Colabortively working towards achieving a objective). This is an project that is being developed under the &lt;strong&gt;RoBoReG division of the Robotics Club, IIT Varanasi.&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Here the robot is designed in &lt;em&gt;SolidWorks&lt;/em&gt; and being Simulated in &lt;em&gt;pybullet&lt;/em&gt;.&lt;/p&gt;
@@ -247,125 +366,6 @@ This contains the Idea behind Swarmbot which was the bot we are inspired by. &lt
 &lt;strong&gt;Pybullet and OpenAI gym&lt;/strong&gt;, This is a tutorial which helps in implementing Pybullet as the backend with OpenAI gym, &lt;a href=&#34;https://www.etedal.net/2020/04/pybullet-panda.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;[Link]&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a id=&#34;13&#34;&gt;[13]&lt;/a&gt;
 &lt;strong&gt;SW to URDF&lt;/strong&gt;, This is the SolidWorks plugin that we used to convert our SolidWork Designs into importable URDFS which is provided by the ROS community. &lt;a href=&#34;http://wiki.ros.org/sw_urdf_exporter&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;[Link]&lt;/a&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Light Gun</title>
-      <link>https://hex-plex.github.io/project/light-gun/</link>
-      <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
-      <guid>https://hex-plex.github.io/project/light-gun/</guid>
-      <description>&lt;p&gt;Bored in the quarantine period, revisiting my old video games with light gun inspired an idea of light gun with a LCD display , I went on to build it mainly as a android package as it would be more accessable to anyone. Then ended up using a Raspberry Pi as a standalone device to enable it&amp;rsquo;s use accross many platforms and devices.&lt;br/&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;The Explanation for the working can be found in &lt;a href=&#34;https://github.com/hex-plex/Light-Gun/blob/master/EXPLANATION.md&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;EXPLANATION.md&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;h2 id=&#34;glimpse&#34;&gt;Glimpse:&lt;/h2&gt;
-&lt;p&gt;This is the glimpse of the prototype made with Raspberry pi on a toy gun with all the number-munching done on the Raspberry and transmites messages to the local server through bluetooth. The previous method of running the proccessing and the actions is documented in &lt;strong&gt;Win-Py&lt;/strong&gt; directory.&lt;br/&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/hex-plex/Light-Gun/master/images/Complete_setup.jpg&#34; width=&#34;370&#34; align=&#34;right&#34; border=&#34;20&#34;&gt;&lt;/img&gt;
-&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&lt;/p&gt;
-&lt;p align=&#34;left&#34;&gt;This is a prototype of the light gun with a camera module attached onto a toy-gun and with a Raspberry pi 3 b+ (unneccessary I know) and a 7.4 V li-ion battery, regulated with a buck converter to which two switches are connected on the Raspi&#39;s interrupt pins.&lt;/p&gt;&lt;hr/&gt;
-&lt;img src=&#34;https://raw.githubusercontent.com/hex-plex/Light-Gun/master/images/display_setup.jpg&#34; width=&#34;370&#34; align=&#34;left&#34;&gt;&lt;/img&gt;
-&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;
-This is the display setup with 4 IR-LEDs attached to the corners of the display which makes it very easy for detection in a wide range of lighting conditions.&lt;hr/&gt;&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;
-&lt;p&gt;And after Installation the main code using &lt;a href=&#34;https://github.com/hex-plex/Light-Gun/tree/master/Raspi-c&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Raspi&lt;/a&gt; version or &lt;a href=&#34;https://github.com/hex-plex/Light-Gun/tree/master/Win-py&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Local&lt;/a&gt; version, continue using it according to the guide lines for the same which is present in their respective folders itself.&lt;/p&gt;
-&lt;p&gt;The Modules then should create a virtual mouse and start following the edge vector of the camera module.
-The following is a demonstration of it in action&amp;hellip;. (😅 coming up shortly, as I am fixing few deviation errors.)&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://drive.google.com/file/d/1hIYBv8l2JCylOfQS9Cc5D5Hp50Ui55D-/view?usp=sharing&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;strong&gt;Demo Link&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&#34;contribution&#34;&gt;Contribution&lt;/h2&gt;
-&lt;p&gt;Any kind of Contribution is always welcomed. The rules for any Contribution for now is Non existent as I am the only one working on it and I have not really structurized the project so well as mostly in its prototyping stage, So its not possible to do a lot(Anyways feel free to report any errors or bugs 😄 ), Any Idea for a better implementation is also welcomed.&lt;/p&gt;
-&lt;h2 id=&#34;reference&#34;&gt;Reference:&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;This is for getting R and t matrix  &lt;a href=&#34;https://www.learnopencv.com/head-pose-estimation-using-opencv-and-dlib/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;[link]&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;This is for adjusting focal length (approximation) &lt;a href=&#34;https://www.learnopencv.com/approximate-focal-length-for-webcams-and-cell-phone-cameras/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;[link]&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;This is for getting accurate intrensic matrix &lt;a href=&#34;https://www.learnopencv.com/camera-calibration-using-opencv/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;[link]&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Cmake&lt;/li&gt;
-&lt;li&gt;Bluez&lt;/li&gt;
-&lt;li&gt;Raspberry pi interupts&lt;/li&gt;
-&lt;li&gt;Asynchronous coding&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Pong Reinforcement Learning</title>
-      <link>https://hex-plex.github.io/project/pong-reinforcementlearning/</link>
-      <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
-      <guid>https://hex-plex.github.io/project/pong-reinforcementlearning/</guid>
-      <description>&lt;p&gt;I have tried baking a rudimentary RL environment and a agent recipe to learn more about the eco-system.&lt;br/&gt;
-I have made &lt;a href=&#34;https://github.com/hex-plex/Pong-ReinforcementLearning/blob/master/pong.py&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;pong.py&lt;/a&gt; a environment which one can host either locally (localhost) or on  0.0.0.0 (LAN).Allowing to communicate to &lt;a href=&#34;https://github.com/hex-plex/Pong-ReinforcementLearning/blob/master/mainmodel.py&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;mainmodel.py&lt;/a&gt; which has to be connected to the same host and the same port. &lt;br/&gt;
-I have used a simple socket connection to transfer data rather than a flask/django backend as they are based on it giving a advantage of speed of communication. &lt;br/&gt;
-both the scripts have debug mode which allows one to see in which state or stage they are in. &lt;br/&gt;&lt;/p&gt;
-&lt;h2 id=&#34;output&#34;&gt;Output&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&#34;https://github.com/hex-plex/Pong-ReinforcementLearning/raw/master/trained.gif&#34; alt=&#34;pong-agent&#34;&gt;&lt;/p&gt;
-&lt;hr/&gt;
-The one on the left is a RL agent trained for 3 days and the one on right is a hardcoded AI. This is noticible the they nearly have the same level of skills.
-&lt;h2 id=&#34;requirements&#34;&gt;Requirements&lt;/h2&gt;
-&lt;p&gt;This requires only few basic libraries it only runs on python3, rather a small update can make it compatible with python2.
-The libraries&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;pickle
-numpy
-cv2
-pygame
-# Below are mostly available preinstalled in any python distribution
-socket
-BytesIO # from io in python3 or directly in python2
-_thread # for python 3 and thread in python2
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Which are quite rudimentary and neccessary part of the code.&lt;/p&gt;
-&lt;h2 id=&#34;multithreading&#34;&gt;Multithreading&lt;/h2&gt;
-&lt;p&gt;Here I have use many threads to assure that no data is missed while any other calculation or process is running on the main thread as there might be some unwanted lag between inputs.Also another thread on mainmodel exists which take inputs  from the user for pausing and resuming its learning session&lt;/p&gt;
-&lt;h2 id=&#34;sockets&#34;&gt;Sockets&lt;/h2&gt;
-&lt;p&gt;I have used sockets to send data between scripts rather than using a instance of model and the pong env on the same script well that would work just fine (or better removing all the lag of communication) , but my goal was to make it more appealing and to make me learn more real life skills that is if I train a agent with raspberry pi ( or any other weaker mobile device for that matter ) as a part of the environment or in the environment a more viable option than running both simulation and the RL agent would be to do the computation and send in actions to it. This also gave me a good understanding about data compression and network security ,though here there is none used as it just accepts the first connection to the env. &lt;br/&gt;
-&lt;br/&gt;
-with the use of socket one could manually control the environment with keyboard and also have a RL agent learning (half - Duplex).&lt;/p&gt;
-&lt;h2 id=&#34;demo&#34;&gt;Demo&lt;/h2&gt;
-&lt;p&gt;To launch the env with mostly default values just running &lt;a href=&#34;https://github.com/hex-plex/Pong-ReinforcementLearning/blob/master/pong.py&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;pong.py&lt;/a&gt; directly would start the server with default configs.
-Its always recommended to use its instance, apply your configuration you want it to run and start the server.&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;from pong import Pong
-
-env = Pong( levelodiff=1, ## This is the level of the inbuilt AI that plays against you.
-                          ## Set it to 4 and chill out (really try it!!) the scale is 1-3
-            debug=False,  ## If set to True it will print the stage the environment is in and info the data inputs and outputs
-            render=False, ## It would render the image that is sent to the model, This slows down the process so not a good idea to use it.
-            server=True,  ## This is to set server mode on , if set false the environment will be no different from ordinary pong game.
-            host=&amp;quot;&amp;quot;,      ## This is to specify where you want to host it, &amp;quot;&amp;quot; maps to local host &amp;quot;0.0.0.0&amp;quot; doesnt really map
-                          ## to your ip address yet
-            port=12345    ## This your port no. of the connection.
-          )               ## This is to just initiate the environment
-
-env.start()## This starts the env ie., hosts itself as per the given parameter and waits for a connection in async while continuing the game
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;To launch the RL agent running the &lt;a href=&#34;https://github.com/hex-plex/Pong-ReinforcementLearning/blob/master/mainmodel.py&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;mainmodel.py&lt;/a&gt; directly will run it in default config. &lt;br/&gt;
-To customize to your config import and create an instance and run the client. &lt;br/&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;from mainmodel import PolicyGradient
-
-## This uses two hidden layer to out-put 2 probabilities
-agent = PolicyGradient( resume=False,  ## This is usefull to continue training from previos checkpoint.
-                        render=True,   ## This will render the image got through the socket,useful if model is in another computer
-                        host=None,     ## If the value is None it trys to find a localhost , else specific host is to be provided as a str
-                        port=12345,    ## default value is 12345 set is as required.
-                        hiddenUnits=250, ## This no of hiddenUnits in first layer depending on the dimension of input.
-                        batch_size=10, ## This is to set batch size for batch reiforcement learning rather than using single episode.
-                        learningRate=1e-3, ## This is to set learning rate
-                        gamma=0.99,    ## This is to set gamma or the discount
-                        decayRate=0.99 ## This is decayRate for RMSprop
-                      )                ## This creates an instance of PolicyGradient algorithm as a client_socket
-
-agent.start()         ## This starts the agent ie., connects to the server and communicates and learns from its experience.
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Running them should launch the env and agent would start leaning. There is a propriety control in mainmodel.py which takes input in its terminal as&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&amp;lsquo;p&amp;rsquo;    ==&amp;gt; Pausing/Resuming the training process&lt;/li&gt;
-&lt;li&gt;&amp;lsquo;q&amp;rsquo;    ==&amp;gt; Quit the training process , But this makes a Checkpoint as interrupt.p&lt;/li&gt;
-&lt;li&gt;&amp;lsquo;ping&amp;rsquo; ==&amp;gt; This pings the pong server 10 times and returns the average time it took to send and receive packets.
-else with a better score of agent, the model is saved continuosly as save.p.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;fast-training&#34;&gt;Fast-training&lt;/h2&gt;
-&lt;p&gt;I have experimented the whole thing with networking sockets and asynchronous methods limiting the training process to human level speed for which I have uploaded the pong-fast-train.tar.gz&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;tar -xvzf pong-fast-train.tar.gz
-cd pong-fast
-python mainmodel.py
-mv save.p ../save.p
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;So this should train the model and save it into the main directory this should load the trained model in the main algo.&lt;/p&gt;
 </description>
     </item>
     

@@ -5,7 +5,7 @@
     <link>https://hex-plex.github.io/tag/pybullet/</link>
       <atom:link href="https://hex-plex.github.io/tag/pybullet/index.xml" rel="self" type="application/rss+xml" />
     <description>PyBullet</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>© Somnath Sendhil Kumar `2021`</copyright><lastBuildDate>Wed, 27 Apr 2016 00:00:00 +0000</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>© Somnath Sendhil Kumar `2021`</copyright><lastBuildDate>Sat, 06 Jun 2020 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://hex-plex.github.io/images/icon_hucffb9d42d7c693bd257413760c4b1fda_31806_512x512_fill_lanczos_center_2.png</url>
       <title>PyBullet</title>
@@ -15,7 +15,7 @@
     <item>
       <title>Hand Imitation</title>
       <link>https://hex-plex.github.io/project/hand-imitation/</link>
-      <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 06 Jun 2020 00:00:00 +0000</pubDate>
       <guid>https://hex-plex.github.io/project/hand-imitation/</guid>
       <description>&lt;p&gt;RL-based learning for a robotic arm to imitate a given hand in a image feed
 with &lt;a href=&#34;https://github.com/hex-plex/gym-handOfJustice&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;handOfJustice&lt;/a&gt; as our environment&lt;/p&gt;

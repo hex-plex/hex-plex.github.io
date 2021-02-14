@@ -73,6 +73,91 @@
   </url>
   
   <url>
+    <loc>https://hex-plex.github.io/tag/deep-learning/</loc>
+    <lastmod>2020-09-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://hex-plex.github.io/project/kilobot-multiagentrl/</loc>
+    <lastmod>2020-09-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://hex-plex.github.io/tag/multiagent-systems/</loc>
+    <lastmod>2020-09-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://hex-plex.github.io/tag/openai-gym/</loc>
+    <lastmod>2020-09-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://hex-plex.github.io/project/</loc>
+    <lastmod>2020-09-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://hex-plex.github.io/tag/pygame/</loc>
+    <lastmod>2020-09-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://hex-plex.github.io/tag/reinforcement-learning/</loc>
+    <lastmod>2020-09-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://hex-plex.github.io/tag/3d-modelling/</loc>
+    <lastmod>2020-06-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://hex-plex.github.io/tag/computer-vision/</loc>
+    <lastmod>2020-06-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://hex-plex.github.io/project/hand-imitation/</loc>
+    <lastmod>2020-06-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://hex-plex.github.io/tag/pybullet/</loc>
+    <lastmod>2020-06-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://hex-plex.github.io/project/pong-reinforcementlearning/</loc>
+    <lastmod>2020-05-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://hex-plex.github.io/tag/video-game/</loc>
+    <lastmod>2020-05-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://hex-plex.github.io/tag/embedded-systems/</loc>
+    <lastmod>2020-04-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://hex-plex.github.io/project/light-gun/</loc>
+    <lastmod>2020-04-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://hex-plex.github.io/tag/linux/</loc>
+    <lastmod>2020-04-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://hex-plex.github.io/tag/raspberry-pi/</loc>
+    <lastmod>2020-04-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://hex-plex.github.io/slides/</loc>
     <lastmod>2019-02-05T00:00:00+00:00</lastmod>
   </url>
@@ -80,106 +165,6 @@
   <url>
     <loc>https://hex-plex.github.io/slides/example/</loc>
     <lastmod>2019-02-05T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://hex-plex.github.io/tag/3d-modelling/</loc>
-    <lastmod>2016-04-27T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://hex-plex.github.io/tag/computer-vision/</loc>
-    <lastmod>2016-04-27T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://hex-plex.github.io/tag/deep-learning/</loc>
-    <lastmod>2016-04-27T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://hex-plex.github.io/tag/embedded-systems/</loc>
-    <lastmod>2016-04-27T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://hex-plex.github.io/project/hand-imitation/</loc>
-    <lastmod>2016-04-27T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://hex-plex.github.io/tag/heirarchial-reinforcement-learning/</loc>
-    <lastmod>2016-04-27T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://hex-plex.github.io/project/gym-iota/</loc>
-    <lastmod>2016-04-27T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://hex-plex.github.io/project/kilobot-multiagentrl/</loc>
-    <lastmod>2016-04-27T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://hex-plex.github.io/project/light-gun/</loc>
-    <lastmod>2016-04-27T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://hex-plex.github.io/tag/linux/</loc>
-    <lastmod>2016-04-27T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://hex-plex.github.io/tag/multiagent-systems/</loc>
-    <lastmod>2016-04-27T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://hex-plex.github.io/tag/openai-gym/</loc>
-    <lastmod>2016-04-27T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://hex-plex.github.io/project/pong-reinforcementlearning/</loc>
-    <lastmod>2016-04-27T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://hex-plex.github.io/project/</loc>
-    <lastmod>2016-04-27T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://hex-plex.github.io/tag/pybullet/</loc>
-    <lastmod>2016-04-27T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://hex-plex.github.io/tag/pygame/</loc>
-    <lastmod>2016-04-27T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://hex-plex.github.io/tag/raspberry-pi/</loc>
-    <lastmod>2016-04-27T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://hex-plex.github.io/tag/reinforcement-learning/</loc>
-    <lastmod>2016-04-27T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://hex-plex.github.io/tag/solidworks/</loc>
-    <lastmod>2016-04-27T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://hex-plex.github.io/tag/video-game/</loc>
-    <lastmod>2016-04-27T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -205,6 +190,18 @@
   <url>
     <loc></loc>
     <lastmod>2013-07-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://hex-plex.github.io/tag/heirarchial-reinforcement-learning/</loc>
+  </url>
+  
+  <url>
+    <loc>https://hex-plex.github.io/project/gym-iota/</loc>
+  </url>
+  
+  <url>
+    <loc>https://hex-plex.github.io/tag/solidworks/</loc>
   </url>
   
 </urlset>

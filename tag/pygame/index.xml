@@ -5,7 +5,7 @@
     <link>https://hex-plex.github.io/tag/pygame/</link>
       <atom:link href="https://hex-plex.github.io/tag/pygame/index.xml" rel="self" type="application/rss+xml" />
     <description>PyGame</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>© Somnath Sendhil Kumar `2021`</copyright><lastBuildDate>Wed, 27 Apr 2016 00:00:00 +0000</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>© Somnath Sendhil Kumar `2021`</copyright><lastBuildDate>Thu, 03 Sep 2020 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://hex-plex.github.io/images/icon_hucffb9d42d7c693bd257413760c4b1fda_31806_512x512_fill_lanczos_center_2.png</url>
       <title>PyGame</title>
@@ -15,7 +15,7 @@
     <item>
       <title>KiloBot MultiAgent Reinforcement Learning</title>
       <link>https://hex-plex.github.io/project/kilobot-multiagentrl/</link>
-      <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 03 Sep 2020 00:00:00 +0000</pubDate>
       <guid>https://hex-plex.github.io/project/kilobot-multiagentrl/</guid>
       <description>&lt;p&gt;This is an experimentation to learn about Swarm Robotics with help of MultiAgent Reinforcement learning. We have used KiloBot as a platform as these are very simple in the actions space and have very high degree of symmetry. The Main inspiration of this project is this paper&lt;a href=&#34;#1&#34;&gt;[1]&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&#34;setting-up&#34;&gt;Setting Up&lt;/h2&gt;
@@ -175,7 +175,7 @@ Number of modules.&lt;/p&gt;
     <item>
       <title>Pong Reinforcement Learning</title>
       <link>https://hex-plex.github.io/project/pong-reinforcementlearning/</link>
-      <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 06 May 2020 00:00:00 +0000</pubDate>
       <guid>https://hex-plex.github.io/project/pong-reinforcementlearning/</guid>
       <description>&lt;p&gt;I have tried baking a rudimentary RL environment and a agent recipe to learn more about the eco-system.&lt;br/&gt;
 I have made &lt;a href=&#34;https://github.com/hex-plex/Pong-ReinforcementLearning/blob/master/pong.py&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;pong.py&lt;/a&gt; a environment which one can host either locally (localhost) or on  0.0.0.0 (LAN).Allowing to communicate to &lt;a href=&#34;https://github.com/hex-plex/Pong-ReinforcementLearning/blob/master/mainmodel.py&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;mainmodel.py&lt;/a&gt; which has to be connected to the same host and the same port. &lt;br/&gt;
