@@ -18,6 +18,61 @@
   </url>
   
   <url>
+    <loc>https://hex-plex.github.io/tag/3d-modelling/</loc>
+    <lastmod>2021-01-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://hex-plex.github.io/tag/computer-vision/</loc>
+    <lastmod>2021-01-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://hex-plex.github.io/tag/embedded-systems/</loc>
+    <lastmod>2021-01-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://hex-plex.github.io/tag/heirarchial-reinforcement-learning/</loc>
+    <lastmod>2021-01-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://hex-plex.github.io/project/gym-iota/</loc>
+    <lastmod>2021-01-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://hex-plex.github.io/tag/multiagent-systems/</loc>
+    <lastmod>2021-01-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://hex-plex.github.io/tag/openai-gym/</loc>
+    <lastmod>2021-01-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://hex-plex.github.io/project/</loc>
+    <lastmod>2021-01-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://hex-plex.github.io/tag/reinforcement-learning/</loc>
+    <lastmod>2021-01-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://hex-plex.github.io/tag/solidworks/</loc>
+    <lastmod>2021-01-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://hex-plex.github.io/tags/</loc>
+    <lastmod>2021-01-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc></loc>
     <lastmod>2020-12-13T00:00:00+00:00</lastmod>
   </url>
@@ -44,11 +99,6 @@
   
   <url>
     <loc></loc>
-    <lastmod>2020-12-13T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://hex-plex.github.io/tags/</loc>
     <lastmod>2020-12-13T00:00:00+00:00</lastmod>
   </url>
   
@@ -83,38 +133,8 @@
   </url>
   
   <url>
-    <loc>https://hex-plex.github.io/tag/multiagent-systems/</loc>
-    <lastmod>2020-09-03T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://hex-plex.github.io/tag/openai-gym/</loc>
-    <lastmod>2020-09-03T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://hex-plex.github.io/project/</loc>
-    <lastmod>2020-09-03T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://hex-plex.github.io/tag/pygame/</loc>
     <lastmod>2020-09-03T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://hex-plex.github.io/tag/reinforcement-learning/</loc>
-    <lastmod>2020-09-03T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://hex-plex.github.io/tag/3d-modelling/</loc>
-    <lastmod>2020-06-06T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://hex-plex.github.io/tag/computer-vision/</loc>
-    <lastmod>2020-06-06T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -135,11 +155,6 @@
   <url>
     <loc>https://hex-plex.github.io/tag/video-game/</loc>
     <lastmod>2020-05-06T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://hex-plex.github.io/tag/embedded-systems/</loc>
-    <lastmod>2020-04-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -190,18 +205,6 @@
   <url>
     <loc></loc>
     <lastmod>2013-07-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://hex-plex.github.io/tag/heirarchial-reinforcement-learning/</loc>
-  </url>
-  
-  <url>
-    <loc>https://hex-plex.github.io/project/gym-iota/</loc>
-  </url>
-  
-  <url>
-    <loc>https://hex-plex.github.io/tag/solidworks/</loc>
   </url>
   
 </urlset>
