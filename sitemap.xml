@@ -123,6 +123,16 @@
   </url>
   
   <url>
+    <loc>https://hex-plex.github.io/tag/linux/</loc>
+    <lastmod>2020-12-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://hex-plex.github.io/project/paucibot/</loc>
+    <lastmod>2020-12-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://hex-plex.github.io/tag/deep-learning/</loc>
     <lastmod>2020-09-03T00:00:00+00:00</lastmod>
   </url>
@@ -159,11 +169,6 @@
   
   <url>
     <loc>https://hex-plex.github.io/project/light-gun/</loc>
-    <lastmod>2020-04-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://hex-plex.github.io/tag/linux/</loc>
     <lastmod>2020-04-02T00:00:00+00:00</lastmod>
   </url>
   
