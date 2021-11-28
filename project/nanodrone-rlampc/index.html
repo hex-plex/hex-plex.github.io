@@ -1,0 +1,1402 @@
+<!DOCTYPE html><html lang="en-us" >
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  
+  
+  <meta name="generator" content="Wowchemy 5.0.0-beta.2 for Hugo">
+  
+
+  
+
+  
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Somnath Kumar">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Reinforcement Learning aided MPC for constrained systems">
+
+  
+  <link rel="alternate" hreflang="en-us" href="https://hex-plex.github.io/project/nanodrone-rlampc/">
+
+  
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+
+  
+  
+  
+  <meta name="theme-color" content="#1565c0">
+  
+
+  
+  
+
+  
+  
+  
+  
+    
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.0/css/academicons.min.css" integrity="sha512-W4yqoT1+8NLkinBLBZko+dFB2ZbHsYLDdr50VElllRcNt2Q4/GSs6u71UHKxB7S6JEMCp5Ve4xjh3eGQl/HRvg==" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha256-FMvZuGapsJLjouA6k7Eo2lusoAX9i0ShlWFG6qt7SLc=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous" media="print" onload="this.media='all'">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/github.min.css" crossorigin="anonymous" title="hl-light" media="print" onload="this.media='all'">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/github.min.css" crossorigin="anonymous" title="hl-dark" media="print" onload="this.media='all'" disabled>
+      
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.css" integrity="sha512-1xoFisiGdy9nvho8EgXuXvnpR5GAMSjFwp40gSRE3NwdUdIMIKuPa7bqoUhLD0O/5tPNhteAsE5XyyMi5reQVA==" crossorigin="anonymous" media="print" onload="this.media='all'">
+    
+
+    
+
+    
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.2.2/lazysizes.min.js" integrity="sha512-TmDwFLhg3UA4ZG0Eb4MIyT1O1Mb+Oww5kFG0uHqXsdbyZz9DcvYQhKpGgNkamAI6h2lGGZq2X8ftOJvF/XjTUg==" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+        
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+
+  
+
+  
+  
+  
+    
+      
+      <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap" media="print" onload="this.media='all'">
+    
+  
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/wowchemy.43d3c96e828e85b0b0be4980653cbf43.css">
+
+  
+
+
+
+
+  
+
+  
+
+
+  
+  
+
+  
+
+  
+  <link rel="manifest" href="/index.webmanifest">
+  
+
+  <link rel="icon" type="image/png" href="/images/icon_hucffb9d42d7c693bd257413760c4b1fda_31806_32x32_fill_lanczos_center_2.png">
+  <link rel="apple-touch-icon" type="image/png" href="/images/icon_hucffb9d42d7c693bd257413760c4b1fda_31806_180x180_fill_lanczos_center_2.png">
+
+  <link rel="canonical" href="https://hex-plex.github.io/project/nanodrone-rlampc/">
+
+  
+  
+  
+  
+  
+  
+  
+    
+  
+  
+  <meta property="twitter:card" content="summary_large_image">
+  
+  <meta property="og:site_name" content="Somnath Kumar">
+  <meta property="og:url" content="https://hex-plex.github.io/project/nanodrone-rlampc/">
+  <meta property="og:title" content="NanoDrone RL Aided MPC | Somnath Kumar">
+  <meta property="og:description" content="Reinforcement Learning aided MPC for constrained systems"><meta property="og:image" content="https://hex-plex.github.io/project/nanodrone-rlampc/featured.jpg">
+  <meta property="twitter:image" content="https://hex-plex.github.io/project/nanodrone-rlampc/featured.jpg"><meta property="og:locale" content="en-us">
+  
+    
+      <meta property="article:published_time" content="2021-10-01T00:00:00&#43;00:00">
+    
+    <meta property="article:modified_time" content="2021-10-01T00:00:00&#43;00:00">
+  
+
+  
+
+
+    
+
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://hex-plex.github.io/project/nanodrone-rlampc/"
+  },
+  "headline": "NanoDrone RL Aided MPC",
+  
+  "image": [
+    "https://hex-plex.github.io/project/nanodrone-rlampc/featured.jpg"
+  ],
+  
+  "datePublished": "2021-10-01T00:00:00Z",
+  "dateModified": "2021-10-01T00:00:00Z",
+  
+  "author": {
+    "@type": "Person",
+    "name": "Somnath Kumar"
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "Somnath Kumar",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://hex-plex.github.io/images/icon_hucffb9d42d7c693bd257413760c4b1fda_31806_192x192_fill_lanczos_center_2.png"
+    }
+  },
+  "description": "Reinforcement Learning aided MPC for constrained systems"
+}
+</script>
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  <title>NanoDrone RL Aided MPC | Somnath Kumar</title>
+
+</head>
+
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper  ">
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <script src="/js/wowchemy-init.min.d876f1a6b98701f9238f2313b512a26f.js"></script>
+
+  
+
+<aside class="search-modal" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#" aria-label="Close"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="form-control"
+        aria-label="Search...">
+        
+      </div>
+
+      
+      
+
+      
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+
+  <div class="page-header">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+  <div class="container-xl">
+
+    
+    <div class="d-none d-lg-inline-flex">
+      <a class="navbar-brand" href="/">Somnath Kumar</a>
+    </div>
+    
+
+    
+    <button type="button" class="navbar-toggler" data-toggle="collapse"
+            data-target="#navbar-content" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span><i class="fas fa-bars"></i></span>
+    </button>
+    
+
+    
+    <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+      <a class="navbar-brand" href="/">Somnath Kumar</a>
+    </div>
+    
+
+    
+    
+    <div class="navbar-collapse main-menu-item collapse justify-content-center" id="navbar-content">
+
+      
+      <ul class="navbar-nav d-md-inline-flex">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#about"><span>Home</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#posts"><span>Posts</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#projects"><span>Projects</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#featured"><span>Publications</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#contact"><span>Contact</span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+      </ul>
+    </div>
+
+    <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+
+      
+      
+        
+      
+
+      
+      
+      <li class="nav-item">
+        <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+      </li>
+      
+
+      
+      
+      <li class="nav-item dropdown theme-dropdown">
+        <a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-label="Display preferences">
+          <i class="fas fa-moon" aria-hidden="true"></i>
+        </a>
+        <div class="dropdown-menu">
+          <a href="#" class="dropdown-item js-set-theme-light">
+            <span>Light</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-dark">
+            <span>Dark</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-auto">
+            <span>Automatic</span>
+          </a>
+        </div>
+      </li>
+      
+
+      
+
+    </ul>
+
+  </div>
+</nav>
+
+
+  </div>
+
+  <div class="page-body">
+    <article class="article article-project">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+
+<div class="article-container pt-3">
+  <h1>NanoDrone RL Aided MPC</h1>
+
+  
+
+  
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Oct 1, 2021
+  </span>
+  
+
+  
+
+  
+
+  
+  
+  
+  
+  
+
+  
+  
+
+</div>
+
+  
+
+
+
+
+<div class="btn-links mb-3">
+  
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+    
+  
+  
+  
+  
+  
+    
+  
+  <a class="btn btn-outline-primary btn-page-header" href="https://github.com/hex-plex/NanoDrone-Hardware/" target="_blank" rel="noopener">
+    <i class="fab fa-github mr-1"></i>
+    Hardware
+  </a>
+
+
+</div>
+
+
+</div>
+
+
+<div class="article-header article-container featured-image-wrapper mt-4 mb-4" style="max-width: 720px; max-height: 540px;">
+  <div style="position: relative">
+    <img src="/project/nanodrone-rlampc/featured_hu6a0e17034a76199a17529f67bbf0a6fa_5592732_720x0_resize_q75_lanczos.jpg" alt="" class="featured-image">
+    <span class="article-header-caption">Modded Nano Quadrotor for offboard control</span>
+  </div>
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      <p>This is an experimentation to learn about Swarm Robotics with help of MultiAgent Reinforcement learning. We have used KiloBot as a platform as these are very simple in the actions space and have very high degree of symmetry. The Main inspiration of this project is this paper<a href="#1">[1]</a></p>
+<h2 id="setting-up">Setting Up</h2>
+<pre><code class="language-bash">git clone https://github.com/hex-plex/KiloBot-MultiAgent-RL
+cd KiloBot-MultiAgent-RL
+pip install --upgrade absl-python \
+                      tensorflow \
+                      gym \
+                      opencv-python \
+                      tensorflow_probability \
+                      keras \
+                      pygame
+pip install -e gym-kiloBot
+</code></pre>
+<p>This should fetch and install the basics packages needed and should install the environment</p>
+<h3 id="sample-of-environment">Sample of environment</h3>
+<p>These envs are running on a constant <strong>Dummy-actions!!</strong></p>
+<table>
+<thead>
+<tr>
+<th><strong>Env with Graph Objective</strong></th>
+<th>Env with Localization Objective</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="https://github.com/hex-plex/KiloBot-MultiAgent-RL/blob/master/images/env_test_graph_compress.gif?raw=true" alt="Output-1"></td>
+<td><img src="https://github.com/hex-plex/KiloBot-MultiAgent-RL/blob/master/images/env_test_localize_compress.gif?raw=true" alt="Output-2"></td>
+</tr>
+</tbody>
+</table>
+<h2 id="usage">Usage</h2>
+<pre><code class="language-bash">python env-test.py ## This will help you check the functionality of the environement and should give the sample code to understand the apis as well.
+python model-train.py \
+        --headless=True \             ## for headless training default False
+        --objective=&quot;localization&quot; \  ## defines the objective default is graph
+        --modules=10 \                ## This defines the no of modules to be initialized default 10
+        --time_steps=100000 \         ## This is the total no of steps the agent will take while learning
+        --histRange=10 \              ## This is the no of mu values for the histograms
+        --logdir=&quot;logs&quot; \             ## This specifies the log location for TensorBoard
+        --checkpoints=&quot;checkpoints&quot;   ## This is for defining the location where the model is to be saved
+        --load_checkpoint=&quot;checkpoints/iter-500&quot; ## This loads the specified iteration
+
+python play-model.py \ ## This should load trained weights and show the performance
+        --load_checkpoint=&quot;checkpoints/graphs/10&quot; \ ## loads this model
+        --modules=10  \                             ## no of modules in the env
+        --objective=&quot;localization&quot; \                ## Sets the objective function
+        --time_steps=10000 \                        ## No of iterations to be run
+        --histRange=10                              ## Same def as above
+</code></pre>
+<h2 id="results">Results</h2>
+<p>After a exhaustive amount of training on varies combinations of no_of_modules and task in hand I have obtained results of the following algorithm for these parameters.
+I have used <code>[5, 10, 15, 20, 25, 50]</code> number of modules to carryout the tests.</p>
+<p>One may find the Tensorboard log files here:</p>
+<p><a href="https://drive.google.com/file/d/11NtimYoXOBGopIxziAojti0k1kfbaVBQ/view?usp=sharing" target="_blank" rel="noopener"> log_kilobot [Drive Link] (403MB)</a></p>
+<p>and the Model Weights for each parameters here:</p>
+<p><a href="https://drive.google.com/file/d/12qpbPIOrC-hLGVn2a8GETrkNL89bt8Dt/view?usp=sharing" target="_blank" rel="noopener"> checkpoint_kilobot [Drive Link] (63.3MB)</a></p>
+<h3 id="graph-problem">Graph Problem</h3>
+<p>The below table is based on the number of modules used but for result tabulation I am considering
+<code>[5, 10, 20, 50]</code>
+number of modules. To infer many insights of the algorithm in hand.</p>
+<p align="center"><b>Please click on the image to zoom in</b></p>
+<table>
+<thead>
+<tr>
+<th>Model Trained on <strong>\</strong> Model Run on</th>
+<th>10</th>
+<th>20</th>
+<th>50</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>10</td>
+<td><img src="https://github.com/hex-plex/KiloBot-MultiAgent-RL/blob/master/images/10trainon10.gif?raw=true" alt="Success1"></td>
+<td><img src="https://github.com/hex-plex/KiloBot-MultiAgent-RL/blob/master/images/10trainon20.gif?raw=true" alt="Success2"></td>
+<td><img src="https://github.com/hex-plex/KiloBot-MultiAgent-RL/blob/master/images/10trainon50.gif?raw=true" alt="Success3"></td>
+</tr>
+<tr>
+<td>20</td>
+<td>-</td>
+<td><img src="https://github.com/hex-plex/KiloBot-MultiAgent-RL/blob/master/images/20trainon20.gif?raw=true" alt="Random1"></td>
+<td>-</td>
+</tr>
+<tr>
+<td>50</td>
+<td>-</td>
+<td>-</td>
+<td><img src="https://github.com/hex-plex/KiloBot-MultiAgent-RL/blob/master/images/50trainon50.gif?raw=true" alt="Random2"></td>
+</tr>
+</tbody>
+</table>
+<hr>
+The policies trained on 20 and 50 module system is completely random in sense it just goes forward.
+<p>We can see clearly the policy trained with 10 modules have yield a very good amount of coordination between each other that is the critic model taking in the input image of the system is able to specify the bots and guide them, Hence a very good amount of generalization is found when we use this model with system with different number of modules as can be seen with the 20 module system but the non stationarity of a higher order system makes it complex for the critic to reward or give baseline to the actor, As the</p>
+<ul>
+<li>The order of the reward changes drastically.</li>
+<li>The Reading from the histogram becomes Muddy.</li>
+<li>The correlation of a reward to action of a single agent reduces drastically.</li>
+</ul>
+<hr>
+<p>Hence the Model trained with 10 modules is not able to generalize to the 50 module system, <strong>BUT</strong> It looks more promising than the policy trained for the 50 module system itself, hence a curiculum learning based approach seems promising to solve such a transfer learning problem.</p>
+<h4 id="plots-for-training-with-10-modules">Plots for Training with 10 modules</h4>
+<table>
+<thead>
+<tr>
+<th>Actor Loss</th>
+<th>Critic Loss</th>
+<th>Reward</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="https://github.com/hex-plex/KiloBot-MultiAgent-RL/blob/master/images/actor10.jpg?raw=true" alt="Actor Loss"></td>
+<td><img src="https://github.com/hex-plex/KiloBot-MultiAgent-RL/blob/master/images/critic10.jpg?raw=true" alt="Critic Loss"></td>
+<td><img src="https://github.com/hex-plex/KiloBot-MultiAgent-RL/blob/master/images/reward10.jpg?raw=true" alt="Reward"></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h4 id="for-5-modules">For 5 modules</h4>
+<p>The system can&rsquo;t comphensate for the negetive reward got by using fuel as the reward got for graphing is much smaller in order than it that it chooses to be stagnent.
+<img src="https://github.com/hex-plex/KiloBot-MultiAgent-RL/blob/master/images/5trainon5.gif?raw=true" alt="Failed"></p>
+<hr>
+<h3 id="localization-problem">Localization Problem</h3>
+<p>Here the task was much easier but the training didnt yield any satisfactory result as.</p>
+<ul>
+<li>there were a lot of non stationarities and the fact the system was modelled based on a fashion which couldn&rsquo;t extend more than a small system of at best 10 modules <a href="1">[1]</a>.</li>
+<li>And the fact that the reward of localization couldnt exceed the negetive reward for moving the bot that is the bots choose to stand still to save fuel over exploring in most of the senarios.</li>
+</ul>
+<p>Below are few runs with <code>[10, 25]</code>
+Number of modules.</p>
+<table>
+<thead>
+<tr>
+<th>Localization trained for small n(=10)</th>
+<th>Localization trained for big n(=25)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="https://github.com/hex-plex/KiloBot-MultiAgent-RL/blob/master/images/15loc15.gif?raw=True" alt="loc10"></td>
+<td><img src="https://github.com/hex-plex/KiloBot-MultiAgent-RL/blob/master/images/25loc25.gif?raw=True" alt="loc25"></td>
+</tr>
+</tbody>
+</table>
+<p>Here it is clearly visible that because of randomness and the fact more number of can cover a larger space of the system exploration is much easier than being greedy to stay at a point and save fuel.</p>
+<h2 id="acknowledgment">Acknowledgment</h2>
+<p>To Center for Computing and Information Services, IIT (BHU) varanasi to provide the computational power, i.e., The Super Computer on which I was able to train for over <strong>10 Million Timesteps</strong> for about 1.5 months.</p>
+<p>For any other query feel free to reachout.</p>
+<h2 id="references">References</h2>
+<p><a id="1">[1]</a>
+<strong>Guided Deep Reinforcement Learning for Swarm Systems</strong> <a href="https://arxiv.org/abs/1709.06011" target="_blank" rel="noopener">[arXiv:1709.06011v1]</a> [cs.MA] 18 Sep 2017</p>
+
+    </div>
+
+    
+
+
+
+
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tag/reinforcement-learning/">Reinforcement Learning</a>
+  
+  <a class="badge badge-light" href="/tag/optimal-control/">Optimal Control</a>
+  
+  <a class="badge badge-light" href="/tag/ros/">ROS</a>
+  
+</div>
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://hex-plex.github.io/project/nanodrone-rlampc/&amp;text=NanoDrone%20RL%20Aided%20MPC" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://hex-plex.github.io/project/nanodrone-rlampc/&amp;t=NanoDrone%20RL%20Aided%20MPC" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=NanoDrone%20RL%20Aided%20MPC&amp;body=https://hex-plex.github.io/project/nanodrone-rlampc/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://hex-plex.github.io/project/nanodrone-rlampc/&amp;title=NanoDrone%20RL%20Aided%20MPC" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="whatsapp://send?text=NanoDrone%20RL%20Aided%20MPC%20https://hex-plex.github.io/project/nanodrone-rlampc/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://hex-plex.github.io/project/nanodrone-rlampc/&amp;title=NanoDrone%20RL%20Aided%20MPC" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+  
+  
+    
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+      
+      <a href="https://hex-plex.github.io/"><img class="avatar mr-3 avatar-circle" src="/authors/admin/avatar_hu33d8f2710ea4928d295bd08cdc05f6eb_346396_270x270_fill_q75_lanczos_center.jpg" alt="Somnath Kumar"></a>
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="https://hex-plex.github.io/">Somnath Kumar</a></h5>
+      <h6 class="card-subtitle">Sophomore, Electrical Engineering</h6>
+      <p class="card-text">My research interests include Computer Vision, Multi-Agent learning.</p>
+      <ul class="network-icon" aria-hidden="true">
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="/#contact" >
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://github.com/hex-plex" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://www.linkedin.com/in/somnathsenku/" target="_blank" rel="noopener">
+        <i class="fab fa-linkedin"></i>
+      </a>
+    </li>
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <div class="article-widget content-widget-hr">
+    <h3>Related</h3>
+    <ul>
+      
+      <li><a href="/project/optimal-control_quadruped/">Optimal control and trajectory optimization on Quadruped</a></li>
+      
+      <li><a href="/project/gym-iota/">iOTA - Modular Bot</a></li>
+      
+      <li><a href="/project/paucibot/">PauciBot</a></li>
+      
+      <li><a href="/project/kilobot-multiagentrl/">KiloBot MultiAgent Reinforcement Learning</a></li>
+      
+      <li><a href="/project/hand-imitation/">Hand Imitation</a></li>
+      
+    </ul>
+  </div>
+  
+
+
+
+
+
+    <div class="project-related-pages content-widget-hr">
+      
+      
+
+      
+      
+      
+
+      
+      
+      
+
+      
+      
+      
+    </div>
+  </div>
+</article>
+  </div>
+
+  <div class="page-footer">
+    
+    
+    <div class="container">
+      <footer class="site-footer">
+  
+
+  <p class="powered-by">
+    © Somnath Sendhil Kumar <code>2021</code>
+  </p>
+
+  
+  
+
+
+
+
+
+
+  <p class="powered-by">
+    
+    
+    
+    Published with
+    <a href="https://wowchemy.com/?utm_campaign=poweredby" target="_blank" rel="noopener">Wowchemy</a>  —
+    the free, <a href="https://github.com/wowchemy/wowchemy-hugo-modules" target="_blank" rel="noopener">
+    open source</a> website builder that empowers creators.
+    
+  </p>
+</footer>
+
+    </div>
+    
+  </div>
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+
+      
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      
+
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/instant.page/5.1.0/instantpage.min.js" integrity="sha512-1+qUtKoh9XZW7j+6LhRMAyOrgSQKenQ4mluTR+cvxXjP1Z54RxZuzstR/H9kgPXQsVB8IW7DMDFUJpzLjvhGSQ==" crossorigin="anonymous"></script>
+
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/highlight.min.js" integrity="sha512-TDKKr+IvoqZnPzc3l35hdjpHD0m+b2EC2SrLEgKDRWpxf2rFCxemkgvJ5kfU48ip+Y+m2XVKyOCD85ybtlZDmw==" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/r.min.js"></script>
+        
+      
+
+    
+
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.js" integrity="sha512-SeiQaaDh73yrb56sTW/RgVdi/mMqNeM2oBwubFHagc5BkixSpP1fvqF47mKzPGWYSSy4RwbBunrJBQ4Co8fRWA==" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+        <div class="search-hit-content">
+          <div class="search-hit-name">
+            <a href="{{relpermalink}}">{{title}}</a>
+            <div class="article-metadata search-hit-type">{{type}}</div>
+            <p class="search-hit-description">{{snippet}}</p>
+          </div>
+        </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+    
+
+    
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+      
+      
+      
+      
+      
+      
+      
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+      
+    
+    
+    <script src="/en/js/wowchemy.min.06e52bf0665167274d459a9300d0fab2.js"></script>
+
+    
+
+
+
+
+
+
+</body>
+</html>
