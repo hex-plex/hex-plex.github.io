@@ -60,8 +60,13 @@ As a low level PID controller is running for maintaining the altitude altitude, 
 &lt;/p&gt;
 &lt;p&gt;A more analytic study shows the improvement in performance by the need of steps to converge the optimization and the rate of diverge or failure in optimizing the policy within the limit.&lt;/p&gt;
 &lt;img src=&#34;mpc_conv.png&#34;/&gt;  
-&lt;img src=&#34;mpc_fail.png&#34;/&gt;
-&lt;img src=&#34;mpc_fail_log.png&#34;/&gt;
+&lt;p&gt;For feasible run time of the MPC we use a threshold of optimal 5 iterations and maximum of 10 iterations would allow use to run the Pipeline on our desired system. Here we are optimizing the trajectories within a certain amount of cost which are experimented for suiting both performance and efficiency.&lt;/p&gt;
+&lt;p&gt;As can be seen from the curve performance of Pipeline increases continuing to train it further hence a proportional correlation confirms the proof of concept.&lt;/p&gt;
+&lt;p align=&#34;center&#34;&gt;
+&lt;img src=&#34;mpc_fail.png&#34; align=&#34;left&#34; width=&#34;60%&#34; style=&#34;padding-right: 20px&#34;/&gt;&lt;img src=&#34;mpc_fail_log.png&#34; align=&#34;right&#34; width=&#34;60%&#34; style=&#34;padding-left: 10px&#34;/&gt;
+&lt;/p&gt;
+&lt;p&gt;The second metrics we are using the rate of failures in either not being able to find a solution or not converging before the 10 iterations threshold, as we have used the approximated linear dynamics of the Drone we are entitled to diverge in prediction of the future states and hence give an sub optimal response, We see this is also improved with the current architecture and is able to robustly work in a bigger configuration space.&lt;/p&gt;
+&lt;p&gt;Given the improvement of the performance against only MPC based control makes it a very good fit for our application. Currently hardware code structured would have to finalized as we would have to make utilize most of all the onboard computation for both the RL policy forward propagation and the MPC optimization. Hence we are working on modifing &lt;a href=&#34;https://github.com/ethz-asl/mav_control_rw&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Mav_Control_RW&lt;/a&gt; for our needs to use a betaflight firmware as the lowlevel controller and communicated through MavLink.&lt;/p&gt;
 &lt;h2 id=&#34;future-works&#34;&gt;Future works&lt;/h2&gt;
 &lt;p&gt;We are currently working on implementing the hardware pipline for feasible hardware results. And constantly estimating optimal parameters to run the pipe line with.&lt;/p&gt;
 &lt;p&gt;As Specified in the start of the post we are also trying to solve the problem of trajectory optimization of Multi-Agent systems for which we would be more than happy to collaborate or hear from you.&lt;/p&gt;
@@ -69,11 +74,41 @@ As a low level PID controller is running for maintaining the altitude altitude, 
     </item>
     
     <item>
-      <title>Optimal control and trajectory optimization on Quadruped</title>
+      <title>Optimal control and trajectory optimization for Quadruped</title>
       <link>https://hex-plex.github.io/project/optimal-control_quadruped/</link>
       <pubDate>Sat, 03 Jul 2021 00:00:00 +0000</pubDate>
       <guid>https://hex-plex.github.io/project/optimal-control_quadruped/</guid>
-      <description></description>
+      <description>&lt;p&gt;This post is a collection of Optimal Control algorithm that I either implemented or Integrated with the quadruped &amp;lsquo;Stochlite&amp;rsquo; at Stochlab, IISc. These are implemented in ROS so that we can deploy them directly on the hardware. My major contribution was to integrate these well established optimal control algorithms with the ROS framework of the Quadruped.&lt;/p&gt;
+&lt;p&gt;Majority of the Optimal control do not have significant difference in performance in Hardware as I was unable to test them in many scenarios through the simulators.&lt;/p&gt;
+&lt;h2 id=&#34;model-predictive-control&#34;&gt;Model Predictive Control&lt;/h2&gt;
+&lt;p&gt;Inspired from &lt;a href=&#34;#1&#34;&gt;[1]&lt;/a&gt; implemented the convex mpc for the quadruped. along with &lt;a href=&#34;#2&#34;&gt;[2]&lt;/a&gt; a whole body impulse Controller which will help to trace the estimated foot forces estimated from the Controller. While the MPC uses an approximate Linear model of the quadruped. The whole body impulse controller considers the Floating base dynamics of the robot, while the MPC uses the Single Rigid body Dynamics. I also implemented a modified version of the State Estimator for the quadruped need for the Algorithms&lt;/p&gt;
+&lt;p align=&#34;center&#34;&gt;
+&lt;img src=&#34;stochlite_mpc.gif&#34;/&gt;
+&lt;i&gt;Estimated Foot forces from the MPC&lt;/i&gt;
+&lt;/p&gt;
+&lt;h3 id=&#34;output&#34;&gt;Output&lt;/h3&gt;
+&lt;p&gt;Below are a few clips where the MPC stablizes the torso and attains a&lt;/p&gt;
+&lt;p align=&#34;center&#34;&gt;
+&lt;img src=&#34;stochlite_convmpc_hill.gif&#34;/&gt;
+&lt;i&gt;Using the MPC on the Hilly terrain, with no prior knowledge of the terrain&lt;/i&gt;
+&lt;/p&gt;
+&lt;p align=&#34;center&#34;&gt;
+&lt;img src=&#34;stochlite_convmpc_rough.gif&#34;/&gt;
+&lt;i&gt;Using the MPC and WBiC on Rough terrain, with no prior knowledge of the terrain&lt;/i&gt;
+&lt;/p&gt;
+&lt;p&gt;As it can be seen from the above output the quadruped stablizes itself instantaniously as it has no prior knowledge like an heightmap of the world.&lt;/p&gt;
+&lt;h2 id=&#34;trajectory-optimization&#34;&gt;Trajectory optimization&lt;/h2&gt;
+&lt;p&gt;Below is the output from the towr gui, for the quadruped.&lt;/p&gt;
+&lt;p align=&#34;center&#34;&gt;
+&lt;img src=&#34;stochlite_towr.gif&#34;/&gt;
+&lt;i&gt;Stochlite in TOWR&lt;/i&gt;
+&lt;/p&gt;
+&lt;p&gt;As seen in the above output towr is able to produce feasible trajectories of foot positions and forces for the quadruped in differnt terrains.&lt;/p&gt;
+&lt;p&gt;Integrating towr would require a heightmap of the world which would need an online 3D Mapping of the world using a depth camera which currently was not available on the platform hence limiting the developing towards it.&lt;/p&gt;
+&lt;p&gt;But later I integrate towr, only for Flat ground and ran it at 4 Hz for updating the optimal foot positions. As the rate is too slow and the difference between the state at the start of the optimization and current would be drastically different, I implemented towr to run parallely with estimation of the current state of the robot based on the control input of the previous optimized solution and the dynamics model of the robot solved to fetch the state at a future timestep.&lt;/p&gt;
+&lt;h2 id=&#34;reinforcement-learning&#34;&gt;Reinforcement Learning&lt;/h2&gt;
+&lt;p&gt;We are further working towards improving the performance of these algorithm by using Reinforcement Learning with formulations to work along side these algorithms and also in tandom with these algorithm.&lt;/p&gt;
+</description>
     </item>
     
   </channel>

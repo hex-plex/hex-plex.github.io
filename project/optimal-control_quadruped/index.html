@@ -279,7 +279,7 @@
   
   <meta property="og:site_name" content="Somnath Kumar">
   <meta property="og:url" content="https://hex-plex.github.io/project/optimal-control_quadruped/">
-  <meta property="og:title" content="Optimal control and trajectory optimization on Quadruped | Somnath Kumar">
+  <meta property="og:title" content="Optimal control and trajectory optimization for Quadruped | Somnath Kumar">
   <meta property="og:description" content="Different control and optimization algorithms on Stochlite, IISc."><meta property="og:image" content="https://hex-plex.github.io/project/optimal-control_quadruped/featured.jpg">
   <meta property="twitter:image" content="https://hex-plex.github.io/project/optimal-control_quadruped/featured.jpg"><meta property="og:locale" content="en-us">
   
@@ -310,7 +310,7 @@
     "@type": "WebPage",
     "@id": "https://hex-plex.github.io/project/optimal-control_quadruped/"
   },
-  "headline": "Optimal control and trajectory optimization on Quadruped",
+  "headline": "Optimal control and trajectory optimization for Quadruped",
   
   "image": [
     "https://hex-plex.github.io/project/optimal-control_quadruped/featured.jpg"
@@ -350,7 +350,7 @@
 
 
 
-  <title>Optimal control and trajectory optimization on Quadruped | Somnath Kumar</title>
+  <title>Optimal control and trajectory optimization for Quadruped | Somnath Kumar</title>
 
 </head>
 
@@ -718,7 +718,7 @@
 
 
 <div class="article-container pt-3">
-  <h1>Optimal control and trajectory optimization on Quadruped</h1>
+  <h1>Optimal control and trajectory optimization for Quadruped</h1>
 
   
 
@@ -825,7 +825,37 @@
   <div class="article-container">
 
     <div class="article-style">
-      
+      <p>This post is a collection of Optimal Control algorithm that I either implemented or Integrated with the quadruped &lsquo;Stochlite&rsquo; at Stochlab, IISc. These are implemented in ROS so that we can deploy them directly on the hardware. My major contribution was to integrate these well established optimal control algorithms with the ROS framework of the Quadruped.</p>
+<p>Majority of the Optimal control do not have significant difference in performance in Hardware as I was unable to test them in many scenarios through the simulators.</p>
+<h2 id="model-predictive-control">Model Predictive Control</h2>
+<p>Inspired from <a href="#1">[1]</a> implemented the convex mpc for the quadruped. along with <a href="#2">[2]</a> a whole body impulse Controller which will help to trace the estimated foot forces estimated from the Controller. While the MPC uses an approximate Linear model of the quadruped. The whole body impulse controller considers the Floating base dynamics of the robot, while the MPC uses the Single Rigid body Dynamics. I also implemented a modified version of the State Estimator for the quadruped need for the Algorithms</p>
+<p align="center">
+<img src="stochlite_mpc.gif"/>
+<i>Estimated Foot forces from the MPC</i>
+</p>
+<h3 id="output">Output</h3>
+<p>Below are a few clips where the MPC stablizes the torso and attains a</p>
+<p align="center">
+<img src="stochlite_convmpc_hill.gif"/>
+<i>Using the MPC on the Hilly terrain, with no prior knowledge of the terrain</i>
+</p>
+<p align="center">
+<img src="stochlite_convmpc_rough.gif"/>
+<i>Using the MPC and WBiC on Rough terrain, with no prior knowledge of the terrain</i>
+</p>
+<p>As it can be seen from the above output the quadruped stablizes itself instantaniously as it has no prior knowledge like an heightmap of the world.</p>
+<h2 id="trajectory-optimization">Trajectory optimization</h2>
+<p>Below is the output from the towr gui, for the quadruped.</p>
+<p align="center">
+<img src="stochlite_towr.gif"/>
+<i>Stochlite in TOWR</i>
+</p>
+<p>As seen in the above output towr is able to produce feasible trajectories of foot positions and forces for the quadruped in differnt terrains.</p>
+<p>Integrating towr would require a heightmap of the world which would need an online 3D Mapping of the world using a depth camera which currently was not available on the platform hence limiting the developing towards it.</p>
+<p>But later I integrate towr, only for Flat ground and ran it at 4 Hz for updating the optimal foot positions. As the rate is too slow and the difference between the state at the start of the optimization and current would be drastically different, I implemented towr to run parallely with estimation of the current state of the robot based on the control input of the previous optimized solution and the dynamics model of the robot solved to fetch the state at a future timestep.</p>
+<h2 id="reinforcement-learning">Reinforcement Learning</h2>
+<p>We are further working towards improving the performance of these algorithm by using Reinforcement Learning with formulations to work along side these algorithms and also in tandom with these algorithm.</p>
+
     </div>
 
     
@@ -858,7 +888,7 @@
       
       
       <li>
-        <a href="https://twitter.com/intent/tweet?url=https://hex-plex.github.io/project/optimal-control_quadruped/&amp;text=Optimal%20control%20and%20trajectory%20optimization%20on%20Quadruped" target="_blank" rel="noopener" class="share-btn-twitter">
+        <a href="https://twitter.com/intent/tweet?url=https://hex-plex.github.io/project/optimal-control_quadruped/&amp;text=Optimal%20control%20and%20trajectory%20optimization%20for%20Quadruped" target="_blank" rel="noopener" class="share-btn-twitter">
           <i class="fab fa-twitter"></i>
         </a>
       </li>
@@ -871,7 +901,7 @@
       
       
       <li>
-        <a href="https://www.facebook.com/sharer.php?u=https://hex-plex.github.io/project/optimal-control_quadruped/&amp;t=Optimal%20control%20and%20trajectory%20optimization%20on%20Quadruped" target="_blank" rel="noopener" class="share-btn-facebook">
+        <a href="https://www.facebook.com/sharer.php?u=https://hex-plex.github.io/project/optimal-control_quadruped/&amp;t=Optimal%20control%20and%20trajectory%20optimization%20for%20Quadruped" target="_blank" rel="noopener" class="share-btn-facebook">
           <i class="fab fa-facebook"></i>
         </a>
       </li>
@@ -884,7 +914,7 @@
       
       
       <li>
-        <a href="mailto:?subject=Optimal%20control%20and%20trajectory%20optimization%20on%20Quadruped&amp;body=https://hex-plex.github.io/project/optimal-control_quadruped/" target="_blank" rel="noopener" class="share-btn-email">
+        <a href="mailto:?subject=Optimal%20control%20and%20trajectory%20optimization%20for%20Quadruped&amp;body=https://hex-plex.github.io/project/optimal-control_quadruped/" target="_blank" rel="noopener" class="share-btn-email">
           <i class="fas fa-envelope"></i>
         </a>
       </li>
@@ -897,7 +927,7 @@
       
       
       <li>
-        <a href="https://www.linkedin.com/shareArticle?url=https://hex-plex.github.io/project/optimal-control_quadruped/&amp;title=Optimal%20control%20and%20trajectory%20optimization%20on%20Quadruped" target="_blank" rel="noopener" class="share-btn-linkedin">
+        <a href="https://www.linkedin.com/shareArticle?url=https://hex-plex.github.io/project/optimal-control_quadruped/&amp;title=Optimal%20control%20and%20trajectory%20optimization%20for%20Quadruped" target="_blank" rel="noopener" class="share-btn-linkedin">
           <i class="fab fa-linkedin-in"></i>
         </a>
       </li>
@@ -910,7 +940,7 @@
       
       
       <li>
-        <a href="whatsapp://send?text=Optimal%20control%20and%20trajectory%20optimization%20on%20Quadruped%20https://hex-plex.github.io/project/optimal-control_quadruped/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+        <a href="whatsapp://send?text=Optimal%20control%20and%20trajectory%20optimization%20for%20Quadruped%20https://hex-plex.github.io/project/optimal-control_quadruped/" target="_blank" rel="noopener" class="share-btn-whatsapp">
           <i class="fab fa-whatsapp"></i>
         </a>
       </li>
@@ -923,7 +953,7 @@
       
       
       <li>
-        <a href="https://service.weibo.com/share/share.php?url=https://hex-plex.github.io/project/optimal-control_quadruped/&amp;title=Optimal%20control%20and%20trajectory%20optimization%20on%20Quadruped" target="_blank" rel="noopener" class="share-btn-weibo">
+        <a href="https://service.weibo.com/share/share.php?url=https://hex-plex.github.io/project/optimal-control_quadruped/&amp;title=Optimal%20control%20and%20trajectory%20optimization%20for%20Quadruped" target="_blank" rel="noopener" class="share-btn-weibo">
           <i class="fab fa-weibo"></i>
         </a>
       </li>

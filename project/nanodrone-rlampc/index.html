@@ -868,8 +868,13 @@ As a low level PID controller is running for maintaining the altitude altitude, 
 </p>
 <p>A more analytic study shows the improvement in performance by the need of steps to converge the optimization and the rate of diverge or failure in optimizing the policy within the limit.</p>
 <img src="mpc_conv.png"/>  
-<img src="mpc_fail.png"/>
-<img src="mpc_fail_log.png"/>
+<p>For feasible run time of the MPC we use a threshold of optimal 5 iterations and maximum of 10 iterations would allow use to run the Pipeline on our desired system. Here we are optimizing the trajectories within a certain amount of cost which are experimented for suiting both performance and efficiency.</p>
+<p>As can be seen from the curve performance of Pipeline increases continuing to train it further hence a proportional correlation confirms the proof of concept.</p>
+<p align="center">
+<img src="mpc_fail.png" align="left" width="60%" style="padding-right: 20px"/><img src="mpc_fail_log.png" align="right" width="60%" style="padding-left: 10px"/>
+</p>
+<p>The second metrics we are using the rate of failures in either not being able to find a solution or not converging before the 10 iterations threshold, as we have used the approximated linear dynamics of the Drone we are entitled to diverge in prediction of the future states and hence give an sub optimal response, We see this is also improved with the current architecture and is able to robustly work in a bigger configuration space.</p>
+<p>Given the improvement of the performance against only MPC based control makes it a very good fit for our application. Currently hardware code structured would have to finalized as we would have to make utilize most of all the onboard computation for both the RL policy forward propagation and the MPC optimization. Hence we are working on modifing <a href="https://github.com/ethz-asl/mav_control_rw" target="_blank" rel="noopener">Mav_Control_RW</a> for our needs to use a betaflight firmware as the lowlevel controller and communicated through MavLink.</p>
 <h2 id="future-works">Future works</h2>
 <p>We are currently working on implementing the hardware pipline for feasible hardware results. And constantly estimating optimal parameters to run the pipe line with.</p>
 <p>As Specified in the start of the post we are also trying to solve the problem of trajectory optimization of Multi-Agent systems for which we would be more than happy to collaborate or hear from you.</p>
@@ -1090,7 +1095,7 @@ As a low level PID controller is running for maintaining the altitude altitude, 
     <h3>Related</h3>
     <ul>
       
-      <li><a href="/project/optimal-control_quadruped/">Optimal control and trajectory optimization on Quadruped</a></li>
+      <li><a href="/project/optimal-control_quadruped/">Optimal control and trajectory optimization for Quadruped</a></li>
       
       <li><a href="/project/gym-iota/">iOTA - Modular Bot</a></li>
       
