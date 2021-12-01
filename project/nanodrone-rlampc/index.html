@@ -825,158 +825,54 @@
   <div class="article-container">
 
     <div class="article-style">
-      <p>This is an experimentation to learn about Swarm Robotics with help of MultiAgent Reinforcement learning. We have used KiloBot as a platform as these are very simple in the actions space and have very high degree of symmetry. The Main inspiration of this project is this paper<a href="#1">[1]</a></p>
-<h2 id="setting-up">Setting Up</h2>
-<pre><code class="language-bash">git clone https://github.com/hex-plex/KiloBot-MultiAgent-RL
-cd KiloBot-MultiAgent-RL
-pip install --upgrade absl-python \
-                      tensorflow \
-                      gym \
-                      opencv-python \
-                      tensorflow_probability \
-                      keras \
-                      pygame
-pip install -e gym-kiloBot
-</code></pre>
-<p>This should fetch and install the basics packages needed and should install the environment</p>
-<h3 id="sample-of-environment">Sample of environment</h3>
-<p>These envs are running on a constant <strong>Dummy-actions!!</strong></p>
-<table>
-<thead>
-<tr>
-<th><strong>Env with Graph Objective</strong></th>
-<th>Env with Localization Objective</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><img src="https://github.com/hex-plex/KiloBot-MultiAgent-RL/blob/master/images/env_test_graph_compress.gif?raw=true" alt="Output-1"></td>
-<td><img src="https://github.com/hex-plex/KiloBot-MultiAgent-RL/blob/master/images/env_test_localize_compress.gif?raw=true" alt="Output-2"></td>
-</tr>
-</tbody>
-</table>
-<h2 id="usage">Usage</h2>
-<pre><code class="language-bash">python env-test.py ## This will help you check the functionality of the environement and should give the sample code to understand the apis as well.
-python model-train.py \
-        --headless=True \             ## for headless training default False
-        --objective=&quot;localization&quot; \  ## defines the objective default is graph
-        --modules=10 \                ## This defines the no of modules to be initialized default 10
-        --time_steps=100000 \         ## This is the total no of steps the agent will take while learning
-        --histRange=10 \              ## This is the no of mu values for the histograms
-        --logdir=&quot;logs&quot; \             ## This specifies the log location for TensorBoard
-        --checkpoints=&quot;checkpoints&quot;   ## This is for defining the location where the model is to be saved
-        --load_checkpoint=&quot;checkpoints/iter-500&quot; ## This loads the specified iteration
-
-python play-model.py \ ## This should load trained weights and show the performance
-        --load_checkpoint=&quot;checkpoints/graphs/10&quot; \ ## loads this model
-        --modules=10  \                             ## no of modules in the env
-        --objective=&quot;localization&quot; \                ## Sets the objective function
-        --time_steps=10000 \                        ## No of iterations to be run
-        --histRange=10                              ## Same def as above
-</code></pre>
-<h2 id="results">Results</h2>
-<p>After a exhaustive amount of training on varies combinations of no_of_modules and task in hand I have obtained results of the following algorithm for these parameters.
-I have used <code>[5, 10, 15, 20, 25, 50]</code> number of modules to carryout the tests.</p>
-<p>One may find the Tensorboard log files here:</p>
-<p><a href="https://drive.google.com/file/d/11NtimYoXOBGopIxziAojti0k1kfbaVBQ/view?usp=sharing" target="_blank" rel="noopener"> log_kilobot [Drive Link] (403MB)</a></p>
-<p>and the Model Weights for each parameters here:</p>
-<p><a href="https://drive.google.com/file/d/12qpbPIOrC-hLGVn2a8GETrkNL89bt8Dt/view?usp=sharing" target="_blank" rel="noopener"> checkpoint_kilobot [Drive Link] (63.3MB)</a></p>
-<h3 id="graph-problem">Graph Problem</h3>
-<p>The below table is based on the number of modules used but for result tabulation I am considering
-<code>[5, 10, 20, 50]</code>
-number of modules. To infer many insights of the algorithm in hand.</p>
-<p align="center"><b>Please click on the image to zoom in</b></p>
-<table>
-<thead>
-<tr>
-<th>Model Trained on <strong>\</strong> Model Run on</th>
-<th>10</th>
-<th>20</th>
-<th>50</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>10</td>
-<td><img src="https://github.com/hex-plex/KiloBot-MultiAgent-RL/blob/master/images/10trainon10.gif?raw=true" alt="Success1"></td>
-<td><img src="https://github.com/hex-plex/KiloBot-MultiAgent-RL/blob/master/images/10trainon20.gif?raw=true" alt="Success2"></td>
-<td><img src="https://github.com/hex-plex/KiloBot-MultiAgent-RL/blob/master/images/10trainon50.gif?raw=true" alt="Success3"></td>
-</tr>
-<tr>
-<td>20</td>
-<td>-</td>
-<td><img src="https://github.com/hex-plex/KiloBot-MultiAgent-RL/blob/master/images/20trainon20.gif?raw=true" alt="Random1"></td>
-<td>-</td>
-</tr>
-<tr>
-<td>50</td>
-<td>-</td>
-<td>-</td>
-<td><img src="https://github.com/hex-plex/KiloBot-MultiAgent-RL/blob/master/images/50trainon50.gif?raw=true" alt="Random2"></td>
-</tr>
-</tbody>
-</table>
-<hr>
-The policies trained on 20 and 50 module system is completely random in sense it just goes forward.
-<p>We can see clearly the policy trained with 10 modules have yield a very good amount of coordination between each other that is the critic model taking in the input image of the system is able to specify the bots and guide them, Hence a very good amount of generalization is found when we use this model with system with different number of modules as can be seen with the 20 module system but the non stationarity of a higher order system makes it complex for the critic to reward or give baseline to the actor, As the</p>
-<ul>
-<li>The order of the reward changes drastically.</li>
-<li>The Reading from the histogram becomes Muddy.</li>
-<li>The correlation of a reward to action of a single agent reduces drastically.</li>
-</ul>
-<hr>
-<p>Hence the Model trained with 10 modules is not able to generalize to the 50 module system, <strong>BUT</strong> It looks more promising than the policy trained for the 50 module system itself, hence a curiculum learning based approach seems promising to solve such a transfer learning problem.</p>
-<h4 id="plots-for-training-with-10-modules">Plots for Training with 10 modules</h4>
-<table>
-<thead>
-<tr>
-<th>Actor Loss</th>
-<th>Critic Loss</th>
-<th>Reward</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><img src="https://github.com/hex-plex/KiloBot-MultiAgent-RL/blob/master/images/actor10.jpg?raw=true" alt="Actor Loss"></td>
-<td><img src="https://github.com/hex-plex/KiloBot-MultiAgent-RL/blob/master/images/critic10.jpg?raw=true" alt="Critic Loss"></td>
-<td><img src="https://github.com/hex-plex/KiloBot-MultiAgent-RL/blob/master/images/reward10.jpg?raw=true" alt="Reward"></td>
-</tr>
-</tbody>
-</table>
-<hr>
-<h4 id="for-5-modules">For 5 modules</h4>
-<p>The system can&rsquo;t comphensate for the negetive reward got by using fuel as the reward got for graphing is much smaller in order than it that it chooses to be stagnent.
-<img src="https://github.com/hex-plex/KiloBot-MultiAgent-RL/blob/master/images/5trainon5.gif?raw=true" alt="Failed"></p>
-<hr>
-<h3 id="localization-problem">Localization Problem</h3>
-<p>Here the task was much easier but the training didnt yield any satisfactory result as.</p>
-<ul>
-<li>there were a lot of non stationarities and the fact the system was modelled based on a fashion which couldn&rsquo;t extend more than a small system of at best 10 modules <a href="1">[1]</a>.</li>
-<li>And the fact that the reward of localization couldnt exceed the negetive reward for moving the bot that is the bots choose to stand still to save fuel over exploring in most of the senarios.</li>
-</ul>
-<p>Below are few runs with <code>[10, 25]</code>
-Number of modules.</p>
-<table>
-<thead>
-<tr>
-<th>Localization trained for small n(=10)</th>
-<th>Localization trained for big n(=25)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><img src="https://github.com/hex-plex/KiloBot-MultiAgent-RL/blob/master/images/15loc15.gif?raw=True" alt="loc10"></td>
-<td><img src="https://github.com/hex-plex/KiloBot-MultiAgent-RL/blob/master/images/25loc25.gif?raw=True" alt="loc25"></td>
-</tr>
-</tbody>
-</table>
-<p>Here it is clearly visible that because of randomness and the fact more number of can cover a larger space of the system exploration is much easier than being greedy to stay at a point and save fuel.</p>
-<h2 id="acknowledgment">Acknowledgment</h2>
-<p>To Center for Computing and Information Services, IIT (BHU) varanasi to provide the computational power, i.e., The Super Computer on which I was able to train for over <strong>10 Million Timesteps</strong> for about 1.5 months.</p>
-<p>For any other query feel free to reachout.</p>
-<h2 id="references">References</h2>
-<p><a id="1">[1]</a>
-<strong>Guided Deep Reinforcement Learning for Swarm Systems</strong> <a href="https://arxiv.org/abs/1709.06011" target="_blank" rel="noopener">[arXiv:1709.06011v1]</a> [cs.MA] 18 Sep 2017</p>
+      <h2 id="modding-the-hardware-platform">Modding the hardware platform</h2>
+<p>With a simple a simple RC drone with modified <a href="https://github.com/betaflight/betaflight" target="_blank" rel="noopener">BetaFlight</a> Firmware to allow mavlink communication and a external companion PC such as Banana pi zero m2 we plan to deploy swarm of these drones in to real world problems.</p>
+<p>Our Major targets were,</p>
+<ol>
+<li>Visual odometry</li>
+<li>Optimal Controller for tracing trajectory</li>
+<li>Trajectory optimization for multi agent systems.</li>
+</ol>
+<p>We have been able to answer 2 of the above.</p>
+<h3 id="visual-odometry">Visual odometry</h3>
+<p>We have been able to modify the <a href="http://wiki.ros.org/viso2_ros" target="_blank" rel="noopener">Viso2ROS</a> to run with a less number of feature points and with reduced map foot print for easier localization with help of few apriltags, for global coordinates and not using the whole map.
+We also to utilize the MALI GPU of the onboard computer compiled opencv with OpenCL to get a slightly better performance in the framerate of the localization. There is not much more novelty introduced from our end.</p>
+<h3 id="optimal-controller---rl-aided-mpc">Optimal controller - RL Aided MPC</h3>
+<p>With limited computation, running an onboard MPC with non-linear Dynamics will fail to provide responsive control. Another Famous approach is RL-based controllers, where the feedback is a learned approximation of an expert demonstration from something like an MPC. But these policies are many layers deep and make it difficult to run in constrained hardware. Shallower policies tend to approximate the dynamics a lot and learn a sub-optimal policy that fails to work in many scenarios that are not desirable in multi-agent systems.</p>
+<p>Hence I propose use of a small RL policies output as the hot solution to the MPC. Conceptually its a very simple task but this requires a responsive pipeline for being able to execute at a desired Rate. Below is our pipeline in Simulation and in Hardware.</p>
+<img src="pipeline.png"/>
+<p>I have used the <a href="https://github.com/utiasDSL/gym-pybullet-drones" target="_blank" rel="noopener">gym-pybullet-drones</a>, as the base environment for our drone. We have imported our designs into the environment, Along with parameters for the drone like Air Drag coefficients.</p>
+<p>For the MPC I have used the mpc.pytorch library from locuslab. As this uses pytorch backend for computation and optimization. This increased the efficiency and drastically decreased train time from 2 hrs to 45 mins.</p>
+<p align="center">
+<img src="mpc_pytorch.png"/>
+</p>
+<p>For the training I implemented a simple 3 layer deep policy implemented using Pytorch and I used simple Policy Gradient algorithm, I trained using Ray Library with multiple workers while extending the dimension of the control of the MPC for optimizing the Training Loop.</p>
+<p>We have tried using both the linear and the non-linear dynamics of the MPC, we resorted on using the linear dynamics along with RL for better deployment keeping the hardware limitation in mind</p>
+<h4 id="reward">Reward</h4>
+<p>We have used a simple curriculum of running the RL based estimations of the optimal force values for each properllers.
+As a low level PID controller is running for maintaining the altitude altitude, our main goal was to learn the force value estimation directly from a expert policy like the mpc, and later we could work on how the RL algorithm would optimize hot solutions than estimating better optimal control inputs. This is a key difference as here it would not have to model higher non-linearity of the horizon while optimizing the hot solution to the MPC.</p>
+<p>Later in the curriculum we add and extra term for decreasing the number of iterations taken to converge by an MPC. This reward is given from the MPC node and is just taken along side the state reward given from the environment.</p>
+<p>Hence our net Reward is as follows</p>
+<p><a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\bg_white&space;\large&space;R&space;=&space;\alpha_1|\ddot{x}|&space;&plus;&space;\alpha_2|x-x_{des}|&space;&plus;&space;\alpha_3|u|&space;&plus;&space;\alpha_4\omega^2&space;&plus;\alpha_5(\dot{x}-\dot{x}_{des})^2&space;&plus;&space;\kappa&space;t_{conv}" target="_blank"><img src="https://latex.codecogs.com/png.latex?\dpi{150}&space;\bg_white&space;\large&space;R&space;=&space;\alpha_1|\ddot{x}|&space;&plus;&space;\alpha_2|x-x_{des}|&space;&plus;&space;\alpha_3|u|&space;&plus;&space;\alpha_4\omega^2&space;&plus;\alpha_5(\dot{x}-\dot{x}_{des})^2&space;&plus;&space;\kappa&space;t_{conv}" title="\large R = \alpha_1|\ddot{x}| + \alpha_2|x-x_{des}| + \alpha_3|u| + \alpha_4\omega^2 +\alpha_5(\dot{x}-\dot{x}_{des})^2 + \kappa t_{conv}" /></a></p>
+<h4 id="results">Results</h4>
+<p>After training for 8000 episodes we reach a decent point with high enough reward and good amount of speculation to use our Policy with current Architecture. Below is the demonstration of the robot trying to trace a figure 8 using the current Control architecture.</p>
+<p align="center">
+<img src="Drone_RLAMPC.gif"/><i>tracing the figure 8 while running at 70 Hz</i>
+</p>
+<p>As it can be seen this is able to trace the given trajectory. Below is the example of the Optimization the MPC provides over the RL Estimations</p>
+<p align="center">
+<img src="RL_estimated.png"/>
+<i>Policy Estimations for significant angles of Rolls and Pitches</i>
+<img src="MPC_optimized.png"/>
+<i>MPC based optimization reducing the Unsafe values of the Thrusts for smoother long horizon performance</i>
+</p>
+<p>A more analytic study shows the improvement in performance by the need of steps to converge the optimization and the rate of diverge or failure in optimizing the policy within the limit.</p>
+<img src="mpc_conv.png"/>  
+<img src="mpc_fail.png"/>
+<img src="mpc_fail_log.png"/>
+<h2 id="future-works">Future works</h2>
+<p>We are currently working on implementing the hardware pipline for feasible hardware results. And constantly estimating optimal parameters to run the pipe line with.</p>
+<p>As Specified in the start of the post we are also trying to solve the problem of trajectory optimization of Multi-Agent systems for which we would be more than happy to collaborate or hear from you.</p>
 
     </div>
 
@@ -1113,8 +1009,8 @@ Number of modules.</p>
 
     <div class="media-body">
       <h5 class="card-title"><a href="https://hex-plex.github.io/">Somnath Kumar</a></h5>
-      <h6 class="card-subtitle">Sophomore, Electrical Engineering</h6>
-      <p class="card-text">My research interests include Computer Vision, Multi-Agent learning.</p>
+      <h6 class="card-subtitle">Junior Undergraduate, Electrical Engineering</h6>
+      <p class="card-text">My research interests include Robotics, Multi-Agent learning.</p>
       <ul class="network-icon" aria-hidden="true">
   
     

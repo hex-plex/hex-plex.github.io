@@ -37,158 +37,54 @@
       <link>https://hex-plex.github.io/project/nanodrone-rlampc/</link>
       <pubDate>Fri, 01 Oct 2021 00:00:00 +0000</pubDate>
       <guid>https://hex-plex.github.io/project/nanodrone-rlampc/</guid>
-      <description>&lt;p&gt;This is an experimentation to learn about Swarm Robotics with help of MultiAgent Reinforcement learning. We have used KiloBot as a platform as these are very simple in the actions space and have very high degree of symmetry. The Main inspiration of this project is this paper&lt;a href=&#34;#1&#34;&gt;[1]&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&#34;setting-up&#34;&gt;Setting Up&lt;/h2&gt;
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;git clone https://github.com/hex-plex/KiloBot-MultiAgent-RL
-cd KiloBot-MultiAgent-RL
-pip install --upgrade absl-python \
-                      tensorflow \
-                      gym \
-                      opencv-python \
-                      tensorflow_probability \
-                      keras \
-                      pygame
-pip install -e gym-kiloBot
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;This should fetch and install the basics packages needed and should install the environment&lt;/p&gt;
-&lt;h3 id=&#34;sample-of-environment&#34;&gt;Sample of environment&lt;/h3&gt;
-&lt;p&gt;These envs are running on a constant &lt;strong&gt;Dummy-actions!!&lt;/strong&gt;&lt;/p&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;&lt;strong&gt;Env with Graph Objective&lt;/strong&gt;&lt;/th&gt;
-&lt;th&gt;Env with Localization Objective&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;img src=&#34;https://github.com/hex-plex/KiloBot-MultiAgent-RL/blob/master/images/env_test_graph_compress.gif?raw=true&#34; alt=&#34;Output-1&#34;&gt;&lt;/td&gt;
-&lt;td&gt;&lt;img src=&#34;https://github.com/hex-plex/KiloBot-MultiAgent-RL/blob/master/images/env_test_localize_compress.gif?raw=true&#34; alt=&#34;Output-2&#34;&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;h2 id=&#34;usage&#34;&gt;Usage&lt;/h2&gt;
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;python env-test.py ## This will help you check the functionality of the environement and should give the sample code to understand the apis as well.
-python model-train.py \
-        --headless=True \             ## for headless training default False
-        --objective=&amp;quot;localization&amp;quot; \  ## defines the objective default is graph
-        --modules=10 \                ## This defines the no of modules to be initialized default 10
-        --time_steps=100000 \         ## This is the total no of steps the agent will take while learning
-        --histRange=10 \              ## This is the no of mu values for the histograms
-        --logdir=&amp;quot;logs&amp;quot; \             ## This specifies the log location for TensorBoard
-        --checkpoints=&amp;quot;checkpoints&amp;quot;   ## This is for defining the location where the model is to be saved
-        --load_checkpoint=&amp;quot;checkpoints/iter-500&amp;quot; ## This loads the specified iteration
-
-python play-model.py \ ## This should load trained weights and show the performance
-        --load_checkpoint=&amp;quot;checkpoints/graphs/10&amp;quot; \ ## loads this model
-        --modules=10  \                             ## no of modules in the env
-        --objective=&amp;quot;localization&amp;quot; \                ## Sets the objective function
-        --time_steps=10000 \                        ## No of iterations to be run
-        --histRange=10                              ## Same def as above
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;results&#34;&gt;Results&lt;/h2&gt;
-&lt;p&gt;After a exhaustive amount of training on varies combinations of no_of_modules and task in hand I have obtained results of the following algorithm for these parameters.
-I have used &lt;code&gt;[5, 10, 15, 20, 25, 50]&lt;/code&gt; number of modules to carryout the tests.&lt;/p&gt;
-&lt;p&gt;One may find the Tensorboard log files here:&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://drive.google.com/file/d/11NtimYoXOBGopIxziAojti0k1kfbaVBQ/view?usp=sharing&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt; log_kilobot [Drive Link] (403MB)&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;and the Model Weights for each parameters here:&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://drive.google.com/file/d/12qpbPIOrC-hLGVn2a8GETrkNL89bt8Dt/view?usp=sharing&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt; checkpoint_kilobot [Drive Link] (63.3MB)&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&#34;graph-problem&#34;&gt;Graph Problem&lt;/h3&gt;
-&lt;p&gt;The below table is based on the number of modules used but for result tabulation I am considering
-&lt;code&gt;[5, 10, 20, 50]&lt;/code&gt;
-number of modules. To infer many insights of the algorithm in hand.&lt;/p&gt;
-&lt;p align=&#34;center&#34;&gt;&lt;b&gt;Please click on the image to zoom in&lt;/b&gt;&lt;/p&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;Model Trained on &lt;strong&gt;\&lt;/strong&gt; Model Run on&lt;/th&gt;
-&lt;th&gt;10&lt;/th&gt;
-&lt;th&gt;20&lt;/th&gt;
-&lt;th&gt;50&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;10&lt;/td&gt;
-&lt;td&gt;&lt;img src=&#34;https://github.com/hex-plex/KiloBot-MultiAgent-RL/blob/master/images/10trainon10.gif?raw=true&#34; alt=&#34;Success1&#34;&gt;&lt;/td&gt;
-&lt;td&gt;&lt;img src=&#34;https://github.com/hex-plex/KiloBot-MultiAgent-RL/blob/master/images/10trainon20.gif?raw=true&#34; alt=&#34;Success2&#34;&gt;&lt;/td&gt;
-&lt;td&gt;&lt;img src=&#34;https://github.com/hex-plex/KiloBot-MultiAgent-RL/blob/master/images/10trainon50.gif?raw=true&#34; alt=&#34;Success3&#34;&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;20&lt;/td&gt;
-&lt;td&gt;-&lt;/td&gt;
-&lt;td&gt;&lt;img src=&#34;https://github.com/hex-plex/KiloBot-MultiAgent-RL/blob/master/images/20trainon20.gif?raw=true&#34; alt=&#34;Random1&#34;&gt;&lt;/td&gt;
-&lt;td&gt;-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;50&lt;/td&gt;
-&lt;td&gt;-&lt;/td&gt;
-&lt;td&gt;-&lt;/td&gt;
-&lt;td&gt;&lt;img src=&#34;https://github.com/hex-plex/KiloBot-MultiAgent-RL/blob/master/images/50trainon50.gif?raw=true&#34; alt=&#34;Random2&#34;&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;hr&gt;
-The policies trained on 20 and 50 module system is completely random in sense it just goes forward.
-&lt;p&gt;We can see clearly the policy trained with 10 modules have yield a very good amount of coordination between each other that is the critic model taking in the input image of the system is able to specify the bots and guide them, Hence a very good amount of generalization is found when we use this model with system with different number of modules as can be seen with the 20 module system but the non stationarity of a higher order system makes it complex for the critic to reward or give baseline to the actor, As the&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;The order of the reward changes drastically.&lt;/li&gt;
-&lt;li&gt;The Reading from the histogram becomes Muddy.&lt;/li&gt;
-&lt;li&gt;The correlation of a reward to action of a single agent reduces drastically.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr&gt;
-&lt;p&gt;Hence the Model trained with 10 modules is not able to generalize to the 50 module system, &lt;strong&gt;BUT&lt;/strong&gt; It looks more promising than the policy trained for the 50 module system itself, hence a curiculum learning based approach seems promising to solve such a transfer learning problem.&lt;/p&gt;
-&lt;h4 id=&#34;plots-for-training-with-10-modules&#34;&gt;Plots for Training with 10 modules&lt;/h4&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;Actor Loss&lt;/th&gt;
-&lt;th&gt;Critic Loss&lt;/th&gt;
-&lt;th&gt;Reward&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;img src=&#34;https://github.com/hex-plex/KiloBot-MultiAgent-RL/blob/master/images/actor10.jpg?raw=true&#34; alt=&#34;Actor Loss&#34;&gt;&lt;/td&gt;
-&lt;td&gt;&lt;img src=&#34;https://github.com/hex-plex/KiloBot-MultiAgent-RL/blob/master/images/critic10.jpg?raw=true&#34; alt=&#34;Critic Loss&#34;&gt;&lt;/td&gt;
-&lt;td&gt;&lt;img src=&#34;https://github.com/hex-plex/KiloBot-MultiAgent-RL/blob/master/images/reward10.jpg?raw=true&#34; alt=&#34;Reward&#34;&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;hr&gt;
-&lt;h4 id=&#34;for-5-modules&#34;&gt;For 5 modules&lt;/h4&gt;
-&lt;p&gt;The system can&amp;rsquo;t comphensate for the negetive reward got by using fuel as the reward got for graphing is much smaller in order than it that it chooses to be stagnent.
-&lt;img src=&#34;https://github.com/hex-plex/KiloBot-MultiAgent-RL/blob/master/images/5trainon5.gif?raw=true&#34; alt=&#34;Failed&#34;&gt;&lt;/p&gt;
-&lt;hr&gt;
-&lt;h3 id=&#34;localization-problem&#34;&gt;Localization Problem&lt;/h3&gt;
-&lt;p&gt;Here the task was much easier but the training didnt yield any satisfactory result as.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;there were a lot of non stationarities and the fact the system was modelled based on a fashion which couldn&amp;rsquo;t extend more than a small system of at best 10 modules &lt;a href=&#34;1&#34;&gt;[1]&lt;/a&gt;.&lt;/li&gt;
-&lt;li&gt;And the fact that the reward of localization couldnt exceed the negetive reward for moving the bot that is the bots choose to stand still to save fuel over exploring in most of the senarios.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Below are few runs with &lt;code&gt;[10, 25]&lt;/code&gt;
-Number of modules.&lt;/p&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;Localization trained for small n(=10)&lt;/th&gt;
-&lt;th&gt;Localization trained for big n(=25)&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;img src=&#34;https://github.com/hex-plex/KiloBot-MultiAgent-RL/blob/master/images/15loc15.gif?raw=True&#34; alt=&#34;loc10&#34;&gt;&lt;/td&gt;
-&lt;td&gt;&lt;img src=&#34;https://github.com/hex-plex/KiloBot-MultiAgent-RL/blob/master/images/25loc25.gif?raw=True&#34; alt=&#34;loc25&#34;&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;Here it is clearly visible that because of randomness and the fact more number of can cover a larger space of the system exploration is much easier than being greedy to stay at a point and save fuel.&lt;/p&gt;
-&lt;h2 id=&#34;acknowledgment&#34;&gt;Acknowledgment&lt;/h2&gt;
-&lt;p&gt;To Center for Computing and Information Services, IIT (BHU) varanasi to provide the computational power, i.e., The Super Computer on which I was able to train for over &lt;strong&gt;10 Million Timesteps&lt;/strong&gt; for about 1.5 months.&lt;/p&gt;
-&lt;p&gt;For any other query feel free to reachout.&lt;/p&gt;
-&lt;h2 id=&#34;references&#34;&gt;References&lt;/h2&gt;
-&lt;p&gt;&lt;a id=&#34;1&#34;&gt;[1]&lt;/a&gt;
-&lt;strong&gt;Guided Deep Reinforcement Learning for Swarm Systems&lt;/strong&gt; &lt;a href=&#34;https://arxiv.org/abs/1709.06011&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;[arXiv:1709.06011v1]&lt;/a&gt; [cs.MA] 18 Sep 2017&lt;/p&gt;
+      <description>&lt;h2 id=&#34;modding-the-hardware-platform&#34;&gt;Modding the hardware platform&lt;/h2&gt;
+&lt;p&gt;With a simple a simple RC drone with modified &lt;a href=&#34;https://github.com/betaflight/betaflight&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;BetaFlight&lt;/a&gt; Firmware to allow mavlink communication and a external companion PC such as Banana pi zero m2 we plan to deploy swarm of these drones in to real world problems.&lt;/p&gt;
+&lt;p&gt;Our Major targets were,&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Visual odometry&lt;/li&gt;
+&lt;li&gt;Optimal Controller for tracing trajectory&lt;/li&gt;
+&lt;li&gt;Trajectory optimization for multi agent systems.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;We have been able to answer 2 of the above.&lt;/p&gt;
+&lt;h3 id=&#34;visual-odometry&#34;&gt;Visual odometry&lt;/h3&gt;
+&lt;p&gt;We have been able to modify the &lt;a href=&#34;http://wiki.ros.org/viso2_ros&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Viso2ROS&lt;/a&gt; to run with a less number of feature points and with reduced map foot print for easier localization with help of few apriltags, for global coordinates and not using the whole map.
+We also to utilize the MALI GPU of the onboard computer compiled opencv with OpenCL to get a slightly better performance in the framerate of the localization. There is not much more novelty introduced from our end.&lt;/p&gt;
+&lt;h3 id=&#34;optimal-controller---rl-aided-mpc&#34;&gt;Optimal controller - RL Aided MPC&lt;/h3&gt;
+&lt;p&gt;With limited computation, running an onboard MPC with non-linear Dynamics will fail to provide responsive control. Another Famous approach is RL-based controllers, where the feedback is a learned approximation of an expert demonstration from something like an MPC. But these policies are many layers deep and make it difficult to run in constrained hardware. Shallower policies tend to approximate the dynamics a lot and learn a sub-optimal policy that fails to work in many scenarios that are not desirable in multi-agent systems.&lt;/p&gt;
+&lt;p&gt;Hence I propose use of a small RL policies output as the hot solution to the MPC. Conceptually its a very simple task but this requires a responsive pipeline for being able to execute at a desired Rate. Below is our pipeline in Simulation and in Hardware.&lt;/p&gt;
+&lt;img src=&#34;pipeline.png&#34;/&gt;
+&lt;p&gt;I have used the &lt;a href=&#34;https://github.com/utiasDSL/gym-pybullet-drones&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;gym-pybullet-drones&lt;/a&gt;, as the base environment for our drone. We have imported our designs into the environment, Along with parameters for the drone like Air Drag coefficients.&lt;/p&gt;
+&lt;p&gt;For the MPC I have used the mpc.pytorch library from locuslab. As this uses pytorch backend for computation and optimization. This increased the efficiency and drastically decreased train time from 2 hrs to 45 mins.&lt;/p&gt;
+&lt;p align=&#34;center&#34;&gt;
+&lt;img src=&#34;mpc_pytorch.png&#34;/&gt;
+&lt;/p&gt;
+&lt;p&gt;For the training I implemented a simple 3 layer deep policy implemented using Pytorch and I used simple Policy Gradient algorithm, I trained using Ray Library with multiple workers while extending the dimension of the control of the MPC for optimizing the Training Loop.&lt;/p&gt;
+&lt;p&gt;We have tried using both the linear and the non-linear dynamics of the MPC, we resorted on using the linear dynamics along with RL for better deployment keeping the hardware limitation in mind&lt;/p&gt;
+&lt;h4 id=&#34;reward&#34;&gt;Reward&lt;/h4&gt;
+&lt;p&gt;We have used a simple curriculum of running the RL based estimations of the optimal force values for each properllers.
+As a low level PID controller is running for maintaining the altitude altitude, our main goal was to learn the force value estimation directly from a expert policy like the mpc, and later we could work on how the RL algorithm would optimize hot solutions than estimating better optimal control inputs. This is a key difference as here it would not have to model higher non-linearity of the horizon while optimizing the hot solution to the MPC.&lt;/p&gt;
+&lt;p&gt;Later in the curriculum we add and extra term for decreasing the number of iterations taken to converge by an MPC. This reward is given from the MPC node and is just taken along side the state reward given from the environment.&lt;/p&gt;
+&lt;p&gt;Hence our net Reward is as follows&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&amp;space;\bg_white&amp;space;\large&amp;space;R&amp;space;=&amp;space;\alpha_1|\ddot{x}|&amp;space;&amp;plus;&amp;space;\alpha_2|x-x_{des}|&amp;space;&amp;plus;&amp;space;\alpha_3|u|&amp;space;&amp;plus;&amp;space;\alpha_4\omega^2&amp;space;&amp;plus;\alpha_5(\dot{x}-\dot{x}_{des})^2&amp;space;&amp;plus;&amp;space;\kappa&amp;space;t_{conv}&#34; target=&#34;_blank&#34;&gt;&lt;img src=&#34;https://latex.codecogs.com/png.latex?\dpi{150}&amp;space;\bg_white&amp;space;\large&amp;space;R&amp;space;=&amp;space;\alpha_1|\ddot{x}|&amp;space;&amp;plus;&amp;space;\alpha_2|x-x_{des}|&amp;space;&amp;plus;&amp;space;\alpha_3|u|&amp;space;&amp;plus;&amp;space;\alpha_4\omega^2&amp;space;&amp;plus;\alpha_5(\dot{x}-\dot{x}_{des})^2&amp;space;&amp;plus;&amp;space;\kappa&amp;space;t_{conv}&#34; title=&#34;\large R = \alpha_1|\ddot{x}| + \alpha_2|x-x_{des}| + \alpha_3|u| + \alpha_4\omega^2 +\alpha_5(\dot{x}-\dot{x}_{des})^2 + \kappa t_{conv}&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h4 id=&#34;results&#34;&gt;Results&lt;/h4&gt;
+&lt;p&gt;After training for 8000 episodes we reach a decent point with high enough reward and good amount of speculation to use our Policy with current Architecture. Below is the demonstration of the robot trying to trace a figure 8 using the current Control architecture.&lt;/p&gt;
+&lt;p align=&#34;center&#34;&gt;
+&lt;img src=&#34;Drone_RLAMPC.gif&#34;/&gt;&lt;i&gt;tracing the figure 8 while running at 70 Hz&lt;/i&gt;
+&lt;/p&gt;
+&lt;p&gt;As it can be seen this is able to trace the given trajectory. Below is the example of the Optimization the MPC provides over the RL Estimations&lt;/p&gt;
+&lt;p align=&#34;center&#34;&gt;
+&lt;img src=&#34;RL_estimated.png&#34;/&gt;
+&lt;i&gt;Policy Estimations for significant angles of Rolls and Pitches&lt;/i&gt;
+&lt;img src=&#34;MPC_optimized.png&#34;/&gt;
+&lt;i&gt;MPC based optimization reducing the Unsafe values of the Thrusts for smoother long horizon performance&lt;/i&gt;
+&lt;/p&gt;
+&lt;p&gt;A more analytic study shows the improvement in performance by the need of steps to converge the optimization and the rate of diverge or failure in optimizing the policy within the limit.&lt;/p&gt;
+&lt;img src=&#34;mpc_conv.png&#34;/&gt;  
+&lt;img src=&#34;mpc_fail.png&#34;/&gt;
+&lt;img src=&#34;mpc_fail_log.png&#34;/&gt;
+&lt;h2 id=&#34;future-works&#34;&gt;Future works&lt;/h2&gt;
+&lt;p&gt;We are currently working on implementing the hardware pipline for feasible hardware results. And constantly estimating optimal parameters to run the pipe line with.&lt;/p&gt;
+&lt;p&gt;As Specified in the start of the post we are also trying to solve the problem of trajectory optimization of Multi-Agent systems for which we would be more than happy to collaborate or hear from you.&lt;/p&gt;
 </description>
     </item>
     
