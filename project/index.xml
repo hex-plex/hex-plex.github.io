@@ -98,7 +98,7 @@ As a low level PID controller is running for maintaining the altitude altitude, 
 &lt;/p&gt;
 &lt;p&gt;As it can be seen from the above output the quadruped stablizes itself instantaniously as it has no prior knowledge like an heightmap of the world.&lt;/p&gt;
 &lt;h2 id=&#34;trajectory-optimization&#34;&gt;Trajectory optimization&lt;/h2&gt;
-&lt;p&gt;Below is the output from the towr gui, for the quadruped.&lt;/p&gt;
+&lt;p&gt;We have used TOWR&lt;a href=&#34;#3&#34;&gt;[3]&lt;/a&gt; for trajectory optimization, Below is the output from the towr gui, for the quadruped.&lt;/p&gt;
 &lt;p align=&#34;center&#34;&gt;
 &lt;img src=&#34;stochlite_towr.gif&#34;/&gt;
 &lt;i&gt;Stochlite in TOWR&lt;/i&gt;
@@ -108,6 +108,54 @@ As a low level PID controller is running for maintaining the altitude altitude, 
 &lt;p&gt;But later I integrate towr, only for Flat ground and ran it at 4 Hz for updating the optimal foot positions. As the rate is too slow and the difference between the state at the start of the optimization and current would be drastically different, I implemented towr to run parallely with estimation of the current state of the robot based on the control input of the previous optimized solution and the dynamics model of the robot solved to fetch the state at a future timestep.&lt;/p&gt;
 &lt;h2 id=&#34;reinforcement-learning&#34;&gt;Reinforcement Learning&lt;/h2&gt;
 &lt;p&gt;We are further working towards improving the performance of these algorithm by using Reinforcement Learning with formulations to work along side these algorithms and also in tandom with these algorithm.&lt;/p&gt;
+&lt;h2 id=&#34;references&#34;&gt;References&lt;/h2&gt;
+&lt;p&gt;&lt;a id=&#34;1&#34;&gt;[1]&lt;/a&gt;&lt;strong&gt;Dynamic Locomotion in the MIT Cheetah 3 Through Convex Model-Predictive Control&lt;/strong&gt;, DOI: 10.1109/IROS.2018.8594448, Jared Di Carlo, Patrick Wensing, Benjamin Katz, Sangbae Kim&lt;/p&gt;
+&lt;p&gt;&lt;a id=&#34;2&#34;&gt;[2]&lt;/a&gt;&lt;strong&gt;Highly Dynamic Quadruped Locomotion via Whole-Body Impulse Control and Model Predictive Control&lt;/strong&gt;, Donghyun Kim, Jared Di Carlo, Benjamin Katz, Gerado Bledt, Sangbae Kim&lt;/p&gt;
+&lt;p&gt;&lt;a id=&#34;3&#34;&gt;[3]&lt;/a&gt;&lt;strong&gt;Gait and Trajectory Optimization for Legged Systems Through Phase-Based End-Effector Parameterization&lt;/strong&gt;, Alexander W. Winkler, C. Dario Bellicoso, Marco Hutter, jonas Buchli&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Gait-Occlusion-Reconstrution</title>
+      <link>https://hex-plex.github.io/project/gait-occlusion-gan/</link>
+      <pubDate>Fri, 05 Mar 2021 00:00:00 +0000</pubDate>
+      <guid>https://hex-plex.github.io/project/gait-occlusion-gan/</guid>
+      <description>&lt;h1 id=&#34;gait-occlusion-gan&#34;&gt;Gait-Occlusion-GAN&lt;/h1&gt;
+&lt;p&gt;&lt;em&gt;UnPublished: made public temporally&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Original code for the paper &lt;strong&gt;&amp;ldquo;BGaitR-Net: Occluded Gait Sequence reconstruction with temporally constrained model for gait recognition&amp;rdquo;&lt;/strong&gt; under Prof. Pratik Chattopadhyay.&lt;/p&gt;
+&lt;p&gt;This work proposes simple BiDirectional Filtering of the latent vectors of The silhouettes. TimeSeries Data of the latent space is been filter for reconstruction using a simple Bi-LSTM trained with A sophisticated method proposed in the paper.
+The Conversion of the Spatio Data to latent space was done using a  conditional Variational AutoEncoder.
+We have used a 3 Datasets : for training 2 namely, CASIA-B, OU-ISIR large population, and testing 1 namely, TumIITKGP.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;A conditional GAN based approach is also been presented in code&lt;/em&gt;&lt;/p&gt;
+&lt;h2 id=&#34;proposed-approach&#34;&gt;Proposed approach&lt;/h2&gt;
+&lt;p&gt;We have used a Model based approach for feature extraction using &lt;strong&gt;Temporally constrained Kmeans Clustering&lt;/strong&gt; and &lt;strong&gt;Short Path in a Weighted Graph&lt;/strong&gt; for assigning Keypose for the Sequence even in case of Occlusion. This achieved substantially better results&lt;/p&gt;
+&lt;p align=&#34;center&#34;&gt;
+&lt;img src=&#34;https://raw.githubusercontent.com/hex-plex/Gait-Occlusion-GAN/master/results/pa.png&#34;/&gt;
+Propoesed Approach
+&lt;/p&gt;
+&lt;p align=&#34;center&#34;&gt;
+&lt;img src=&#34;https://raw.githubusercontent.com/hex-plex/Gait-Occlusion-GAN/master/results/en.png&#34;/&gt;
+  Model Architecture
+&lt;/p&gt;
+&lt;p align=&#34;center&#34;&gt;
+&lt;img src=&#34;BiLSTM.png&#34;/&gt;
+  Model Architecture - 2
+&lt;/p&gt;
+&lt;h2 id=&#34;results&#34;&gt;Results&lt;/h2&gt;
+&lt;p align=&#34;center&#34;&gt;
+&lt;img heigth=&#34;300&#34; src=&#34;https://raw.githubusercontent.com/hex-plex/Gait-Occlusion-GAN/master/results/7333occlu.jpg&#34;/&gt;
+Visual inspection of Reconstruction for a sequence with over 73 occlusion.&lt;br/&gt;
+(a) Input Sequence&lt;br/&gt;
+(b) Reconstructed Sequence&lt;br/&gt;
+(c) Ground Truth&lt;br/&gt;
+&lt;p&gt;Successfully able to Reconstruct 22 Frames from just 8 Frames with a Dice score 0.98&lt;/p&gt;
+&lt;/p&gt;
+&lt;p align=&#34;center&#34;&gt;
+&lt;img src=&#34;https://raw.githubusercontent.com/hex-plex/Gait-Occlusion-GAN/master/results/cmc_plot.png&#34;/&gt;
+&lt;/p&gt;
+&lt;p align=&#34;center&#34;&gt;
+  CMC Accuracy of Gait Recognition for TUM-IITKGP Dataset
+&lt;/p&gt;
 </description>
     </item>
     
@@ -675,40 +723,6 @@ mv save.p ../save.p
       <link>https://hex-plex.github.io/project/light-gun/</link>
       <pubDate>Thu, 02 Apr 2020 00:00:00 +0000</pubDate>
       <guid>https://hex-plex.github.io/project/light-gun/</guid>
-      <description>&lt;p&gt;Bored in the quarantine period, revisiting my old video games with light gun inspired an idea of light gun with a LCD display , I went on to build it mainly as a android package as it would be more accessable to anyone. Then ended up using a Raspberry Pi as a standalone device to enable it&amp;rsquo;s use accross many platforms and devices.&lt;br/&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;The Explanation for the working can be found in &lt;a href=&#34;https://github.com/hex-plex/Light-Gun/blob/master/EXPLANATION.md&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;EXPLANATION.md&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;h2 id=&#34;glimpse&#34;&gt;Glimpse:&lt;/h2&gt;
-&lt;p&gt;This is the glimpse of the prototype made with Raspberry pi on a toy gun with all the number-munching done on the Raspberry and transmites messages to the local server through bluetooth. The previous method of running the proccessing and the actions is documented in &lt;strong&gt;Win-Py&lt;/strong&gt; directory.&lt;br/&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/hex-plex/Light-Gun/master/images/Complete_setup.jpg&#34; width=&#34;370&#34; align=&#34;right&#34; border=&#34;20&#34;&gt;&lt;/img&gt;
-&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&lt;/p&gt;
-&lt;p align=&#34;left&#34;&gt;This is a prototype of the light gun with a camera module attached onto a toy-gun and with a Raspberry pi 3 b+ (unneccessary I know) and a 7.4 V li-ion battery, regulated with a buck converter to which two switches are connected on the Raspi&#39;s interrupt pins.&lt;/p&gt;&lt;hr/&gt;
-&lt;img src=&#34;https://raw.githubusercontent.com/hex-plex/Light-Gun/master/images/display_setup.jpg&#34; width=&#34;370&#34; align=&#34;left&#34;&gt;&lt;/img&gt;
-&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;
-This is the display setup with 4 IR-LEDs attached to the corners of the display which makes it very easy for detection in a wide range of lighting conditions.&lt;hr/&gt;&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;
-&lt;p&gt;And after Installation the main code using &lt;a href=&#34;https://github.com/hex-plex/Light-Gun/tree/master/Raspi-c&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Raspi&lt;/a&gt; version or &lt;a href=&#34;https://github.com/hex-plex/Light-Gun/tree/master/Win-py&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Local&lt;/a&gt; version, continue using it according to the guide lines for the same which is present in their respective folders itself.&lt;/p&gt;
-&lt;p&gt;The Modules then should create a virtual mouse and start following the edge vector of the camera module.
-The following is a demonstration of it in action&amp;hellip;. (😅 coming up shortly, as I am fixing few deviation errors.)&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://drive.google.com/file/d/1hIYBv8l2JCylOfQS9Cc5D5Hp50Ui55D-/view?usp=sharing&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;strong&gt;Demo Link&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&#34;contribution&#34;&gt;Contribution&lt;/h2&gt;
-&lt;p&gt;Any kind of Contribution is always welcomed. The rules for any Contribution for now is Non existent as I am the only one working on it and I have not really structurized the project so well as mostly in its prototyping stage, So its not possible to do a lot(Anyways feel free to report any errors or bugs 😄 ), Any Idea for a better implementation is also welcomed.&lt;/p&gt;
-&lt;h2 id=&#34;reference&#34;&gt;Reference:&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;This is for getting R and t matrix  &lt;a href=&#34;https://www.learnopencv.com/head-pose-estimation-using-opencv-and-dlib/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;[link]&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;This is for adjusting focal length (approximation) &lt;a href=&#34;https://www.learnopencv.com/approximate-focal-length-for-webcams-and-cell-phone-cameras/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;[link]&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;This is for getting accurate intrensic matrix &lt;a href=&#34;https://www.learnopencv.com/camera-calibration-using-opencv/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;[link]&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Cmake&lt;/li&gt;
-&lt;li&gt;Bluez&lt;/li&gt;
-&lt;li&gt;Raspberry pi interupts&lt;/li&gt;
-&lt;li&gt;Asynchronous coding&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Light Gun</title>
-      <link>https://hex-plex.github.io/project/multi-gnn/</link>
-      <pubDate>Thu, 02 Apr 2020 00:00:00 +0000</pubDate>
-      <guid>https://hex-plex.github.io/project/multi-gnn/</guid>
       <description>&lt;p&gt;Bored in the quarantine period, revisiting my old video games with light gun inspired an idea of light gun with a LCD display , I went on to build it mainly as a android package as it would be more accessable to anyone. Then ended up using a Raspberry Pi as a standalone device to enable it&amp;rsquo;s use accross many platforms and devices.&lt;br/&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;The Explanation for the working can be found in &lt;a href=&#34;https://github.com/hex-plex/Light-Gun/blob/master/EXPLANATION.md&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;EXPLANATION.md&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;h2 id=&#34;glimpse&#34;&gt;Glimpse:&lt;/h2&gt;

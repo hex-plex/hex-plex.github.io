@@ -98,7 +98,7 @@ As a low level PID controller is running for maintaining the altitude altitude, 
 &lt;/p&gt;
 &lt;p&gt;As it can be seen from the above output the quadruped stablizes itself instantaniously as it has no prior knowledge like an heightmap of the world.&lt;/p&gt;
 &lt;h2 id=&#34;trajectory-optimization&#34;&gt;Trajectory optimization&lt;/h2&gt;
-&lt;p&gt;Below is the output from the towr gui, for the quadruped.&lt;/p&gt;
+&lt;p&gt;We have used TOWR&lt;a href=&#34;#3&#34;&gt;[3]&lt;/a&gt; for trajectory optimization, Below is the output from the towr gui, for the quadruped.&lt;/p&gt;
 &lt;p align=&#34;center&#34;&gt;
 &lt;img src=&#34;stochlite_towr.gif&#34;/&gt;
 &lt;i&gt;Stochlite in TOWR&lt;/i&gt;
@@ -108,6 +108,10 @@ As a low level PID controller is running for maintaining the altitude altitude, 
 &lt;p&gt;But later I integrate towr, only for Flat ground and ran it at 4 Hz for updating the optimal foot positions. As the rate is too slow and the difference between the state at the start of the optimization and current would be drastically different, I implemented towr to run parallely with estimation of the current state of the robot based on the control input of the previous optimized solution and the dynamics model of the robot solved to fetch the state at a future timestep.&lt;/p&gt;
 &lt;h2 id=&#34;reinforcement-learning&#34;&gt;Reinforcement Learning&lt;/h2&gt;
 &lt;p&gt;We are further working towards improving the performance of these algorithm by using Reinforcement Learning with formulations to work along side these algorithms and also in tandom with these algorithm.&lt;/p&gt;
+&lt;h2 id=&#34;references&#34;&gt;References&lt;/h2&gt;
+&lt;p&gt;&lt;a id=&#34;1&#34;&gt;[1]&lt;/a&gt;&lt;strong&gt;Dynamic Locomotion in the MIT Cheetah 3 Through Convex Model-Predictive Control&lt;/strong&gt;, DOI: 10.1109/IROS.2018.8594448, Jared Di Carlo, Patrick Wensing, Benjamin Katz, Sangbae Kim&lt;/p&gt;
+&lt;p&gt;&lt;a id=&#34;2&#34;&gt;[2]&lt;/a&gt;&lt;strong&gt;Highly Dynamic Quadruped Locomotion via Whole-Body Impulse Control and Model Predictive Control&lt;/strong&gt;, Donghyun Kim, Jared Di Carlo, Benjamin Katz, Gerado Bledt, Sangbae Kim&lt;/p&gt;
+&lt;p&gt;&lt;a id=&#34;3&#34;&gt;[3]&lt;/a&gt;&lt;strong&gt;Gait and Trajectory Optimization for Legged Systems Through Phase-Based End-Effector Parameterization&lt;/strong&gt;, Alexander W. Winkler, C. Dario Bellicoso, Marco Hutter, jonas Buchli&lt;/p&gt;
 </description>
     </item>
     

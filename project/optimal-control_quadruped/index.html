@@ -845,7 +845,7 @@
 </p>
 <p>As it can be seen from the above output the quadruped stablizes itself instantaniously as it has no prior knowledge like an heightmap of the world.</p>
 <h2 id="trajectory-optimization">Trajectory optimization</h2>
-<p>Below is the output from the towr gui, for the quadruped.</p>
+<p>We have used TOWR<a href="#3">[3]</a> for trajectory optimization, Below is the output from the towr gui, for the quadruped.</p>
 <p align="center">
 <img src="stochlite_towr.gif"/>
 <i>Stochlite in TOWR</i>
@@ -855,6 +855,10 @@
 <p>But later I integrate towr, only for Flat ground and ran it at 4 Hz for updating the optimal foot positions. As the rate is too slow and the difference between the state at the start of the optimization and current would be drastically different, I implemented towr to run parallely with estimation of the current state of the robot based on the control input of the previous optimized solution and the dynamics model of the robot solved to fetch the state at a future timestep.</p>
 <h2 id="reinforcement-learning">Reinforcement Learning</h2>
 <p>We are further working towards improving the performance of these algorithm by using Reinforcement Learning with formulations to work along side these algorithms and also in tandom with these algorithm.</p>
+<h2 id="references">References</h2>
+<p><a id="1">[1]</a><strong>Dynamic Locomotion in the MIT Cheetah 3 Through Convex Model-Predictive Control</strong>, DOI: 10.1109/IROS.2018.8594448, Jared Di Carlo, Patrick Wensing, Benjamin Katz, Sangbae Kim</p>
+<p><a id="2">[2]</a><strong>Highly Dynamic Quadruped Locomotion via Whole-Body Impulse Control and Model Predictive Control</strong>, Donghyun Kim, Jared Di Carlo, Benjamin Katz, Gerado Bledt, Sangbae Kim</p>
+<p><a id="3">[3]</a><strong>Gait and Trajectory Optimization for Legged Systems Through Phase-Based End-Effector Parameterization</strong>, Alexander W. Winkler, C. Dario Bellicoso, Marco Hutter, jonas Buchli</p>
 
     </div>
 

@@ -103,12 +103,17 @@
   </url>
   
   <url>
-    <loc>https://hex-plex.github.io/tag/3d-modelling/</loc>
-    <lastmod>2021-01-04T00:00:00+00:00</lastmod>
+    <loc>https://hex-plex.github.io/tag/computer-vision/</loc>
+    <lastmod>2021-03-05T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://hex-plex.github.io/tag/computer-vision/</loc>
+    <loc>https://hex-plex.github.io/project/gait-occlusion-gan/</loc>
+    <lastmod>2021-03-05T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://hex-plex.github.io/tag/3d-modelling/</loc>
     <lastmod>2021-01-04T00:00:00+00:00</lastmod>
   </url>
   
@@ -214,11 +219,6 @@
   
   <url>
     <loc>https://hex-plex.github.io/project/light-gun/</loc>
-    <lastmod>2020-04-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://hex-plex.github.io/project/multi-gnn/</loc>
     <lastmod>2020-04-02T00:00:00+00:00</lastmod>
   </url>
   
