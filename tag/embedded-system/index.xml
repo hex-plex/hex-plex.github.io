@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Embedded System | Somnath Kumar</title>
+    <link>https://hex-plex.github.io/tag/embedded-system/</link>
+      <atom:link href="https://hex-plex.github.io/tag/embedded-system/index.xml" rel="self" type="application/rss+xml" />
+    <description>Embedded System</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>© Somnath Sendhil Kumar `2022`</copyright><lastBuildDate>Sun, 01 Aug 2021 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://hex-plex.github.io/images/icon_hucffb9d42d7c693bd257413760c4b1fda_31806_512x512_fill_lanczos_center_2.png</url>
+      <title>Embedded System</title>
+      <link>https://hex-plex.github.io/tag/embedded-system/</link>
+    </image>
+    
+    <item>
+      <title>Mini Swarm Bot</title>
+      <link>https://hex-plex.github.io/project/dot-bot/</link>
+      <pubDate>Sun, 01 Aug 2021 00:00:00 +0000</pubDate>
+      <guid>https://hex-plex.github.io/project/dot-bot/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;dotbot_control.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;arena.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
