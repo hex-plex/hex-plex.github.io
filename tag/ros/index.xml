@@ -183,6 +183,7 @@ As a low level PID controller is running for maintaining the altitude altitude, 
       <guid>https://hex-plex.github.io/project/dot-bot/</guid>
       <description>&lt;p&gt;This is fully ROS integrated robot, which can be used in various purposes our main use case was to test out multiagent algorithms. We used it to take part in the national level competition, FlipKart Grid 3.0 Robotics challenge 2021.&lt;/p&gt;
 &lt;p&gt;I have worked on building the platform and the integrating ROS with the following robot. The localization was done using a Apriltag_ros and a array of cameras. Also worked on implementing autonomously navigating in the environment and computing the optimal path while considering other robots in the arena.&lt;/p&gt;
+&lt;p&gt;The complete package including the controller and the planner can be found at &lt;a href=&#34;https://github.com/Robotics-Club-IIT-BHU/Dot-Bot&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Dot-Bot&lt;/a&gt;.&lt;/p&gt;
 &lt;h2 id=&#34;robot-control&#34;&gt;Robot control&lt;/h2&gt;
 &lt;p&gt;The robots control architecture is a state-of-the-art implementation using a microprocessor and a microcontroller along with sensor fusion for position estimation with external cameras for deteciton of apriltags that denote the robot.&lt;/p&gt;
 &lt;p&gt;The exact control architecture is briefly given in the below image which later is elaborated in 3 bulletin points&lt;/p&gt;
