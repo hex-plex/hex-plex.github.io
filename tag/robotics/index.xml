@@ -1,94 +1,16 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Projects | Somnath Kumar</title>
-    <link>https://hex-plex.github.io/project/</link>
-      <atom:link href="https://hex-plex.github.io/project/index.xml" rel="self" type="application/rss+xml" />
-    <description>Projects</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>© Somnath Sendhil Kumar `2022`</copyright><lastBuildDate>Sun, 05 Dec 2021 00:00:00 +0000</lastBuildDate>
+    <title>Robotics | Somnath Kumar</title>
+    <link>https://hex-plex.github.io/tag/robotics/</link>
+      <atom:link href="https://hex-plex.github.io/tag/robotics/index.xml" rel="self" type="application/rss+xml" />
+    <description>Robotics</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>© Somnath Sendhil Kumar `2022`</copyright><lastBuildDate>Tue, 16 Nov 2021 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://hex-plex.github.io/images/icon_hucffb9d42d7c693bd257413760c4b1fda_31806_512x512_fill_lanczos_center_2.png</url>
-      <title>Projects</title>
-      <link>https://hex-plex.github.io/project/</link>
+      <title>Robotics</title>
+      <link>https://hex-plex.github.io/tag/robotics/</link>
     </image>
-    
-    <item>
-      <title>Graph Neural Network for Communication in MARL</title>
-      <link>https://hex-plex.github.io/project/gnn-marl/</link>
-      <pubDate>Sun, 05 Dec 2021 00:00:00 +0000</pubDate>
-      <guid>https://hex-plex.github.io/project/gnn-marl/</guid>
-      <description>&lt;p&gt;This is an implementation of Communication in MARL using Graph Neural Network. This is been trained and tested on &lt;a href=&#34;https://github.com/deepmind/pysc2&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;StarCraft II&lt;/a&gt;, And this has shown improved training and performance metrics throughout all the maps. I have implemented this on top of &lt;a href=&#34;https://github.com/oxwhirl/pymarl&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;PyMARL&lt;/a&gt; for easier comparative study with respect to other algorithms or implementations like &lt;a href=&#34;https://github.com/uoe-agents/epymarl&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;ePyMARL&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Currently we have the following algorithms for training.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://arxiv.org/abs/1803.11485&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;strong&gt;QMIX&lt;/strong&gt;: QMIX: Monotonic Value Function Factorisation for Deep Multi-Agent Reinforcement Learning&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://arxiv.org/abs/1705.08926&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;strong&gt;COMA&lt;/strong&gt;: Counterfactual Multi-Agent Policy Gradients&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://arxiv.org/abs/1706.05296&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;strong&gt;VDN&lt;/strong&gt;: Value-Decomposition Networks For Cooperative Multi-Agent Learning&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://arxiv.org/abs/1511.08779&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;strong&gt;IQL&lt;/strong&gt;: Independent Q-Learning&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://arxiv.org/abs/1905.05408&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;strong&gt;QTRAN&lt;/strong&gt;: QTRAN: Learning to Factorize with Transformation for Cooperative Multi-Agent Reinforcement Learning&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;For communication we have used to different Architecures&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://arxiv.org/abs/1609.02907&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;strong&gt;GConv&lt;/strong&gt;: Graph Convolutional Network&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://arxiv.org/abs/1710.10903&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;strong&gt;GAT&lt;/strong&gt;: Graph Attention Network&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;graph-neural-network&#34;&gt;Graph Neural Network.&lt;/h3&gt;
-&lt;p&gt;More Information about the architecture and the execution can be found at &lt;a href=&#34;https://hex-plex.github.io/project/gnn-marl/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;MultiAgent GNN&lt;/a&gt;
-A brief outline would be as follows&lt;/p&gt;
-&lt;p align=&#34;center&#34;&gt;
-&lt;img src=&#34;gnn.png&#34; /&gt;
-&lt;i&gt;Pipeline for communication using Graph Neural Network&lt;/i&gt;
-&lt;/p&gt;
-&lt;p&gt;The implementation is written in PyTorch and uses a modified version of &lt;a href=&#34;https://github.com/oxwhirl/smac&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;SMAC&lt;/a&gt; which could be found in &lt;a href=&#34;https://hex-plex.github.io/smac-py/&#34;&gt;smac-py&lt;/a&gt; to include the adjacency matrix as the observation more detail on it can be found &lt;a href=&#34;#adjacency-matrix&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;For a glimpse of the algorithm in action checkout the &lt;a href=&#34;#output&#34;&gt;&lt;strong&gt;Output&lt;/strong&gt;&lt;/a&gt; section&lt;/p&gt;
-&lt;h2 id=&#34;adjacency-matrix&#34;&gt;Adjacency Matrix&lt;/h2&gt;
-&lt;p&gt;An adjacency matrix simply represents the vertices of the graph. For the current problem we have used a few heuristics for joining two nodes with a vertex. They are as below&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Communication distance&lt;/strong&gt; : - Even though their is no restriction in communication having local communication improves cooperation in shared tasks&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Unit Type&lt;/strong&gt; : - Many task benefit from similar units perfoming certain part of the task than other other units cooperating with each other.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;output&#34;&gt;Output&lt;/h2&gt;
-&lt;p&gt;This is a demo output from the policy whose stats are given above
-&lt;img src=&#34;https://raw.githubusercontent.com/hex-plex/GNN-MARL/master/media/output.gif&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
-&lt;h2 id=&#34;results&#34;&gt;Results&lt;/h2&gt;
-&lt;p&gt;Below are the training and test metric of the presented algorithm with &lt;strong&gt;QMIX&lt;/strong&gt; on map 2s3z. The study is limited to the number of experiments due to limitation in computation at the disposal. The presented algorithm does support parallel envs and boosting the process of training. This would be tested soon&lt;/p&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;Train&lt;/th&gt;
-&lt;th&gt;&amp;ndash;&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;Battle win percentage&lt;/td&gt;
-&lt;td&gt;Average Return&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;img src=&#34;https://raw.githubusercontent.com/hex-plex/GNN-MARL/master/media/train_battle_win_percentage.png&#34; alt=&#34;&#34;&gt;&lt;/td&gt;
-&lt;td&gt;&lt;img src=&#34;https://raw.githubusercontent.com/hex-plex/GNN-MARL/master/media/train_return_mean.png&#34; alt=&#34;&#34;&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;Test&lt;/th&gt;
-&lt;th&gt;&amp;ndash;&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;Battle win percentage&lt;/td&gt;
-&lt;td&gt;Average Return&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;img src=&#34;https://raw.githubusercontent.com/hex-plex/GNN-MARL/master/media/test_battle_win_percentage.png&#34; alt=&#34;&#34;&gt;&lt;/td&gt;
-&lt;td&gt;&lt;img src=&#34;https://raw.githubusercontent.com/hex-plex/GNN-MARL/master/media/test_return_mean.png&#34; alt=&#34;&#34;&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-</description>
-    </item>
     
     <item>
       <title>MultiAgent Full coverage</title>
@@ -420,50 +342,6 @@ $$ \delta_2 = V(s_{t-1}) + \gamma*R_t - V(s_{t})$$&lt;/p&gt;
     </item>
     
     <item>
-      <title>Gait-Occlusion-Reconstrution</title>
-      <link>https://hex-plex.github.io/project/gait-occlusion-gan/</link>
-      <pubDate>Fri, 05 Mar 2021 00:00:00 +0000</pubDate>
-      <guid>https://hex-plex.github.io/project/gait-occlusion-gan/</guid>
-      <description>&lt;h1 id=&#34;gait-occlusion-gan&#34;&gt;Gait-Occlusion-GAN&lt;/h1&gt;
-&lt;p&gt;&lt;em&gt;UnPublished: made public temporally&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;Original code for the paper &lt;strong&gt;&amp;ldquo;BGaitR-Net: Occluded Gait Sequence reconstruction with temporally constrained model for gait recognition&amp;rdquo;&lt;/strong&gt; under Prof. Pratik Chattopadhyay.&lt;/p&gt;
-&lt;p&gt;This work proposes simple BiDirectional Filtering of the latent vectors of The silhouettes. TimeSeries Data of the latent space is been filter for reconstruction using a simple Bi-LSTM trained with A sophisticated method proposed in the paper.
-The Conversion of the Spatio Data to latent space was done using a  conditional Variational AutoEncoder.
-We have used a 3 Datasets : for training 2 namely, CASIA-B, OU-ISIR large population, and testing 1 namely, TumIITKGP.&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;A conditional GAN based approach is also been presented in code&lt;/em&gt;&lt;/p&gt;
-&lt;h2 id=&#34;proposed-approach&#34;&gt;Proposed approach&lt;/h2&gt;
-&lt;p&gt;We have used a Model based approach for feature extraction using &lt;strong&gt;Temporally constrained Kmeans Clustering&lt;/strong&gt; and &lt;strong&gt;Short Path in a Weighted Graph&lt;/strong&gt; for assigning Keypose for the Sequence even in case of Occlusion. This achieved substantially better results&lt;/p&gt;
-&lt;p align=&#34;center&#34;&gt;
-&lt;img src=&#34;https://raw.githubusercontent.com/hex-plex/Gait-Occlusion-GAN/master/results/pa.png&#34;/&gt;
-Propoesed Approach
-&lt;/p&gt;
-&lt;p align=&#34;center&#34;&gt;
-&lt;img src=&#34;https://raw.githubusercontent.com/hex-plex/Gait-Occlusion-GAN/master/results/en.png&#34;/&gt;
-  Model Architecture
-&lt;/p&gt;
-&lt;p align=&#34;center&#34;&gt;
-&lt;img src=&#34;BiLSTM.png&#34;/&gt;
-  Model Architecture - 2
-&lt;/p&gt;
-&lt;h2 id=&#34;results&#34;&gt;Results&lt;/h2&gt;
-&lt;p align=&#34;center&#34;&gt;
-&lt;img heigth=&#34;300&#34; src=&#34;https://raw.githubusercontent.com/hex-plex/Gait-Occlusion-GAN/master/results/7333occlu.jpg&#34;/&gt;
-Visual inspection of Reconstruction for a sequence with over 73 occlusion.&lt;br/&gt;
-(a) Input Sequence&lt;br/&gt;
-(b) Reconstructed Sequence&lt;br/&gt;
-(c) Ground Truth&lt;br/&gt;
-&lt;p&gt;Successfully able to Reconstruct 22 Frames from just 8 Frames with a Dice score 0.98&lt;/p&gt;
-&lt;/p&gt;
-&lt;p align=&#34;center&#34;&gt;
-&lt;img src=&#34;https://raw.githubusercontent.com/hex-plex/Gait-Occlusion-GAN/master/results/cmc_plot.png&#34;/&gt;
-&lt;/p&gt;
-&lt;p align=&#34;center&#34;&gt;
-  CMC Accuracy of Gait Recognition for TUM-IITKGP Dataset
-&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
       <title>PauciBot</title>
       <link>https://hex-plex.github.io/project/paucibot/</link>
       <pubDate>Tue, 01 Dec 2020 00:00:00 +0000</pubDate>
@@ -778,125 +656,6 @@ we have used clips from different versions of trained model and environment so t
     &lt;img src=&#34;https://avatars3.githubusercontent.com/u/64649440?s=460&amp;v=4&#34; width=&#34;100px;&#34; alt=&#34;&#34;/&gt;&lt;br /&gt;&lt;sub&gt;&lt;b&gt;Atul Kumar&lt;/b&gt;&lt;/sub&gt;&lt;/a&gt;&lt;br /&gt;
 	&lt;/td&gt;
 &lt;/table&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Pong Reinforcement Learning</title>
-      <link>https://hex-plex.github.io/project/pong-reinforcementlearning/</link>
-      <pubDate>Wed, 06 May 2020 00:00:00 +0000</pubDate>
-      <guid>https://hex-plex.github.io/project/pong-reinforcementlearning/</guid>
-      <description>&lt;p&gt;I have tried baking a rudimentary RL environment and a agent recipe to learn more about the eco-system.&lt;br/&gt;
-I have made &lt;a href=&#34;https://github.com/hex-plex/Pong-ReinforcementLearning/blob/master/pong.py&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;pong.py&lt;/a&gt; a environment which one can host either locally (localhost) or on  0.0.0.0 (LAN).Allowing to communicate to &lt;a href=&#34;https://github.com/hex-plex/Pong-ReinforcementLearning/blob/master/mainmodel.py&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;mainmodel.py&lt;/a&gt; which has to be connected to the same host and the same port. &lt;br/&gt;
-I have used a simple socket connection to transfer data rather than a flask/django backend as they are based on it giving a advantage of speed of communication. &lt;br/&gt;
-both the scripts have debug mode which allows one to see in which state or stage they are in. &lt;br/&gt;&lt;/p&gt;
-&lt;h2 id=&#34;output&#34;&gt;Output&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&#34;https://github.com/hex-plex/Pong-ReinforcementLearning/raw/master/trained.gif&#34; alt=&#34;pong-agent&#34;&gt;&lt;/p&gt;
-&lt;hr/&gt;
-The one on the left is a RL agent trained for 3 days and the one on right is a hardcoded AI. This is noticible the they nearly have the same level of skills.
-&lt;h2 id=&#34;requirements&#34;&gt;Requirements&lt;/h2&gt;
-&lt;p&gt;This requires only few basic libraries it only runs on python3, rather a small update can make it compatible with python2.
-The libraries&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;pickle
-numpy
-cv2
-pygame
-# Below are mostly available preinstalled in any python distribution
-socket
-BytesIO # from io in python3 or directly in python2
-_thread # for python 3 and thread in python2
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Which are quite rudimentary and neccessary part of the code.&lt;/p&gt;
-&lt;h2 id=&#34;multithreading&#34;&gt;Multithreading&lt;/h2&gt;
-&lt;p&gt;Here I have use many threads to assure that no data is missed while any other calculation or process is running on the main thread as there might be some unwanted lag between inputs.Also another thread on mainmodel exists which take inputs  from the user for pausing and resuming its learning session&lt;/p&gt;
-&lt;h2 id=&#34;sockets&#34;&gt;Sockets&lt;/h2&gt;
-&lt;p&gt;I have used sockets to send data between scripts rather than using a instance of model and the pong env on the same script well that would work just fine (or better removing all the lag of communication) , but my goal was to make it more appealing and to make me learn more real life skills that is if I train a agent with raspberry pi ( or any other weaker mobile device for that matter ) as a part of the environment or in the environment a more viable option than running both simulation and the RL agent would be to do the computation and send in actions to it. This also gave me a good understanding about data compression and network security ,though here there is none used as it just accepts the first connection to the env. &lt;br/&gt;
-&lt;br/&gt;
-with the use of socket one could manually control the environment with keyboard and also have a RL agent learning (half - Duplex).&lt;/p&gt;
-&lt;h2 id=&#34;demo&#34;&gt;Demo&lt;/h2&gt;
-&lt;p&gt;To launch the env with mostly default values just running &lt;a href=&#34;https://github.com/hex-plex/Pong-ReinforcementLearning/blob/master/pong.py&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;pong.py&lt;/a&gt; directly would start the server with default configs.
-Its always recommended to use its instance, apply your configuration you want it to run and start the server.&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;from pong import Pong
-
-env = Pong( levelodiff=1, ## This is the level of the inbuilt AI that plays against you.
-                          ## Set it to 4 and chill out (really try it!!) the scale is 1-3
-            debug=False,  ## If set to True it will print the stage the environment is in and info the data inputs and outputs
-            render=False, ## It would render the image that is sent to the model, This slows down the process so not a good idea to use it.
-            server=True,  ## This is to set server mode on , if set false the environment will be no different from ordinary pong game.
-            host=&amp;quot;&amp;quot;,      ## This is to specify where you want to host it, &amp;quot;&amp;quot; maps to local host &amp;quot;0.0.0.0&amp;quot; doesnt really map
-                          ## to your ip address yet
-            port=12345    ## This your port no. of the connection.
-          )               ## This is to just initiate the environment
-
-env.start()## This starts the env ie., hosts itself as per the given parameter and waits for a connection in async while continuing the game
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;To launch the RL agent running the &lt;a href=&#34;https://github.com/hex-plex/Pong-ReinforcementLearning/blob/master/mainmodel.py&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;mainmodel.py&lt;/a&gt; directly will run it in default config. &lt;br/&gt;
-To customize to your config import and create an instance and run the client. &lt;br/&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;from mainmodel import PolicyGradient
-
-## This uses two hidden layer to out-put 2 probabilities
-agent = PolicyGradient( resume=False,  ## This is usefull to continue training from previos checkpoint.
-                        render=True,   ## This will render the image got through the socket,useful if model is in another computer
-                        host=None,     ## If the value is None it trys to find a localhost , else specific host is to be provided as a str
-                        port=12345,    ## default value is 12345 set is as required.
-                        hiddenUnits=250, ## This no of hiddenUnits in first layer depending on the dimension of input.
-                        batch_size=10, ## This is to set batch size for batch reiforcement learning rather than using single episode.
-                        learningRate=1e-3, ## This is to set learning rate
-                        gamma=0.99,    ## This is to set gamma or the discount
-                        decayRate=0.99 ## This is decayRate for RMSprop
-                      )                ## This creates an instance of PolicyGradient algorithm as a client_socket
-
-agent.start()         ## This starts the agent ie., connects to the server and communicates and learns from its experience.
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Running them should launch the env and agent would start leaning. There is a propriety control in mainmodel.py which takes input in its terminal as&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&amp;lsquo;p&amp;rsquo;    ==&amp;gt; Pausing/Resuming the training process&lt;/li&gt;
-&lt;li&gt;&amp;lsquo;q&amp;rsquo;    ==&amp;gt; Quit the training process , But this makes a Checkpoint as interrupt.p&lt;/li&gt;
-&lt;li&gt;&amp;lsquo;ping&amp;rsquo; ==&amp;gt; This pings the pong server 10 times and returns the average time it took to send and receive packets.
-else with a better score of agent, the model is saved continuosly as save.p.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;fast-training&#34;&gt;Fast-training&lt;/h2&gt;
-&lt;p&gt;I have experimented the whole thing with networking sockets and asynchronous methods limiting the training process to human level speed for which I have uploaded the pong-fast-train.tar.gz&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;tar -xvzf pong-fast-train.tar.gz
-cd pong-fast
-python mainmodel.py
-mv save.p ../save.p
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;So this should train the model and save it into the main directory this should load the trained model in the main algo.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Light Gun</title>
-      <link>https://hex-plex.github.io/project/light-gun/</link>
-      <pubDate>Thu, 02 Apr 2020 00:00:00 +0000</pubDate>
-      <guid>https://hex-plex.github.io/project/light-gun/</guid>
-      <description>&lt;p&gt;Bored in the quarantine period, revisiting my old video games with light gun inspired an idea of light gun with a LCD display , I went on to build it mainly as a android package as it would be more accessable to anyone. Then ended up using a Raspberry Pi as a standalone device to enable it&amp;rsquo;s use accross many platforms and devices.&lt;br/&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;The Explanation for the working can be found in &lt;a href=&#34;https://github.com/hex-plex/Light-Gun/blob/master/EXPLANATION.md&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;EXPLANATION.md&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;h2 id=&#34;glimpse&#34;&gt;Glimpse:&lt;/h2&gt;
-&lt;p&gt;This is the glimpse of the prototype made with Raspberry pi on a toy gun with all the number-munching done on the Raspberry and transmites messages to the local server through bluetooth. The previous method of running the proccessing and the actions is documented in &lt;strong&gt;Win-Py&lt;/strong&gt; directory.&lt;br/&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/hex-plex/Light-Gun/master/images/Complete_setup.jpg&#34; width=&#34;370&#34; align=&#34;right&#34; border=&#34;20&#34;&gt;&lt;/img&gt;
-&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&lt;/p&gt;
-&lt;p align=&#34;left&#34;&gt;This is a prototype of the light gun with a camera module attached onto a toy-gun and with a Raspberry pi 3 b+ (unneccessary I know) and a 7.4 V li-ion battery, regulated with a buck converter to which two switches are connected on the Raspi&#39;s interrupt pins.&lt;/p&gt;&lt;hr/&gt;
-&lt;img src=&#34;https://raw.githubusercontent.com/hex-plex/Light-Gun/master/images/display_setup.jpg&#34; width=&#34;370&#34; align=&#34;left&#34;&gt;&lt;/img&gt;
-&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;
-This is the display setup with 4 IR-LEDs attached to the corners of the display which makes it very easy for detection in a wide range of lighting conditions.&lt;hr/&gt;&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;
-&lt;p&gt;And after Installation the main code using &lt;a href=&#34;https://github.com/hex-plex/Light-Gun/tree/master/Raspi-c&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Raspi&lt;/a&gt; version or &lt;a href=&#34;https://github.com/hex-plex/Light-Gun/tree/master/Win-py&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Local&lt;/a&gt; version, continue using it according to the guide lines for the same which is present in their respective folders itself.&lt;/p&gt;
-&lt;p&gt;The Modules then should create a virtual mouse and start following the edge vector of the camera module.
-The following is a demonstration of it in action&amp;hellip;. (😅 coming up shortly, as I am fixing few deviation errors.)&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://drive.google.com/file/d/1hIYBv8l2JCylOfQS9Cc5D5Hp50Ui55D-/view?usp=sharing&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;strong&gt;Demo Link&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&#34;contribution&#34;&gt;Contribution&lt;/h2&gt;
-&lt;p&gt;Any kind of Contribution is always welcomed. The rules for any Contribution for now is Non existent as I am the only one working on it and I have not really structurized the project so well as mostly in its prototyping stage, So its not possible to do a lot(Anyways feel free to report any errors or bugs 😄 ), Any Idea for a better implementation is also welcomed.&lt;/p&gt;
-&lt;h2 id=&#34;reference&#34;&gt;Reference:&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;This is for getting R and t matrix  &lt;a href=&#34;https://www.learnopencv.com/head-pose-estimation-using-opencv-and-dlib/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;[link]&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;This is for adjusting focal length (approximation) &lt;a href=&#34;https://www.learnopencv.com/approximate-focal-length-for-webcams-and-cell-phone-cameras/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;[link]&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;This is for getting accurate intrensic matrix &lt;a href=&#34;https://www.learnopencv.com/camera-calibration-using-opencv/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;[link]&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Cmake&lt;/li&gt;
-&lt;li&gt;Bluez&lt;/li&gt;
-&lt;li&gt;Raspberry pi interupts&lt;/li&gt;
-&lt;li&gt;Asynchronous coding&lt;/li&gt;
-&lt;/ul&gt;
 </description>
     </item>
     

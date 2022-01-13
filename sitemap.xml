@@ -18,12 +18,12 @@
   </url>
   
   <url>
-    <loc>https://hex-plex.github.io/project/gnn-marl/</loc>
+    <loc>https://hex-plex.github.io/tag/graph-neural-network/</loc>
     <lastmod>2021-12-05T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://hex-plex.github.io/tag/graph-neural-network/</loc>
+    <loc>https://hex-plex.github.io/project/gnn-marl/</loc>
     <lastmod>2021-12-05T00:00:00+00:00</lastmod>
   </url>
   
@@ -64,6 +64,11 @@
   
   <url>
     <loc>https://hex-plex.github.io/project/multi-agent-coverage/</loc>
+    <lastmod>2021-11-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://hex-plex.github.io/tag/robotics/</loc>
     <lastmod>2021-11-16T00:00:00+00:00</lastmod>
   </url>
   
@@ -158,38 +163,13 @@
   </url>
   
   <url>
+    <loc>https://hex-plex.github.io/project/modularbot_planner/</loc>
+    <lastmod>2021-04-05T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://hex-plex.github.io/project/gait-occlusion-gan/</loc>
     <lastmod>2021-03-05T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://hex-plex.github.io/tag/embedded-systems/</loc>
-    <lastmod>2021-01-04T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://hex-plex.github.io/tag/heirarchial-reinforcement-learning/</loc>
-    <lastmod>2021-01-04T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://hex-plex.github.io/project/gym-iota/</loc>
-    <lastmod>2021-01-04T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://hex-plex.github.io/tag/multiagent-systems/</loc>
-    <lastmod>2021-01-04T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://hex-plex.github.io/tag/openai-gym/</loc>
-    <lastmod>2021-01-04T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://hex-plex.github.io/tag/solidworks/</loc>
-    <lastmod>2021-01-04T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -218,6 +198,11 @@
   </url>
   
   <url>
+    <loc>https://hex-plex.github.io/tag/embedded-systems/</loc>
+    <lastmod>2020-12-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://hex-plex.github.io/tag/linux/</loc>
     <lastmod>2020-12-01T00:00:00+00:00</lastmod>
   </url>
@@ -234,6 +219,16 @@
   
   <url>
     <loc>https://hex-plex.github.io/project/kilobot-multiagentrl/</loc>
+    <lastmod>2020-09-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://hex-plex.github.io/tag/multiagent-systems/</loc>
+    <lastmod>2020-09-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://hex-plex.github.io/tag/openai-gym/</loc>
     <lastmod>2020-09-03T00:00:00+00:00</lastmod>
   </url>
   

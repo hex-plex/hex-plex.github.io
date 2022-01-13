@@ -13,7 +13,7 @@
     </image>
     
     <item>
-      <title>GNN-MARL</title>
+      <title>Graph Neural Network for Communication in MARL</title>
       <link>https://hex-plex.github.io/project/gnn-marl/</link>
       <pubDate>Sun, 05 Dec 2021 00:00:00 +0000</pubDate>
       <guid>https://hex-plex.github.io/project/gnn-marl/</guid>
@@ -228,6 +228,92 @@ The fan has been placed low for efficient cleaning, with a ground clearance meas
 The robot is now about to have minor upgrades for it be used in a more real world use case by addition of lidars and better on board computation.&lt;/p&gt;
 &lt;p&gt;A preliminary result of the path planning algorithm with package dropping can be seen below.&lt;/p&gt;
 &lt;iframe src=&#34;https://drive.google.com/file/d/1NhuapFy1Y12LVFoKoIaRP3BYm-ReoEHW/preview&#34; width=&#34;700&#34; height=&#34;500&#34;/&gt;</description>
+    </item>
+    
+    <item>
+      <title>Hierarchical Reinforcement Learning for Swarm of Modular Bot</title>
+      <link>https://hex-plex.github.io/project/modularbot_planner/</link>
+      <pubDate>Mon, 05 Apr 2021 00:00:00 +0000</pubDate>
+      <guid>https://hex-plex.github.io/project/modularbot_planner/</guid>
+      <description>&lt;p&gt;This is my research project at &lt;a href=&#34;https://robotics-club-iit-bhu.github.io/RoboReG/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;RoBoReg&lt;/a&gt;, on which I have been working for over a year till date since November 2020.&lt;/p&gt;
+&lt;h2 id=&#34;abstract&#34;&gt;Abstract&lt;/h2&gt;
+&lt;p&gt;Abstraction of policy for Multi Agent to generalize the Swarm Behaviour. Allowing easy scaling up and robustness in task. Learning heirarchially optimal policy facilitates meta learning for multi agent setup, resulting in easier learning another task for the swarm. This saves a lot of train time as the policy takes major ammount of time to learn the complex interaction of these individual agents with each other and the environment. As the distribution of the model for these interaction doesnt tend to change drastically between tasks.&lt;/p&gt;
+&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;The testing has been done on a custom robot platform named iOTA. Which is a simple 4 Wheel drive on both top and bottom plates and hypotetically capable of docking(All tests are simulations with constraints added by simulator, this is done to reduce the complexity of physics).&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/Robotics-Club-IIT-BHU/gym-iOTA/master/media/bRoll.gif&#34; width=&#34;47%&#34; align=&#34;left&#34;/&gt;&lt;img src=&#34;ModularDock.png&#34; width=&#34;52%&#34; align=&#34;right&#34;/&gt;&lt;/p&gt;
+&lt;p&gt;The whole setup is simulated in PyBullet, and we have made a simple env for our experimental testbed &lt;a href=&#34;https://github.com/Robotics-Club-IIT-BHU/gym-iOTA&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;code&gt;gym-iOTA&lt;/code&gt;&lt;/a&gt;. There has been on a simpler 2D version of the Env for easier training and debuggin for representation learning of the environment &lt;a href=&#34;https://github.com/hex-plex/gym-iOTA_2D&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;code&gt;gym-iOTA_2D&lt;/code&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;pipeline&#34;&gt;Pipeline&lt;/h2&gt;
+&lt;img src=&#34;ModularBot.png&#34;/&gt;
+&lt;p&gt;Here we have used multiple classical algorithms with learnt methods.
+The main parts in the algorithm is.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Localization&lt;/li&gt;
+&lt;li&gt;Clusterring&lt;/li&gt;
+&lt;li&gt;High Level Planning using Policy&lt;/li&gt;
+&lt;li&gt;Obstacle Avoidance&lt;/li&gt;
+&lt;li&gt;Control&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;localization&#34;&gt;Localization&lt;/h3&gt;
+&lt;p&gt;Localization is done using detection from multiple cameras, and averaging the position and pose as the estimates where better than just one camera. Then this pose is infused with odometry and imu using an &lt;strong&gt;Extended Kalman filter&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;detection.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;clustering&#34;&gt;Clustering&lt;/h3&gt;
+&lt;p&gt;The clustering is done using &lt;strong&gt;Kmeans clusters&lt;/strong&gt;, The main use of clustering is to divide the Swarm into smaller parts for being able to learn quicker while decreasing the complexity of observation. And also making meaningful interactions as the agent is barely affected by an agent outside it&amp;rsquo;s cluster.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;cluster.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;high-level-planning&#34;&gt;High Level Planning&lt;/h3&gt;
+&lt;p&gt;The high level planning here refers to estimate goal position of the robot complete a certain task. The high level planning is done using Two policies, The first policy Works on individual cluster estimating parameters of an polygon, while the next estimates the distribution over the polygon and then sampling points off the distribution is taken as the target point for the robot for one action step.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;heirPolicy.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;As it can be seen one policy is under the heirarchy of the other policy and as policy $\pi_1$ is updated less frequently compared to $\pi_2$ The return will not be the same for every action taken by $\pi_1$. &lt;strong&gt;Hierarchical Reinforcement Learning&lt;/strong&gt; is much suited in this &lt;strong&gt;Semi-Markov Decision Process&lt;/strong&gt; over traditional Reinforcement Learning.
+This also allows to learn a heirarchically optimal policy that will facilitates meta learning to different tasks.&lt;/p&gt;
+&lt;p&gt;The equation for update for the two policies are given by the following.
+$$ \pi_i = \pi_i + \alpha*\delta_i $$
+$$ \delta_1 = V(s_{t-1}) + \gamma*R_{t} + &amp;hellip; + \gamma^{\tau+1}*R_{t+\tau} - V(s_{t+\tau})$$
+$$ \delta_2 = V(s_{t-1}) + \gamma*R_t - V(s_{t})$$&lt;/p&gt;
+&lt;p&gt;Here $\tau$ is the number of time steps $\pi_2$ steps between consecutive steps of $\pi_1$&lt;/p&gt;
+&lt;p&gt;The final output of both combined is.
+&lt;img src=&#34;probability_distribution.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Where the estimated polygon is seen in green, and the distribution is seen in orange. And the sampled point is seen in red.&lt;/p&gt;
+&lt;h3 id=&#34;obstacle-avoidance&#34;&gt;Obstacle Avoidance&lt;/h3&gt;
+&lt;p&gt;After the action is taken the main task is to find a path to the target position without colliding into one another. This is done using &lt;strong&gt;Potential Field Planning&lt;/strong&gt;, this was the simplest algorithm for path planning that we could use in pybullet. This could easily be replaced by the nav stack in ROS.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;potentialField.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;control&#34;&gt;Control&lt;/h3&gt;
+&lt;p&gt;This was done using simple PD control of a 4WD, Later the docking was done using &lt;strong&gt;Fixed Constraints in simulator&lt;/strong&gt; than actuallying designing and simulating a docking mechanism. While our main goal was to work on it when we would work on the hardware. The working wheels switch when the robot is flipped which is sensed using an IMU.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;docking.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;limitation&#34;&gt;Limitation&lt;/h2&gt;
+&lt;p&gt;After Enumerous reiteration on code, and brainstroming of ideas the project only received limited success. The project was a continual part of learning and implementation of year long journey. There are a few points of failure in the current architecture that I would like to point out.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Insufficient Observation&lt;/strong&gt; :- The observation for individual agent is complex for a policy \pi_2 to learn, and the representation of the cluster is done with insufficient features to policy \pi_1.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Constrained Action Space&lt;/strong&gt; :- The current action space for both the policy are rather no encouraging to move away from the cluster or move towards a specific direction to complete the task. The architecture for the highlevel planning must be improved to allow motion in and out the cluster.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Bugs in the Environment&lt;/strong&gt; :- The potential field algorithm is notourious for its suboptimal or worse infinite loops at corner cases for given parameters. The control is a bare minimum position control using PD and doesnt model the highly complex and dynamic System, hence the interaction of these robots in tightly packed regions are very bad as they are unable to trace the given trajectories. This is mainly true once the robots are docked.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Apart from these the robot platform, as well as the codebase are robust and modular hence can be used in other applications and in future iterations of the project. This project is result of hardwork of its contributors.&lt;/p&gt;
+&lt;h2 id=&#34;contributors&#34;&gt;Contributors&lt;/h2&gt;
+&lt;table&gt;
+  &lt;tr&gt;
+  &lt;td align=&#34;center&#34;&gt;
+     &lt;a href=&#34;https://github.com/hex-plex&#34;&gt;
+    &lt;img src=&#34;https://avatars0.githubusercontent.com/u/56990337?s=460&amp;v=4&#34; width=&#34;100px;&#34; alt=&#34;&#34;/&gt;&lt;br /&gt;&lt;sub&gt;&lt;b&gt;Somnath Sendhil Kumar &lt;/b&gt;&lt;/sub&gt;&lt;/a&gt;&lt;br /&gt;
+    &lt;/td&gt;
+    &lt;td align=&#34;center&#34;&gt;
+     &lt;a href=&#34;https://github.com/surabhit-08&#34;&gt;
+    &lt;img src=&#34;https://avatars3.githubusercontent.com/u/62366465?s=460&amp;v=4&#34; width=&#34;100px;&#34; alt=&#34;&#34;/&gt;&lt;br /&gt;&lt;sub&gt;&lt;b&gt;Surabhit Gupta&lt;/b&gt;&lt;/sub&gt;&lt;/a&gt;&lt;br /&gt;
+	&lt;/td&gt;
+	&lt;td align=&#34;center&#34;&gt;
+     &lt;a href=&#34;https://github.com/rtharungowda&#34;&gt;
+    &lt;img src=&#34;https://avatars1.githubusercontent.com/u/55887709?s=460&amp;v=4&#34; width=&#34;100px;&#34; alt=&#34;&#34;/&gt;&lt;br /&gt;&lt;sub&gt;&lt;b&gt;R Tharun Gowda&lt;/b&gt;&lt;/sub&gt;&lt;/a&gt;&lt;br /&gt;
+	&lt;/td&gt;
+	&lt;td align=&#34;center&#34;&gt;
+     &lt;a href=&#34;https://github.com/Kritika-Bansal&#34;&gt;
+    &lt;img src=&#34;https://avatars2.githubusercontent.com/u/57754061?s=460&amp;v=4&#34; width=&#34;100px;&#34; alt=&#34;&#34;/&gt;&lt;br /&gt;&lt;sub&gt;&lt;b&gt;Kritika Bansal&lt;/b&gt;&lt;/sub&gt;&lt;/a&gt;&lt;br /&gt;
+	&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+  &lt;td&gt;&lt;sub&gt;Lead,Reinforcement Learning&lt;/sub&gt;&lt;/td&gt;
+  &lt;td&gt;&lt;sub&gt;Hardware Design&lt;/sub&gt;&lt;/td&gt;
+  &lt;td&gt;&lt;sub&gt;Clustering&lt;/sub&gt;&lt;/td&gt;
+  &lt;td&gt;&lt;sub&gt;Path Planning&lt;/sub&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+</description>
     </item>
     
   </channel>
