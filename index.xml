@@ -33,6 +33,22 @@
     </item>
     
     <item>
+      <title>Realizing Linear Controllers for Quadruped Robots on Planetary Terrains</title>
+      <link>https://hex-plex.github.io/publication/exploration/</link>
+      <pubDate>Fri, 01 Jul 2022 00:00:00 +0000</pubDate>
+      <guid>https://hex-plex.github.io/publication/exploration/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>VidModEx: Black Box Model Extraction for Video Classification models with Efficient Query Samples</title>
+      <link>https://hex-plex.github.io/publication/vidmodex/</link>
+      <pubDate>Fri, 01 Jul 2022 00:00:00 +0000</pubDate>
+      <guid>https://hex-plex.github.io/publication/vidmodex/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Black Box Model Extraction</title>
       <link>https://hex-plex.github.io/project/model-extraction/</link>
       <pubDate>Thu, 03 Mar 2022 00:00:00 +0000</pubDate>
@@ -689,6 +705,14 @@ function outFunc2() {
 &lt;p&gt;&lt;a id=&#34;2&#34;&gt;[2]&lt;/a&gt;&lt;strong&gt;Highly Dynamic Quadruped Locomotion via Whole-Body Impulse Control and Model Predictive Control&lt;/strong&gt;, Donghyun Kim, Jared Di Carlo, Benjamin Katz, Gerado Bledt, Sangbae Kim&lt;/p&gt;
 &lt;p&gt;&lt;a id=&#34;3&#34;&gt;[3]&lt;/a&gt;&lt;strong&gt;Gait and Trajectory Optimization for Legged Systems Through Phase-Based End-Effector Parameterization&lt;/strong&gt;, Alexander W. Winkler, C. Dario Bellicoso, Marco Hutter, jonas Buchli&lt;/p&gt;
 </description>
+    </item>
+    
+    <item>
+      <title>BGaitR-Net: Occluded Gait Sequence reconstruction with temporally constrained model for gait recognition</title>
+      <link>https://hex-plex.github.io/publication/bgaitrnet/</link>
+      <pubDate>Thu, 01 Jul 2021 00:00:00 +0000</pubDate>
+      <guid>https://hex-plex.github.io/publication/bgaitrnet/</guid>
+      <description></description>
     </item>
     
     <item>
@@ -1478,25 +1502,6 @@ Three
 &lt;h1 id=&#34;questions&#34;&gt;Questions?&lt;/h1&gt;
 &lt;p&gt;&lt;a href=&#34;https://github.com/wowchemy/wowchemy-hugo-modules/discussions&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Ask&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://wowchemy.com/docs/managing-content/#create-slides&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Documentation&lt;/a&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>An example conference paper</title>
-      <link>https://hex-plex.github.io/publication/example/</link>
-      <pubDate>Mon, 01 Jul 2013 00:00:00 +0000</pubDate>
-      <guid>https://hex-plex.github.io/publication/example/</guid>
-      <description>&lt;div class=&#34;alert alert-note&#34;&gt;
-  &lt;div&gt;
-    Click the &lt;em&gt;Cite&lt;/em&gt; button above to demo the feature to enable visitors to import publication metadata into their reference management software.
-  &lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&#34;alert alert-note&#34;&gt;
-  &lt;div&gt;
-    Create your slides in Markdown - click the &lt;em&gt;Slides&lt;/em&gt; button to check out the example.
-  &lt;/div&gt;
-&lt;/div&gt;
-&lt;p&gt;Supplementary notes can be added here, including &lt;a href=&#34;https://wowchemy.com/docs/writing-markdown-latex/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;code, math, and images&lt;/a&gt;.&lt;/p&gt;
 </description>
     </item>
     
