@@ -33,18 +33,26 @@
     </item>
     
     <item>
-      <title>Realizing Linear Controllers for Quadruped Robots on Planetary Terrains</title>
-      <link>https://hex-plex.github.io/publication/exploration/</link>
-      <pubDate>Fri, 01 Jul 2022 00:00:00 +0000</pubDate>
-      <guid>https://hex-plex.github.io/publication/exploration/</guid>
+      <title>LatentCBF: Control Barrier Definition on Latent Space</title>
+      <link>https://hex-plex.github.io/publication/latentcbf/</link>
+      <pubDate>Tue, 03 Jan 2023 00:00:00 +0000</pubDate>
+      <guid>https://hex-plex.github.io/publication/latentcbf/</guid>
       <description></description>
     </item>
     
     <item>
       <title>VidModEx: Black Box Model Extraction for Video Classification models with Efficient Query Samples</title>
       <link>https://hex-plex.github.io/publication/vidmodex/</link>
-      <pubDate>Fri, 01 Jul 2022 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 14 Nov 2022 00:00:00 +0000</pubDate>
       <guid>https://hex-plex.github.io/publication/vidmodex/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Realizing Linear Controllers for Quadruped Robots on Planetary Terrains</title>
+      <link>https://hex-plex.github.io/publication/exploration/</link>
+      <pubDate>Fri, 01 Jul 2022 00:00:00 +0000</pubDate>
+      <guid>https://hex-plex.github.io/publication/exploration/</guid>
       <description></description>
     </item>
     
