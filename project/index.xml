@@ -5,12 +5,62 @@
     <link>https://hex-plex.github.io/project/</link>
       <atom:link href="https://hex-plex.github.io/project/index.xml" rel="self" type="application/rss+xml" />
     <description>Projects</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>© Somnath Sendhil Kumar `2023`</copyright><lastBuildDate>Thu, 03 Mar 2022 00:00:00 +0000</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>© Somnath Sendhil Kumar `2023`</copyright><lastBuildDate>Sun, 01 Jan 2023 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://hex-plex.github.io/images/icon_hucffb9d42d7c693bd257413760c4b1fda_31806_512x512_fill_lanczos_center_2.png</url>
       <title>Projects</title>
       <link>https://hex-plex.github.io/project/</link>
     </image>
+    
+    <item>
+      <title>ZeroxQA</title>
+      <link>https://hex-plex.github.io/project/zeroxqa/</link>
+      <pubDate>Sun, 01 Jan 2023 00:00:00 +0000</pubDate>
+      <guid>https://hex-plex.github.io/project/zeroxqa/</guid>
+      <description>&lt;h1 id=&#34;zeroxqa--few-shot-learning-for-qa-tasks&#34;&gt;zeroxQA : Few shot learning for QA tasks&lt;/h1&gt;
+&lt;p&gt;A simple QA task here is defined as a Comprehensive reading task. Where a paragraph is given containing information about a domain. Along with it A question is given which can be answered using the paragraph and the supervision of starting and ending indexes in the paragraph corresponding for that question. A state of the art approach for such a problem is employing a transformer while masking the question and using two classification heads on top of the transformers for predicting start and stop indicies.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;reader.png&#34; alt=&#34;Reader&#34;&gt;&lt;/p&gt;
+&lt;p&gt;The major constrains and challenges we faced are below:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;To have model with very low inference time.&lt;/li&gt;
+&lt;li&gt;To Generalize model over extremely unrelated domains.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Hence we employ a Meta Learning based training framework for training a shallow transformer model to generalize in outdomain queries while still offering faster convergence on outdomain targets.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;meta_learning.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Hence the above is the proposed framework along with &lt;a href=&#34;https://huggingface.co/mrm8488/bert-mini-5-finetuned-squadv2&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Bert-Mini-5&lt;/a&gt;. For individual domains the meta model is later fine tuned for inference.&lt;/p&gt;
+&lt;h2 id=&#34;usage&#34;&gt;Usage&lt;/h2&gt;
+&lt;h3 id=&#34;preparing-dataset&#34;&gt;Preparing Dataset&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ python preprocess_csv_theme.py --data-csv=train_data.csv
+$ python synthetic_gen.py --input_dir=datasets/train_data.csv --ner_limit=2 --use_qa_data=sample_question_answers.csv
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This preprocesses the whole dataset into different shards of datasets for different domains. Then synthetically generates question and answer pairs for unannoted paragraphs for improving indomain queries.&lt;/p&gt;
+&lt;h3 id=&#34;training&#34;&gt;Training&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ python meta_train.py --run-name meta_baseline --do-train --lr=1e-4 --meta-lr=5e-3 --meta-epochs=10000
+$ python finetune.py
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The First command trains a meta model using MAML for the in domain targets and the code is parallized for training individual models on individual in domain set. The second command fine tunes the meta model on a outdomain query using synthetically generated dataset using the paragraphs for the outdomain queries.&lt;/p&gt;
+&lt;h3 id=&#34;quantization&#34;&gt;Quantization&lt;/h3&gt;
+&lt;p&gt;we performed model quantization and graph optimization using ONNX to compare the runtime optimization on two models namely small-Electra and mini5-BERT as shown in the figure.Using ONNX runtime optimizations, mini5-BERT only took 120 milliseconds and small-Electra took only 140 milliseconds. We observed that mini5-BERT offered us the best tradeoff between speed and accuracy.&lt;/p&gt;
+&lt;h4 id=&#34;model-quantization&#34;&gt;Model Quantization&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;Converts 32-bit floating point tensors and operations in the model to 8-bit integer values.&lt;/li&gt;
+&lt;li&gt;A quantized model executes some/all of operations on tensors with reduced precision rather than full precision 32-bit floating point values.&lt;/li&gt;
+&lt;li&gt;Allows for a compact model representation and the use of high performance vectorized operations.&lt;/li&gt;
+&lt;li&gt;We used ORTQuantizer module of ONNX(Open Neural Network eXchange) module of Optimum Library.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;graph-optimization&#34;&gt;Graph Optimization&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;Semantics-preserving graph rewrites which remove redundant nodes and redundant computation by pruning the computational graph of the model.&lt;/li&gt;
+&lt;li&gt;These opimizations also include fusion of nodes and constant folding.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;results&#34;&gt;Results&lt;/h2&gt;
+&lt;p&gt;One can observe the improvement due to meta learnt model on outdomain queries.
+&lt;img src=&#34;plot.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;The Improvement for quantizing the model can be observed with the the distribution of average inference time for different settings.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;mini5.png&#34; alt=&#34;&#34;&gt;
+&lt;img src=&#34;mini55.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Black Box Model Extraction</title>
