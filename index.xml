@@ -91,14 +91,6 @@ $ python finetune.py
     </item>
     
     <item>
-      <title>VidModEx: Black Box Model Extraction for Video Classification models with Efficient Query Samples</title>
-      <link>https://hex-plex.github.io/publication/vidmodex/</link>
-      <pubDate>Mon, 14 Nov 2022 00:00:00 +0000</pubDate>
-      <guid>https://hex-plex.github.io/publication/vidmodex/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Realizing Linear Controllers for Quadruped Robots on Planetary Terrains</title>
       <link>https://hex-plex.github.io/publication/exploration/</link>
       <pubDate>Fri, 01 Jul 2022 00:00:00 +0000</pubDate>
