@@ -6,7 +6,7 @@ title: Somnath Kumar
 superuser: true
 
 # Role/position/tagline
-role: Senior Undergraduate, Electrical Engineering
+role: Research Fellow, Microsoft Research India
 
 # Organizations/Affiliations to show in About widget
 organizations:
@@ -14,7 +14,7 @@ organizations:
   url: https://iitbhu.ac.in/
 
 # Short bio (displayed in user profile at end of posts)
-bio: My research interests include Reinforcement Learning, Computer Vision.
+bio: My research interests is interpretable Reinforcement Learning.
 
 # Interests to show in About widget
 interests:
@@ -62,8 +62,7 @@ email: "somnath.sendhilk.eee19@itbhu.ac.in"
 # Highlight the author in author lists? (true/false)
 highlight_name: True
 ---
-I am a Research Fellow at Microsoft Research 
-I am senior undergraduate at the Indian Institute of Technology (BHU), Varanasi persuing Electrical Engineering. My interests encompasses but not limited to Representation learning and Embodied AI. My research work has been in developing systems and agents which benefit or rely on these algorithms.
+I am a Research Fellow at [Microsoft Research](https://www.microsoft.com/en-us/research/lab/microsoft-research-india/) working on alignment and optimization of language models using different Reinforcement learning algorithms. My interests encompasses but not limited to Representation learning and Embodied AI. My research work has been in developing systems and agents which benefit or rely on these algorithms.
 
 I have joined [John Dolan](https://www.ri.cmu.edu/ri-faculty/john-m-dolan/)'s [Argo AI Lab](https://labs.ri.cmu.edu/argo-ai-center/) at Robotics Institute, Carnegie Mellon University working on Safe Autonomous Navigation.
 
@@ -73,5 +72,4 @@ Previsously I worked under [Dr. Pratik Chattopadhyay](https://www.iitbhu.ac.in/d
 
 Besides Floating point values I like `strings` on my guitar to play a few tunes.
 
-{{< icon name="download" pack="fas" >}} Download my {{< staticref "media/Somnath_CV_mar23.pdf" "newtab" >}}resumé{{< /staticref >}}.
-<script type="text/javascript" id="clustrmaps" src="//clustrmaps.com/map_v2.js?d=EsELmPCZFTCNryTIcce3mpoHBeR1oFsXmXHmzhlmv9Q"></script>
+{{< icon name="download" pack="fas" >}} Download my {{< staticref "media/Somnath_CV_dec23.pdf" "newtab" >}}resumé{{< /staticref >}}.

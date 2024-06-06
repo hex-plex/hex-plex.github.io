@@ -43,6 +43,8 @@ design:
 #   #   4 = Citation (publication only)
 #   view: 1
 ---
+- [ Oct 2023 ] : Our Project [Shiksha](https://www.microsoft.com/en-us/research/blog/teachers-in-india-help-microsoft-research-design-ai-tool-for-creating-great-classroom-content/) won first place in Microsoft Hackathon'23 in both national region and worldwide.
+- [ July 2023 ] : Started working as a Research Fellow in [Microsoft Research India](https://www.microsoft.com/en-us/research/lab/microsoft-research-india/)
 - [ Dec 2022 ] : Selected to attend [Research week with Google](https://sites.google.com/view/researchweek2023/home).
 - [ Nov 2022 ] : Appointed as the Deputy Contingent Leader representing my Institution for the [11th InterIIT Techmeet](https://interiit-tech.org/).
 - [ July 2022 ] : {{< staticref "media/Poster_Presentation.pdf" "newtab" >}}Presented poster {{< /staticref >}} at IISc, supported by Microsoft
