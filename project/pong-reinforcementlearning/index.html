@@ -1,0 +1,1342 @@
+<!DOCTYPE html><html lang="en-us" >
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  
+  
+  <meta name="generator" content="Wowchemy 5.0.0-beta.2 for Hugo">
+  
+
+  
+
+  
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Somnath Kumar">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Implementation of Policy Gradient on self made Pong game.">
+
+  
+  <link rel="alternate" hreflang="en-us" href="https://hex-plex.github.io/project/pong-reinforcementlearning/">
+
+  
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+
+  
+  
+  
+  <meta name="theme-color" content="#1565c0">
+  
+
+  
+  
+
+  
+  
+  
+  
+    
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.0/css/academicons.min.css" integrity="sha512-W4yqoT1+8NLkinBLBZko+dFB2ZbHsYLDdr50VElllRcNt2Q4/GSs6u71UHKxB7S6JEMCp5Ve4xjh3eGQl/HRvg==" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha256-FMvZuGapsJLjouA6k7Eo2lusoAX9i0ShlWFG6qt7SLc=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous" media="print" onload="this.media='all'">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/github.min.css" crossorigin="anonymous" title="hl-light" media="print" onload="this.media='all'">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/github.min.css" crossorigin="anonymous" title="hl-dark" media="print" onload="this.media='all'" disabled>
+      
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.css" integrity="sha512-1xoFisiGdy9nvho8EgXuXvnpR5GAMSjFwp40gSRE3NwdUdIMIKuPa7bqoUhLD0O/5tPNhteAsE5XyyMi5reQVA==" crossorigin="anonymous" media="print" onload="this.media='all'">
+    
+
+    
+
+    
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.2.2/lazysizes.min.js" integrity="sha512-TmDwFLhg3UA4ZG0Eb4MIyT1O1Mb+Oww5kFG0uHqXsdbyZz9DcvYQhKpGgNkamAI6h2lGGZq2X8ftOJvF/XjTUg==" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+        
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+
+  
+
+  
+  
+  
+    
+      
+      <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap" media="print" onload="this.media='all'">
+    
+  
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/wowchemy.989bbfa694844ab8ac3ba2f9d39814c6.css">
+
+  
+
+
+
+
+  
+
+  
+
+
+  
+  
+
+  
+
+  
+  <link rel="manifest" href="/index.webmanifest">
+  
+
+  <link rel="icon" type="image/png" href="/images/icon_hucffb9d42d7c693bd257413760c4b1fda_31806_32x32_fill_lanczos_center_3.png">
+  <link rel="apple-touch-icon" type="image/png" href="/images/icon_hucffb9d42d7c693bd257413760c4b1fda_31806_180x180_fill_lanczos_center_3.png">
+
+  <link rel="canonical" href="https://hex-plex.github.io/project/pong-reinforcementlearning/">
+
+  
+  
+  
+  
+  
+  
+  
+    
+  
+  
+  <meta property="twitter:card" content="summary_large_image">
+  
+  <meta property="og:site_name" content="Somnath Kumar">
+  <meta property="og:url" content="https://hex-plex.github.io/project/pong-reinforcementlearning/">
+  <meta property="og:title" content="Pong Reinforcement Learning | Somnath Kumar">
+  <meta property="og:description" content="Implementation of Policy Gradient on self made Pong game."><meta property="og:image" content="https://hex-plex.github.io/project/pong-reinforcementlearning/featured.jpg">
+  <meta property="twitter:image" content="https://hex-plex.github.io/project/pong-reinforcementlearning/featured.jpg"><meta property="og:locale" content="en-us">
+  
+    
+      <meta property="article:published_time" content="2020-05-06T00:00:00&#43;00:00">
+    
+    <meta property="article:modified_time" content="2020-05-06T00:00:00&#43;00:00">
+  
+
+  
+
+
+    
+
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://hex-plex.github.io/project/pong-reinforcementlearning/"
+  },
+  "headline": "Pong Reinforcement Learning",
+  
+  "image": [
+    "https://hex-plex.github.io/project/pong-reinforcementlearning/featured.jpg"
+  ],
+  
+  "datePublished": "2020-05-06T00:00:00Z",
+  "dateModified": "2020-05-06T00:00:00Z",
+  
+  "author": {
+    "@type": "Person",
+    "name": "Somnath Kumar"
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "Somnath Kumar",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://hex-plex.github.io/images/icon_hucffb9d42d7c693bd257413760c4b1fda_31806_192x192_fill_lanczos_center_3.png"
+    }
+  },
+  "description": "Implementation of Policy Gradient on self made Pong game."
+}
+</script>
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  <title>Pong Reinforcement Learning | Somnath Kumar</title>
+
+</head>
+
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper  ">
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <script src="/js/wowchemy-init.min.8446300de3057dfecd2dbb1103d0e171.js"></script>
+
+  
+
+<aside class="search-modal" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#" aria-label="Close"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="form-control"
+        aria-label="Search...">
+        
+      </div>
+
+      
+      
+
+      
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+
+  <div class="page-header">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+  <div class="container-xl">
+
+    
+    <div class="d-none d-lg-inline-flex">
+      <a class="navbar-brand" href="/">Somnath Kumar</a>
+    </div>
+    
+
+    
+    <button type="button" class="navbar-toggler" data-toggle="collapse"
+            data-target="#navbar-content" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span><i class="fas fa-bars"></i></span>
+    </button>
+    
+
+    
+    <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+      <a class="navbar-brand" href="/">Somnath Kumar</a>
+    </div>
+    
+
+    
+    
+    <div class="navbar-collapse main-menu-item collapse justify-content-center" id="navbar-content">
+
+      
+      <ul class="navbar-nav d-md-inline-flex">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#about"><span>Home</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#posts"><span>Posts</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#projects"><span>Projects</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#featured"><span>Publications</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#contact"><span>Contact</span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+      </ul>
+    </div>
+
+    <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+
+      
+      
+        
+      
+
+      
+      
+      <li class="nav-item">
+        <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+      </li>
+      
+
+      
+      
+      <li class="nav-item dropdown theme-dropdown">
+        <a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-label="Display preferences">
+          <i class="fas fa-moon" aria-hidden="true"></i>
+        </a>
+        <div class="dropdown-menu">
+          <a href="#" class="dropdown-item js-set-theme-light">
+            <span>Light</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-dark">
+            <span>Dark</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-auto">
+            <span>Automatic</span>
+          </a>
+        </div>
+      </li>
+      
+
+      
+
+    </ul>
+
+  </div>
+</nav>
+
+
+  </div>
+
+  <div class="page-body">
+    <article class="article article-project">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+<div class="article-container pt-3">
+  <h1>Pong Reinforcement Learning</h1>
+
+  
+
+  
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    May 6, 2020
+  </span>
+  
+
+  
+
+  
+
+  
+  
+  
+  
+  
+
+  
+  
+
+</div>
+
+  
+
+
+
+
+<div class="btn-links mb-3">
+  
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+    
+  
+  
+  
+  
+  
+    
+  
+  <a class="btn btn-outline-primary btn-page-header" href="https://github.com/hex-plex/Pong-ReinforcementLearning" target="_blank" rel="noopener">
+    <i class="fab fa-github mr-1"></i>
+    Code and Details
+  </a>
+
+
+</div>
+
+
+</div>
+
+
+<div class="article-header article-container featured-image-wrapper mt-4 mb-4" style="max-width: 706px; max-height: 534px;">
+  <div style="position: relative">
+    <img src="/project/pong-reinforcementlearning/featured.jpg" alt="" class="featured-image">
+    <span class="article-header-caption">Pong game demo written with pygame</span>
+  </div>
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      <p>I have tried baking a rudimentary RL environment and a agent recipe to learn more about the eco-system.<br/>
+I have made <a href="https://github.com/hex-plex/Pong-ReinforcementLearning/blob/master/pong.py" target="_blank" rel="noopener">pong.py</a> a environment which one can host either locally (localhost) or on  0.0.0.0 (LAN).Allowing to communicate to <a href="https://github.com/hex-plex/Pong-ReinforcementLearning/blob/master/mainmodel.py" target="_blank" rel="noopener">mainmodel.py</a> which has to be connected to the same host and the same port. <br/>
+I have used a simple socket connection to transfer data rather than a flask/django backend as they are based on it giving a advantage of speed of communication. <br/>
+both the scripts have debug mode which allows one to see in which state or stage they are in. <br/></p>
+<h2 id="output">Output</h2>
+<p><img src="https://github.com/hex-plex/Pong-ReinforcementLearning/raw/master/trained.gif" alt="pong-agent"></p>
+<hr/>
+The one on the left is a RL agent trained for 3 days and the one on right is a hardcoded AI. This is noticible the they nearly have the same level of skills.
+<h2 id="requirements">Requirements</h2>
+<p>This requires only few basic libraries it only runs on python3, rather a small update can make it compatible with python2.
+The libraries</p>
+<pre><code class="language-bash">pickle
+numpy
+cv2
+pygame
+# Below are mostly available preinstalled in any python distribution
+socket
+BytesIO # from io in python3 or directly in python2
+_thread # for python 3 and thread in python2
+</code></pre>
+<p>Which are quite rudimentary and neccessary part of the code.</p>
+<h2 id="multithreading">Multithreading</h2>
+<p>Here I have use many threads to assure that no data is missed while any other calculation or process is running on the main thread as there might be some unwanted lag between inputs.Also another thread on mainmodel exists which take inputs  from the user for pausing and resuming its learning session</p>
+<h2 id="sockets">Sockets</h2>
+<p>I have used sockets to send data between scripts rather than using a instance of model and the pong env on the same script well that would work just fine (or better removing all the lag of communication) , but my goal was to make it more appealing and to make me learn more real life skills that is if I train a agent with raspberry pi ( or any other weaker mobile device for that matter ) as a part of the environment or in the environment a more viable option than running both simulation and the RL agent would be to do the computation and send in actions to it. This also gave me a good understanding about data compression and network security ,though here there is none used as it just accepts the first connection to the env. <br/>
+<br/>
+with the use of socket one could manually control the environment with keyboard and also have a RL agent learning (half - Duplex).</p>
+<h2 id="demo">Demo</h2>
+<p>To launch the env with mostly default values just running <a href="https://github.com/hex-plex/Pong-ReinforcementLearning/blob/master/pong.py" target="_blank" rel="noopener">pong.py</a> directly would start the server with default configs.
+Its always recommended to use its instance, apply your configuration you want it to run and start the server.</p>
+<pre><code class="language-python">from pong import Pong
+
+env = Pong( levelodiff=1, ## This is the level of the inbuilt AI that plays against you.
+                          ## Set it to 4 and chill out (really try it!!) the scale is 1-3
+            debug=False,  ## If set to True it will print the stage the environment is in and info the data inputs and outputs
+            render=False, ## It would render the image that is sent to the model, This slows down the process so not a good idea to use it.
+            server=True,  ## This is to set server mode on , if set false the environment will be no different from ordinary pong game.
+            host=&quot;&quot;,      ## This is to specify where you want to host it, &quot;&quot; maps to local host &quot;0.0.0.0&quot; doesnt really map
+                          ## to your ip address yet
+            port=12345    ## This your port no. of the connection.
+          )               ## This is to just initiate the environment
+
+env.start()## This starts the env ie., hosts itself as per the given parameter and waits for a connection in async while continuing the game
+</code></pre>
+<p>To launch the RL agent running the <a href="https://github.com/hex-plex/Pong-ReinforcementLearning/blob/master/mainmodel.py" target="_blank" rel="noopener">mainmodel.py</a> directly will run it in default config. <br/>
+To customize to your config import and create an instance and run the client. <br/></p>
+<pre><code class="language-python">from mainmodel import PolicyGradient
+
+## This uses two hidden layer to out-put 2 probabilities
+agent = PolicyGradient( resume=False,  ## This is usefull to continue training from previos checkpoint.
+                        render=True,   ## This will render the image got through the socket,useful if model is in another computer
+                        host=None,     ## If the value is None it trys to find a localhost , else specific host is to be provided as a str
+                        port=12345,    ## default value is 12345 set is as required.
+                        hiddenUnits=250, ## This no of hiddenUnits in first layer depending on the dimension of input.
+                        batch_size=10, ## This is to set batch size for batch reiforcement learning rather than using single episode.
+                        learningRate=1e-3, ## This is to set learning rate
+                        gamma=0.99,    ## This is to set gamma or the discount
+                        decayRate=0.99 ## This is decayRate for RMSprop
+                      )                ## This creates an instance of PolicyGradient algorithm as a client_socket
+
+agent.start()         ## This starts the agent ie., connects to the server and communicates and learns from its experience.
+</code></pre>
+<p>Running them should launch the env and agent would start leaning. There is a propriety control in mainmodel.py which takes input in its terminal as</p>
+<ul>
+<li>&lsquo;p&rsquo;    ==&gt; Pausing/Resuming the training process</li>
+<li>&lsquo;q&rsquo;    ==&gt; Quit the training process , But this makes a Checkpoint as interrupt.p</li>
+<li>&lsquo;ping&rsquo; ==&gt; This pings the pong server 10 times and returns the average time it took to send and receive packets.
+else with a better score of agent, the model is saved continuosly as save.p.</li>
+</ul>
+<h2 id="fast-training">Fast-training</h2>
+<p>I have experimented the whole thing with networking sockets and asynchronous methods limiting the training process to human level speed for which I have uploaded the pong-fast-train.tar.gz</p>
+<pre><code class="language-bash">tar -xvzf pong-fast-train.tar.gz
+cd pong-fast
+python mainmodel.py
+mv save.p ../save.p
+</code></pre>
+<p>So this should train the model and save it into the main directory this should load the trained model in the main algo.</p>
+
+    </div>
+
+    
+
+
+
+
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tag/computer-vision/">Computer Vision</a>
+  
+  <a class="badge badge-light" href="/tag/pygame/">PyGame</a>
+  
+  <a class="badge badge-light" href="/tag/reinforcement-learning/">Reinforcement Learning</a>
+  
+  <a class="badge badge-light" href="/tag/video-game/">Video Game</a>
+  
+</div>
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://hex-plex.github.io/project/pong-reinforcementlearning/&amp;text=Pong%20Reinforcement%20Learning" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://hex-plex.github.io/project/pong-reinforcementlearning/&amp;t=Pong%20Reinforcement%20Learning" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=Pong%20Reinforcement%20Learning&amp;body=https://hex-plex.github.io/project/pong-reinforcementlearning/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://hex-plex.github.io/project/pong-reinforcementlearning/&amp;title=Pong%20Reinforcement%20Learning" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="whatsapp://send?text=Pong%20Reinforcement%20Learning%20https://hex-plex.github.io/project/pong-reinforcementlearning/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://hex-plex.github.io/project/pong-reinforcementlearning/&amp;title=Pong%20Reinforcement%20Learning" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+  
+  
+    
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+      
+      <a href="https://hex-plex.github.io/"><img class="avatar mr-3 avatar-circle" src="/authors/admin/avatar_hu824b6d26f39656c3ab5679fa4cf4eaf0_26342_270x270_fill_q75_lanczos_center.jpeg" alt="Somnath Kumar"></a>
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="https://hex-plex.github.io/">Somnath Kumar</a></h5>
+      <h6 class="card-subtitle">Research Fellow, Microsoft Research India</h6>
+      <p class="card-text">My research interests is interpretable Reinforcement Learning.</p>
+      <ul class="network-icon" aria-hidden="true">
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="/#contact" >
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://github.com/hex-plex" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://www.linkedin.com/in/somnathsenku/" target="_blank" rel="noopener">
+        <i class="fab fa-linkedin"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://scholar.google.com/citations?user=Dz5Ka7YAAAAJ" target="_blank" rel="noopener">
+        <i class="ai ai-google-scholar"></i>
+      </a>
+    </li>
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <div class="article-widget content-widget-hr">
+    <h3>Related</h3>
+    <ul>
+      
+      <li><a href="/project/kilobot-multiagentrl/">KiloBot MultiAgent Reinforcement Learning</a></li>
+      
+      <li><a href="/project/hand-imitation/">Hand Imitation</a></li>
+      
+      <li><a href="/project/model-extraction/">Black Box Model Extraction</a></li>
+      
+      <li><a href="/project/gnn-marl/">Graph Neural Network for Communication in MARL</a></li>
+      
+      <li><a href="/project/multi-agent-coverage/">MultiAgent Full coverage</a></li>
+      
+    </ul>
+  </div>
+  
+
+
+
+
+
+    <div class="project-related-pages content-widget-hr">
+      
+      
+
+      
+      
+      
+
+      
+      
+      
+
+      
+      
+      
+    </div>
+  </div>
+</article>
+  </div>
+
+  <div class="page-footer">
+    
+    
+    <div class="container">
+      <footer class="site-footer">
+  
+
+  <p class="powered-by">
+    © Somnath Sendhil Kumar <code>2024</code>
+  </p>
+
+  
+  
+
+
+
+
+
+
+  <p class="powered-by">
+    
+    
+    
+    Published with
+    <a href="https://wowchemy.com/?utm_campaign=poweredby" target="_blank" rel="noopener">Wowchemy</a>  —
+    the free, <a href="https://github.com/wowchemy/wowchemy-hugo-modules" target="_blank" rel="noopener">
+    open source</a> website builder that empowers creators.
+    
+  </p>
+</footer>
+
+    </div>
+    
+  </div>
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+
+      
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      
+
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/instant.page/5.1.0/instantpage.min.js" integrity="sha512-1+qUtKoh9XZW7j+6LhRMAyOrgSQKenQ4mluTR+cvxXjP1Z54RxZuzstR/H9kgPXQsVB8IW7DMDFUJpzLjvhGSQ==" crossorigin="anonymous"></script>
+
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/highlight.min.js" integrity="sha512-TDKKr+IvoqZnPzc3l35hdjpHD0m+b2EC2SrLEgKDRWpxf2rFCxemkgvJ5kfU48ip+Y+m2XVKyOCD85ybtlZDmw==" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/r.min.js"></script>
+        
+      
+
+    
+
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.js" integrity="sha512-SeiQaaDh73yrb56sTW/RgVdi/mMqNeM2oBwubFHagc5BkixSpP1fvqF47mKzPGWYSSy4RwbBunrJBQ4Co8fRWA==" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+        <div class="search-hit-content">
+          <div class="search-hit-name">
+            <a href="{{relpermalink}}">{{title}}</a>
+            <div class="article-metadata search-hit-type">{{type}}</div>
+            <p class="search-hit-description">{{snippet}}</p>
+          </div>
+        </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+    
+
+    
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+      
+      
+      
+      
+      
+      
+      
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+      
+    
+    
+    <script src="/en/js/wowchemy.min.840ff069a6d25db681d120b4f843b863.js"></script>
+
+    
+
+
+
+
+
+
+</body>
+</html>
