@@ -62,7 +62,14 @@ email: "somnath.sendhilk.eee19@itbhu.ac.in"
 # Highlight the author in author lists? (true/false)
 highlight_name: True
 ---
-I am a Research Fellow at [Microsoft Research](https://www.microsoft.com/en-us/research/lab/microsoft-research-india/) working on alignment and optimization of language models using different Reinforcement learning algorithms. My interests encompasses but not limited to Representation learning and Embodied AI. My research work has been in developing systems and agents which benefit or rely on these algorithms.
+Hi there! I am a Research Fellow at [Microsoft Research](https://www.microsoft.com/en-us/research/lab/microsoft-research-india/) working on alignment and optimization of language models using Reinforcement learning. My interests encompasses but not limited to Representation learning and Embodied AI. My research work has been in developing systems and agents which benefit or rely on these algorithms. I completed my undergrad at Indian Institute of Technology (BHU), Varanasi.
+
+Previuosly, I worked with [Qin Lin](https://qinlincmu.github.io/) and [John Dolan](https://www.ri.cmu.edu/ri-faculty/john-m-dolan/) at [Argo AI Lab](https://labs.ri.cmu.edu/argo-ai-center/) at Robotics Institute, Carnegie Mellon University working on Safe Autonomous Navigation. Prior to which I wirked under [Dr. Shishir Kolathaya](https://shishirny.github.io/), IISc, bangalore at [Stochlab](https://stochlab.github.io/) on Different Reinforcement Learning Algorithm for Quadrupeds.
+
+{{< icon name="download" pack="fas" >}}For more details download my {{< staticref "media/Somnath_CV_dec23.pdf" "newtab" >}}resumé{{< /staticref >}}.
+
+ <!-- Download my  -->
+<!-- I am a Research Fellow at [Microsoft Research](https://www.microsoft.com/en-us/research/lab/microsoft-research-india/) working on alignment and optimization of language models using Reinforcement learning. My interests encompasses but not limited to Representation learning and Embodied AI. My research work has been in developing systems and agents which benefit or rely on these algorithms. I completed my undergrad from Indian Institute of Technology (BHU), Varanasi.
 
 I have joined [John Dolan](https://www.ri.cmu.edu/ri-faculty/john-m-dolan/)'s [Argo AI Lab](https://labs.ri.cmu.edu/argo-ai-center/) at Robotics Institute, Carnegie Mellon University working on Safe Autonomous Navigation.
 
@@ -70,6 +77,5 @@ Actively working under [Dr. Shishir Kolathaya](https://shishirny.github.io/), II
 
 Previsously I worked under [Dr. Pratik Chattopadhyay](https://www.iitbhu.ac.in/dept/cse/people/pratikcse/) developing Generative Adverserial Networks to generate occluded pose in the whole Gait Cycle of a human subject.
 
-Besides Floating point values I like `strings` on my guitar to play a few tunes.
+Besides Floating point values I like `strings` on my guitar to play a few tunes. -->
 
-{{< icon name="download" pack="fas" >}} Download my {{< staticref "media/Somnath_CV_dec23.pdf" "newtab" >}}resumé{{< /staticref >}}.

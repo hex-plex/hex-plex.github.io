@@ -11,11 +11,11 @@ authors:
 - Manojkumar Pamar
 
 
-date: "2022-11-14T00:00:00Z"
+date: "2024-06-22T00:00:00Z"
 doi: ""
 
 # Schedule page publish date (NOT publication's date).
-publishDate: "2017-01-01T00:00:00Z"
+publishDate: "2024-06-22T00:00:00Z"
 
 # Publication type.
 # Legend: 0 = Uncategorized; 1 = Conference paper; 2 = Journal article;
@@ -25,10 +25,9 @@ publication_types: ["1"]
 
 # Publication name and optional abbreviated publication name.
 publication: In *Conference on Computer Vision and Pattern Recognition*
-publication_short: In *CVPR 2023*
+publication_short: In *CVPR 2024*
 
-abstract: Current model extraction attacks have a generator or a synthetic dataset with the objective of maximizing the disagreement between the victim and replica model, in these techniques the generators have very limited success in learning representations for higher dimensional datasets. Another set of algorithms levers a proxy dataset to train a generator to have a similar data distribution, these approaches work only if the dataset is a superset or closely related to the target dataset. Hence making these approaches limited in terms of the domains of the model that can be attacked as well as the higher computational time required for training an additional discriminator. In the current work, we propose a simple generator with the standard objective of maximizing the disagreement between the outputs of the victim and the replica model, with an additional loss for improving visual features of the generated samples using a gram matrix as the objective computed against samples of a hyper class from a proxy dataset which is correlates to the target class of the victim. This assignment of a hyper class is done using Kmeans clustering of the word embedding of the target dataset classes and the proxy dataset classes, this helps in the efficient usage of the proxy dataset while generalizing the approach for different target datasets. In the paper, we show the success of the technique with experiments carried out on the victim model as Movie-Net-A6 (Video Action Classifier) trained and a proxy dataset of Image Net (Image classification) supporting the argument of enhancing the extraction of the model from a cross-modal dataset. We are the first to demonstrate the scalability of the extraction algorithm on Video Classification for datasets with 600 classes. The proposed approach achieves the highest extraction results on video classification models trained on Kinetics-600, Charades, and UCF101 with a reasonable query complexity of 35M, 20M, and 15M respectively. 
-
+abstract: In the domain of black-box model extraction, conventional methods reliant on soft labels or surrogate datasets struggle with scaling to high-dimensional input spaces and managing the complexity of an extensive array of interrelated classes. In this work, we present a novel approach that utilizes SHAP (SHapley Additive exPlanations) to enhance synthetic data generation. SHAP quantifies the individual contributions of each input feature towards the victim model’s output, facilitating the optimization of an energy-based GAN towards a desirable output. This method significantly boosts performance, achieving a 16.45% increase in the accuracy of image classification models and extending to video classification models with an average improvement of 26.11% and a maximum of 33.36% on challenging datasets such as UCF11, UCF101, Kinetics 400, Kinetics 600, and Something-Something V2. We further demonstrate the effectiveness and practical utility of our method under various scenarios, including the availability of top-k prediction probabilities, top-k prediction labels, and top-1 labels
 # Summary. An optional shortened abstract.
 
 tags: []
@@ -53,7 +52,7 @@ url_video: ''
 # Featured image
 # To use, add an image named `featured.jpg/png` to your page's folder. 
 image:
-  caption: 'Image credit: [**Unsplash**](https://unsplash.com/photos/pLCdAaMFLTE)'
+  caption: 'Extraction Pipeline'
   focal_point: ""
   preview_only: false
 

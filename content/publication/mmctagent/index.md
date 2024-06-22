@@ -1,20 +1,21 @@
 ---
-title: "LatentCBF: Control Barrier Definition on Latent Space"
+title: "MMCTAgent: Multi-modal Critical Thinking Agent Framework for Complex Visual Reasoning"
 
 # Authors
 # If you created a profile for a user (e.g. the default `admin` user), write the username (folder name) here 
 # and it will be replaced with their full name and linked to their profile.
 authors:
 - admin
-- Qin Lin
-- John M. Dolan
+- Yash Gadhia
+- Tanuja Ganu
+- Akshay Nambi
 
 
-date: "2023-01-03T00:00:00Z"
+date: "2024-05-22T00:00:00Z"
 doi: ""
 
 # Schedule page publish date (NOT publication's date).
-publishDate: "2017-01-01T00:00:00Z"
+publishDate: "2024-05-22T00:00:00Z"
 
 # Publication type.
 # Legend: 0 = Uncategorized; 1 = Conference paper; 2 = Journal article;
@@ -23,10 +24,10 @@ publishDate: "2017-01-01T00:00:00Z"
 publication_types: ["1"]
 
 # Publication name and optional abbreviated publication name.
-publication: In *Conference on Decision and Control*
-publication_short: In *CDC 2023*
+publication: Preprint
+publication_short: Preprint
 
-abstract: Safe execution of policies is crucial for an autonomous system. A popular choice for safety guarantees is CBF(Control Barrier Function). Traditional control barrier functions rely on explicit knowledge of the system dynamics and constraints. Hence We propose LatentCBF (LCBF), acontrol barrier function definition on the latent space of the agent’s observation. LCBFs exploit the properties of deep neural networks to learn a representation of the system used to construct a barrier function. This function acts as a safety constraint that the control signal must satisfy, regardless ofthe complex system dynamics and uncertainties. By learning this constraint in a latent space, LCBFs have the potential to enable the safe operation of complex systems in a wide range of applications, from autonomous driving to robotics and beyond.
+abstract: Recent advancements in Multi-modal Large Language Models (MLLMs) have significantly improved their performance in tasks combining vision and language. However, challenges persist in detailed multi-modal understanding, comprehension of complex tasks, and reasoning over multi-modal information. This paper introduces MMCTAgent, a novel multi-modal critical thinking agent framework designed to address the inherent limitations of current MLLMs in complex visual reasoning tasks. Inspired by human cognitive processes and critical thinking,MMCTAgent iteratively analyzes multi-modal information, decomposes queries, plans strategies, and dynamically evolves its reasoning. Additionally, MMCTAgentincorporates critical thinking elements such as verification of final answers and self-reflection through a novel approach that defines a vision-based critic and identifiestask-specific evaluation criteria, thereby enhancing its decision-making abilities.Through rigorous evaluations across various image and video understanding benchmarks, we demonstrate that MMCTAgent (with and without the critic) outperforms both foundational MLLMs and other tool-augmented pipelines
 # Summary. An optional shortened abstract.
 
 tags: []
@@ -39,7 +40,7 @@ featured: true
 # - name: Custom Link
 #   url: http://example.org
 
-url_pdf: 'https://hex-plex.github.io/publication/latentcbf'
+url_pdf: 'https://hex-plex.github.io/publication/mmctagent'
 url_code: ''
 url_dataset: ''
 url_poster: ''

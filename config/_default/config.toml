@@ -61,6 +61,10 @@ disableAliases = true  # Disable aliases when `redirects` is added to the `outpu
     startLevel = 2
     endLevel = 3
 
+[security]
+  [security.funcs]
+    getenv = ['^HUGO_', '^WC_']
+
 [imaging]
   resampleFilter = "lanczos"
   quality = 75
