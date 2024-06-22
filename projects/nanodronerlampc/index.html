@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <!-- Head -->
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BBEHWW29ER"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-BBEHWW29ER');
+    </script>
+    
+    <!-- Metadata, OpenGraph and Schema.org -->
+    
+
+    <!-- Standard metadata -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>NanoDrone RL Aided MPC | Somnath  Kumar</title>
+    <meta name="author" content="Somnath  Kumar">
+    <meta name="description" content="Personal website  
+">
+    <meta name="keywords" content="somnath kumar, website, research">
+
+
+    <!-- Bootstrap & MDB -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-DF7Zhf293AJxJNTmh5zhoYYIMs2oXitRfBjY+9L//AY=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/css/mdb.min.css" integrity="sha256-jpjYvU3G3N6nrrBwXJoVEYI/0zw8htfFnhT9ljN3JJw=" crossorigin="anonymous">
+
+    <!-- Fonts & Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.1/css/academicons.min.css" integrity="sha256-i1+4qU2G2860dGGIOJscdC30s9beBXjFfzjWLjBRsBg=" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons">
+
+    <!-- Code Syntax Highlighting -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jwarby/jekyll-pygments-themes@master/github.css" media="" id="highlight_theme_light">
+
+    <!-- Styles -->
+    
+    <link rel="shortcut icon" href="/assets/img/gen_icon.png">
+    
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="canonical" href="http://localhost:4000/projects/nanodronerlampc/">
+    
+    <!-- Dark Mode -->
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jwarby/jekyll-pygments-themes@master/native.css" media="none" id="highlight_theme_dark">
+
+    <script src="/assets/js/theme.js"></script>
+    <script src="/assets/js/dark_mode.js"></script>
+    
+  </head>
+
+  <!-- Body -->
+  <body class="fixed-top-nav sticky-bottom-footer">
+
+    <!-- Header -->
+    <header>
+
+      <!-- Nav Bar -->
+      <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top">
+        <div class="container">
+          <a class="navbar-brand title font-weight-lighter" href="/"><span class="font-weight-bold">Somnath </span>Kumar</a>
+          <!-- Navbar Toggle -->
+          <button class="navbar-toggler collapsed ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar top-bar"></span>
+            <span class="icon-bar middle-bar"></span>
+            <span class="icon-bar bottom-bar"></span>
+          </button>
+
+          <div class="collapse navbar-collapse text-right" id="navbarNav">
+            <ul class="navbar-nav ml-auto flex-nowrap">
+
+              <!-- About -->
+              <li class="nav-item ">
+                <a class="nav-link" href="/">about</a>
+              </li>
+              
+
+              <!-- Other pages -->
+              <li class="nav-item ">
+                <a class="nav-link" href="/publications/">publications</a>
+              </li>
+              <li class="nav-item ">
+                <a class="nav-link" href="/projects/">projects</a>
+              </li>
+
+              <!-- Toogle theme mode -->
+              <li class="toggle-container">
+                <button id="light-toggle" title="Change theme">
+                  <i class="fas fa-moon"></i>
+                  <i class="fas fa-sun"></i>
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Scrolling Progress Bar -->
+      <progress id="progress" value="0">
+        <div class="progress-container">
+          <span class="progress-bar"></span>
+        </div>
+      </progress>
+    </header>
+
+
+    <!-- Content -->
+    <div class="container mt-5">
+      <!-- page.html -->
+        <div class="post">
+
+          <header class="post-header">
+            <h1 class="post-title">NanoDrone RL Aided MPC</h1>
+            <p class="post-description"></p>
+            
+              
+                  <a href="https://github.com/hex-plex/NanoDrone-Hardware/" class="btn" rel="external nofollow noopener" target="_blank">
+                    <i class="fab fa-github"></i> Hardware
+                  </a>
+              
+            
+            <hr>
+            
+              <img src="/assets/img/projects/nanodronerlampc/featured.jpg" alt="NanoDrone RL Aided MPC" class="post-image">
+              
+            
+          </header>
+
+          <article>
+            <h2 id="modding-the-hardware-platform">Modding the hardware platform</h2>
+
+<p>With a simple a simple RC drone with modified <a href="https://github.com/betaflight/betaflight" rel="external nofollow noopener" target="_blank">BetaFlight</a> Firmware to allow mavlink communication and a external companion PC such as Banana pi zero m2 we plan to deploy swarm of these drones in to real world problems.</p>
+
+<p>Our Major targets were,</p>
+<ol>
+  <li>Visual odometry</li>
+  <li>Optimal Controller for tracing trajectory</li>
+  <li>Trajectory optimization for multi agent systems.</li>
+</ol>
+
+<p>We have been able to answer 2 of the above.</p>
+
+<h3 id="visual-odometry">Visual odometry</h3>
+
+<p>We have been able to modify the <a href="http://wiki.ros.org/viso2_ros" rel="external nofollow noopener" target="_blank">Viso2ROS</a> to run with a less number of feature points and with reduced map foot print for easier localization with help of few apriltags, for global coordinates and not using the whole map.
+We also to utilize the MALI GPU of the onboard computer compiled opencv with OpenCL to get a slightly better performance in the framerate of the localization. There is not much more novelty introduced from our end.</p>
+
+<h3 id="optimal-controller---rl-aided-mpc">Optimal controller - RL Aided MPC</h3>
+
+<p>With limited computation, running an onboard MPC with non-linear Dynamics will fail to provide responsive control. Another Famous approach is RL-based controllers, where the feedback is a learned approximation of an expert demonstration from something like an MPC. But these policies are many layers deep and make it difficult to run in constrained hardware. Shallower policies tend to approximate the dynamics a lot and learn a sub-optimal policy that fails to work in many scenarios that are not desirable in multi-agent systems.</p>
+
+<p>Hence I propose use of a small RL policies output as the hot solution to the MPC. Conceptually its a very simple task but this requires a responsive pipeline for being able to execute at a desired Rate. Below is our pipeline in Simulation and in Hardware.</p>
+
+<p><img src="/assets/img/projects/nanodronerlampc/pipeline.png"></p>
+
+<p>I have used the <a href="https://github.com/utiasDSL/gym-pybullet-drones" rel="external nofollow noopener" target="_blank">gym-pybullet-drones</a>, as the base environment for our drone. We have imported our designs into the environment, Along with parameters for the drone like Air Drag coefficients.</p>
+
+<p>For the MPC I have used the mpc.pytorch library from locuslab. As this uses pytorch backend for computation and optimization. This increased the efficiency and drastically decreased train time from 2 hrs to 45 mins.</p>
+
+<p align="center">
+<img src="/assets/img/projects/nanodronerlampc/mpc_pytorch.png">
+</p>
+
+<p>For the training I implemented a simple 3 layer deep policy implemented using Pytorch and I used simple Policy Gradient algorithm, I trained using Ray Library with multiple workers while extending the dimension of the control of the MPC for optimizing the Training Loop.</p>
+
+<p>We have tried using both the linear and the non-linear dynamics of the MPC, we resorted on using the linear dynamics along with RL for better deployment keeping the hardware limitation in mind</p>
+
+<h4 id="reward">Reward</h4>
+<p>We have used a simple curriculum of running the RL based estimations of the optimal force values for each properllers. 
+As a low level PID controller is running for maintaining the altitude altitude, our main goal was to learn the force value estimation directly from a expert policy like the mpc, and later we could work on how the RL algorithm would optimize hot solutions than estimating better optimal control inputs. This is a key difference as here it would not have to model higher non-linearity of the horizon while optimizing the hot solution to the MPC.</p>
+
+<p>Later in the curriculum we add and extra term for decreasing the number of iterations taken to converge by an MPC. This reward is given from the MPC node and is just taken along side the state reward given from the environment.</p>
+
+<p>Hence our net Reward is as follows</p>
+
+<p><a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&amp;space;\bg_white&amp;space;\large&amp;space;R&amp;space;=&amp;space;\alpha_1|\ddot{x}|&amp;space;&amp;plus;&amp;space;\alpha_2|x-x_{des}|&amp;space;&amp;plus;&amp;space;\alpha_3|u|&amp;space;&amp;plus;&amp;space;\alpha_4\omega^2&amp;space;&amp;plus;\alpha_5(\dot{x}-\dot{x}_{des})^2&amp;space;&amp;plus;&amp;space;\kappa&amp;space;t_{conv}" target="_blank" rel="external nofollow noopener"><img src="https://latex.codecogs.com/png.latex?\dpi{150}&amp;space;\bg_white&amp;space;\large&amp;space;R&amp;space;=&amp;space;\alpha_1|\ddot{x}|&amp;space;&amp;plus;&amp;space;\alpha_2|x-x_{des}|&amp;space;&amp;plus;&amp;space;\alpha_3|u|&amp;space;&amp;plus;&amp;space;\alpha_4\omega^2&amp;space;&amp;plus;\alpha_5(\dot{x}-\dot{x}_{des})^2&amp;space;&amp;plus;&amp;space;\kappa&amp;space;t_{conv}" title="\large R = \alpha_1|\ddot{x}| + \alpha_2|x-x_{des}| + \alpha_3|u| + \alpha_4\omega^2 +\alpha_5(\dot{x}-\dot{x}_{des})^2 + \kappa t_{conv}"></a></p>
+
+<h4 id="results">Results</h4>
+<p>After training for 8000 episodes we reach a decent point with high enough reward and good amount of speculation to use our Policy with current Architecture. Below is the demonstration of the robot trying to trace a figure 8 using the current Control architecture.</p>
+
+<p align="center">
+<img src="/assets/img/projects/nanodronerlampc/Drone_RLAMPC.gif"><i>tracing the figure 8 while running at 70 Hz</i>
+</p>
+
+<p>As it can be seen this is able to trace the given trajectory. Below is the example of the Optimization the MPC provides over the RL Estimations</p>
+<p align="center">
+<img src="/assets/img/projects/nanodronerlampc/RL_estimated.png">
+<i>Policy Estimations for significant angles of Rolls and Pitches</i>
+
+<img src="/assets/img/projects/nanodronerlampc/MPC_optimized.png">
+<i>MPC based optimization reducing the Unsafe values of the Thrusts for smoother long horizon performance</i>
+</p>
+
+<p>A more analytic study shows the improvement in performance by the need of steps to converge the optimization and the rate of diverge or failure in optimizing the policy within the limit.</p>
+
+<p><img src="/assets/img/projects/nanodronerlampc/mpc_conv.png"></p>
+
+<p>For feasible run time of the MPC we use a threshold of optimal 5 iterations and maximum of 10 iterations would allow use to run the Pipeline on our desired system. Here we are optimizing the trajectories within a certain amount of cost which are experimented for suiting both performance and efficiency.</p>
+
+<p>As can be seen from the curve performance of Pipeline increases continuing to train it further hence a proportional correlation confirms the proof of concept.</p>
+<p align="center">
+<img src="/assets/img/projects/nanodronerlampc/mpc_fail.png" align="left" width="60%" style="padding-right: 20px"><img src="/assets/img/projects/nanodronerlampc/mpc_fail_log.png" align="right" width="60%" style="padding-left: 10px">
+</p>
+
+<p>The second metrics we are using the rate of failures in either not being able to find a solution or not converging before the 10 iterations threshold, as we have used the approximated linear dynamics of the Drone we are entitled to diverge in prediction of the future states and hence give an sub optimal response, We see this is also improved with the current architecture and is able to robustly work in a bigger configuration space.</p>
+
+<p>Given the improvement of the performance against only MPC based control makes it a very good fit for our application. Currently hardware code structured would have to finalized as we would have to make utilize most of all the onboard computation for both the RL policy forward propagation and the MPC optimization. Hence we are working on modifing <a href="https://github.com/ethz-asl/mav_control_rw" rel="external nofollow noopener" target="_blank">Mav_Control_RW</a> for our needs to use a betaflight firmware as the lowlevel controller and communicated through MavLink.</p>
+
+<h2 id="future-works">Future works</h2>
+<p>We are currently working on implementing the hardware pipline for feasible hardware results. And constantly estimating optimal parameters to run the pipe line with.</p>
+
+<p>As Specified in the start of the post we are also trying to solve the problem of trajectory optimization of Multi-Agent systems for which we would be more than happy to collaborate or hear from you.</p>
+
+          </article>
+
+        </div>
+
+    </div>
+
+    <!-- Footer -->    <footer class="sticky-bottom mt-5">
+      <div class="container">
+        © Copyright 2024 Somnath  Kumar. Powered by <a href="https://jekyllrb.com/" target="_blank" rel="external nofollow noopener">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio" rel="external nofollow noopener" target="_blank">al-folio</a> theme.
+
+      </div>
+    </footer>
+
+    <!-- JavaScripts -->
+    <!-- jQuery -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+    <!-- Bootsrap & MDB scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha256-fgLAgv7fyCGopR/gBNq2iW3ZKIdqIcyshnUULC4vex8=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/js/mdb.min.js" integrity="sha256-NdbiivsvWt7VYCt6hYNT3h/th9vSTL4EDWeGs5SN3DA=" crossorigin="anonymous"></script>
+
+    <!-- Masonry & imagesLoaded -->
+  <script defer src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha256-Nn1q/fx0H7SNLZMQ5Hw5JLaTRZp0yILA/FRexe19VdI=" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
+  <script defer src="/assets/js/masonry.js" type="text/javascript"></script>
+    
+  <!-- Medium Zoom JS -->
+  <script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js" integrity="sha256-EdPgYcPk/IIrw7FYeuJQexva49pVRZNmt3LculEr7zM=" crossorigin="anonymous"></script>
+  <script defer src="/assets/js/zoom.js"></script><!-- Load Common JS -->
+  <script defer src="/assets/js/common.js"></script>
+
+    <!-- MathJax -->
+  <script type="text/javascript">
+    window.MathJax = {
+      tex: {
+        tags: 'ams'
+      }
+    };
+  </script>
+  <script defer type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js"></script>
+  <script defer src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+
+    
+    
+
+<!-- Scrolling Progress Bar -->
+<script type="text/javascript">
+  /*
+   * This JavaScript code has been adapted from the article 
+   * https://css-tricks.com/reading-position-indicator/ authored by Pankaj Parashar, 
+   * published on the website https://css-tricks.com on the 7th of May, 2014.
+   * Couple of changes were made to the original code to make it compatible 
+   * with the `al-foio` theme.
+   */
+  const progressBar = $("#progress");
+  /*
+   * We set up the bar after all elements are done loading.
+   * In some cases, if the images in the page are larger than the intended
+   * size they'll have on the page, they'll be resized via CSS to accomodate
+   * the desired size. This mistake, however, breaks the computations as the
+   * scroll size is computed as soon as the elements finish loading.
+   * To account for this, a minimal delay was introduced before computing the
+   * values.
+   */
+  window.onload = function () {
+    setTimeout(progressBarSetup, 50);
+  };
+  /*
+   * We set up the bar according to the browser.
+   * If the browser supports the progress element we use that.
+   * Otherwise, we resize the bar thru CSS styling
+   */
+  function progressBarSetup() {
+    if ("max" in document.createElement("progress")) {
+      initializeProgressElement();
+      $(document).on("scroll", function() {
+        progressBar.attr({ value: getCurrentScrollPosition() });
+      });
+      $(window).on("resize", initializeProgressElement);
+    } else {
+      resizeProgressBar();
+      $(document).on("scroll", resizeProgressBar);
+      $(window).on("resize", resizeProgressBar);
+    }
+  }
+  /*
+   * The vertical scroll position is the same as the number of pixels that
+   * are hidden from view above the scrollable area. Thus, a value > 0 is
+   * how much the user has scrolled from the top
+   */
+  function getCurrentScrollPosition() {
+    return $(window).scrollTop();
+  }
+
+  function initializeProgressElement() {
+    let navbarHeight = $("#navbar").outerHeight(true);
+    $("body").css({ "padding-top": navbarHeight });
+    $("progress-container").css({ "padding-top": navbarHeight });
+    progressBar.css({ top: navbarHeight });
+    progressBar.attr({
+      max: getDistanceToScroll(),
+      value: getCurrentScrollPosition(),
+    });
+  }
+  /*
+   * The offset between the html document height and the browser viewport
+   * height will be greater than zero if vertical scroll is possible.
+   * This is the distance the user can scroll
+   */
+  function getDistanceToScroll() {
+    return $(document).height() - $(window).height();
+  }
+
+  function resizeProgressBar() {
+    progressBar.css({ width: getWidthPercentage() + "%" });
+  }
+  // The scroll ratio equals the percentage to resize the bar
+  function getWidthPercentage() {
+    return (getCurrentScrollPosition() / getDistanceToScroll()) * 100;
+  }
+</script>
+
+  </body>
+</html>
