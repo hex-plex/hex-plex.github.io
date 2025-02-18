@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body>
+<p>This post is a collection of Optimal Control algorithm that I either implemented or Integrated with the quadruped ‘Stochlite’ at Stochlab, IISc. These are implemented in ROS so that we can deploy them directly on the hardware. My major contribution was to integrate these well established optimal control algorithms with the ROS framework of the Quadruped.</p>
+
+<p>Majority of the Optimal control do not have significant difference in performance in Hardware as I was unable to test them in many scenarios through the simulators.</p>
+
+<h2 id="model-predictive-control">Model Predictive Control</h2>
+<p>Inspired from <a href="#1">[1]</a> implemented the convex mpc for the quadruped. along with <a href="#2">[2]</a> a whole body impulse Controller which will help to trace the estimated foot forces estimated from the Controller. While the MPC uses an approximate Linear model of the quadruped. The whole body impulse controller considers the Floating base dynamics of the robot, while the MPC uses the Single Rigid body Dynamics. I also implemented a modified version of the State Estimator for the quadruped need for the Algorithms</p>
+
+<p align="center">
+<img src="stochlite_mpc.gif">
+<i>Estimated Foot forces from the MPC</i>
+</p>
+
+<h3 id="output">Output</h3>
+<p>Below are a few clips where the MPC stablizes the torso and attains a</p>
+<p align="center">
+<img src="stochlite_convmpc_hill.gif">
+<i>Using the MPC on the Hilly terrain, with no prior knowledge of the terrain</i>
+</p>
+
+<p align="center">
+<img src="stochlite_convmpc_rough.gif">
+<i>Using the MPC and WBiC on Rough terrain, with no prior knowledge of the terrain</i>
+</p>
+
+<p>As it can be seen from the above output the quadruped stablizes itself instantaniously as it has no prior knowledge like an heightmap of the world.</p>
+
+<h2 id="trajectory-optimization">Trajectory optimization</h2>
+<p>We have used TOWR<a href="#3">[3]</a> for trajectory optimization, Below is the output from the towr gui, for the quadruped.</p>
+
+<p align="center">
+<img src="stochlite_towr.gif">
+<i>Stochlite in TOWR</i>
+</p>
+
+<p>As seen in the above output towr is able to produce feasible trajectories of foot positions and forces for the quadruped in differnt terrains.</p>
+
+<p>Integrating towr would require a heightmap of the world which would need an online 3D Mapping of the world using a depth camera which currently was not available on the platform hence limiting the developing towards it.</p>
+
+<p>But later I integrate towr, only for Flat ground and ran it at 4 Hz for updating the optimal foot positions. As the rate is too slow and the difference between the state at the start of the optimization and current would be drastically different, I implemented towr to run parallely with estimation of the current state of the robot based on the control input of the previous optimized solution and the dynamics model of the robot solved to fetch the state at a future timestep.</p>
+
+<h2 id="reinforcement-learning">Reinforcement Learning</h2>
+
+<p>We are further working towards improving the performance of these algorithm by using Reinforcement Learning with formulations to work along side these algorithms and also in tandom with these algorithm.</p>
+
+<h2 id="references">References</h2>
+
+<p><a id="1">[1]</a><strong>Dynamic Locomotion in the MIT Cheetah 3 Through Convex Model-Predictive Control</strong>, DOI: 10.1109/IROS.2018.8594448, Jared Di Carlo, Patrick Wensing, Benjamin Katz, Sangbae Kim</p>
+
+<p><a id="2">[2]</a><strong>Highly Dynamic Quadruped Locomotion via Whole-Body Impulse Control and Model Predictive Control</strong>, Donghyun Kim, Jared Di Carlo, Benjamin Katz, Gerado Bledt, Sangbae Kim</p>
+
+<p><a id="3">[3]</a><strong>Gait and Trajectory Optimization for Legged Systems Through Phase-Based End-Effector Parameterization</strong>, Alexander W. Winkler, C. Dario Bellicoso, Marco Hutter, jonas Buchli</p>
+</body></html>

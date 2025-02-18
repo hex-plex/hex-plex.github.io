@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body>
+<p>This is an implementation of Communication in MARL using Graph Neural Network. This is been trained and tested on <a href="https://github.com/deepmind/pysc2" rel="external nofollow noopener" target="_blank">StarCraft II</a>, And this has shown improved training and performance metrics throughout all the maps. I have implemented this on top of <a href="https://github.com/oxwhirl/pymarl" rel="external nofollow noopener" target="_blank">PyMARL</a> for easier comparative study with respect to other algorithms or implementations like <a href="https://github.com/uoe-agents/epymarl" rel="external nofollow noopener" target="_blank">ePyMARL</a>.</p>
+
+<p>Currently we have the following algorithms for training.</p>
+<ul>
+  <li><a href="https://arxiv.org/abs/1803.11485" rel="external nofollow noopener" target="_blank"><strong>QMIX</strong>: QMIX: Monotonic Value Function Factorisation for Deep Multi-Agent Reinforcement Learning</a></li>
+  <li><a href="https://arxiv.org/abs/1705.08926" rel="external nofollow noopener" target="_blank"><strong>COMA</strong>: Counterfactual Multi-Agent Policy Gradients</a></li>
+  <li><a href="https://arxiv.org/abs/1706.05296" rel="external nofollow noopener" target="_blank"><strong>VDN</strong>: Value-Decomposition Networks For Cooperative Multi-Agent Learning</a></li>
+  <li><a href="https://arxiv.org/abs/1511.08779" rel="external nofollow noopener" target="_blank"><strong>IQL</strong>: Independent Q-Learning</a></li>
+  <li><a href="https://arxiv.org/abs/1905.05408" rel="external nofollow noopener" target="_blank"><strong>QTRAN</strong>: QTRAN: Learning to Factorize with Transformation for Cooperative Multi-Agent Reinforcement Learning</a></li>
+</ul>
+
+<p>For communication we have used to different Architecures</p>
+
+<ul>
+  <li><a href="https://arxiv.org/abs/1609.02907" rel="external nofollow noopener" target="_blank"><strong>GConv</strong>: Graph Convolutional Network</a></li>
+  <li><a href="https://arxiv.org/abs/1710.10903" rel="external nofollow noopener" target="_blank"><strong>GAT</strong>: Graph Attention Network</a></li>
+</ul>
+
+<h3 id="graph-neural-network">Graph Neural Network.</h3>
+
+<p>More Information about the architecture and the execution can be found at <a href="https://hex-plex.github.io/project/gnn-marl/" rel="external nofollow noopener" target="_blank">MultiAgent GNN</a>
+A brief outline would be as follows</p>
+
+<p align="center">
+<img src="gnn.png">
+<i>Pipeline for communication using Graph Neural Network</i>
+</p>
+
+<p>The implementation is written in PyTorch and uses a modified version of <a href="https://github.com/oxwhirl/smac" rel="external nofollow noopener" target="_blank">SMAC</a> which could be found in <a href="/smac-py/">smac-py</a> to include the adjacency matrix as the observation more detail on it can be found <a href="#adjacency-matrix">here</a>.</p>
+
+<p>For a glimpse of the algorithm in action checkout the <a href="#output"><strong>Output</strong></a> section</p>
+
+<h2 id="adjacency-matrix">Adjacency Matrix</h2>
+
+<p>An adjacency matrix simply represents the vertices of the graph. For the current problem we have used a few heuristics for joining two nodes with a vertex. They are as below</p>
+<ul>
+  <li>
+<strong>Communication distance</strong> : - Even though their is no restriction in communication having local communication improves cooperation in shared tasks</li>
+  <li>
+<strong>Unit Type</strong> : - Many task benefit from similar units perfoming certain part of the task than other other units cooperating with each other.</li>
+</ul>
+
+<h2 id="output">Output</h2>
+<p>This is a demo output from the policy whose stats are given above
+<img src="https://raw.githubusercontent.com/hex-plex/GNN-MARL/master/media/output.gif" alt=""></p>
+
+<h2 id="results">Results</h2>
+
+<p>Below are the training and test metric of the presented algorithm with <strong>QMIX</strong> on map 2s3z. The study is limited to the number of experiments due to limitation in computation at the disposal. The presented algorithm does support parallel envs and boosting the process of training. This would be tested soon</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Train</th>
+      <th>–</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Battle win percentage</td>
+      <td>Average Return</td>
+    </tr>
+    <tr>
+      <td><img src="https://raw.githubusercontent.com/hex-plex/GNN-MARL/master/media/train_battle_win_percentage.png" alt=""></td>
+      <td><img src="https://raw.githubusercontent.com/hex-plex/GNN-MARL/master/media/train_return_mean.png" alt=""></td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+    <tr>
+      <th>Test</th>
+      <th>–</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Battle win percentage</td>
+      <td>Average Return</td>
+    </tr>
+    <tr>
+      <td><img src="https://raw.githubusercontent.com/hex-plex/GNN-MARL/master/media/test_battle_win_percentage.png" alt=""></td>
+      <td><img src="https://raw.githubusercontent.com/hex-plex/GNN-MARL/master/media/test_return_mean.png" alt=""></td>
+    </tr>
+  </tbody>
+</table>
+</body></html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body>
+<h1 id="zeroxqa--few-shot-learning-for-qa-tasks">zeroxQA : Few shot learning for QA tasks</h1>
+
+<p>A simple QA task here is defined as a Comprehensive reading task. Where a paragraph is given containing information about a domain. Along with it A question is given which can be answered using the paragraph and the supervision of starting and ending indexes in the paragraph corresponding for that question. A state of the art approach for such a problem is employing a transformer while masking the question and using two classification heads on top of the transformers for predicting start and stop indicies.</p>
+
+<p><img src="reader.png" alt="Reader"></p>
+
+<p>The major constrains and challenges we faced are below:</p>
+<ul>
+  <li>To have model with very low inference time.</li>
+  <li>To Generalize model over extremely unrelated domains.</li>
+</ul>
+
+<p>Hence we employ a Meta Learning based training framework for training a shallow transformer model to generalize in outdomain queries while still offering faster convergence on outdomain targets.</p>
+
+<p><img src="meta_learning.png" alt=""></p>
+
+<p>Hence the above is the proposed framework along with <a href="https://huggingface.co/mrm8488/bert-mini-5-finetuned-squadv2" rel="external nofollow noopener" target="_blank">Bert-Mini-5</a>. For individual domains the meta model is later fine tuned for inference.</p>
+
+<h2 id="usage">Usage</h2>
+
+<h3 id="preparing-dataset">Preparing Dataset</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>python preprocess_csv_theme.py <span class="nt">--data-csv</span><span class="o">=</span>train_data.csv
+<span class="nv">$ </span>python synthetic_gen.py <span class="nt">--input_dir</span><span class="o">=</span>datasets/train_data.csv <span class="nt">--ner_limit</span><span class="o">=</span>2 <span class="nt">--use_qa_data</span><span class="o">=</span>sample_question_answers.csv
+</code></pre></div></div>
+<p>This preprocesses the whole dataset into different shards of datasets for different domains. Then synthetically generates question and answer pairs for unannoted paragraphs for improving indomain queries.</p>
+
+<h3 id="training">Training</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>python meta_train.py <span class="nt">--run-name</span> meta_baseline <span class="nt">--do-train</span> <span class="nt">--lr</span><span class="o">=</span>1e-4 <span class="nt">--meta-lr</span><span class="o">=</span>5e-3 <span class="nt">--meta-epochs</span><span class="o">=</span>10000
+<span class="nv">$ </span>python finetune.py
+</code></pre></div></div>
+
+<p>The First command trains a meta model using MAML for the in domain targets and the code is parallized for training individual models on individual in domain set. The second command fine tunes the meta model on a outdomain query using synthetically generated dataset using the paragraphs for the outdomain queries.</p>
+
+<h3 id="quantization">Quantization</h3>
+<p>we performed model quantization and graph optimization using ONNX to compare the runtime optimization on two models namely small-Electra and mini5-BERT as shown in the figure.Using ONNX runtime optimizations, mini5-BERT only took 120 milliseconds and small-Electra took only 140 milliseconds. We observed that mini5-BERT offered us the best tradeoff between speed and accuracy.</p>
+
+<h4 id="model-quantization">Model Quantization</h4>
+<ul>
+  <li>Converts 32-bit floating point tensors and operations in the model to 8-bit integer values.</li>
+  <li>A quantized model executes some/all of operations on tensors with reduced precision rather than full precision 32-bit floating point values.</li>
+  <li>Allows for a compact model representation and the use of high performance vectorized operations.</li>
+  <li>We used ORTQuantizer module of ONNX(Open Neural Network eXchange) module of Optimum Library.</li>
+</ul>
+
+<h4 id="graph-optimization">Graph Optimization</h4>
+<ul>
+  <li>Semantics-preserving graph rewrites which remove redundant nodes and redundant computation by pruning the computational graph of the model.</li>
+  <li>These opimizations also include fusion of nodes and constant folding.</li>
+</ul>
+
+<h2 id="results">Results</h2>
+
+<p>One can observe the improvement due to meta learnt model on outdomain queries.
+<img src="plot.png" alt=""></p>
+
+<p>The Improvement for quantizing the model can be observed with the the distribution of average inference time for different settings.</p>
+
+<p><img src="mini5.png" alt="">
+<img src="mini55.png" alt=""></p>
+
+</body></html>

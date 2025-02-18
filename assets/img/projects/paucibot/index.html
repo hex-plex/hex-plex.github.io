@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body>
+<h2 id="abstract">Abstract</h2>
+<p>This Repository contains the hardware designs of the Two Wheeled ROS enabled robot capable of self - balancing and also able to run SLAM and Localize itself with just Odometry, Encoders on the wheel and the Camera used with Depth Maps<a href="#1">[1]</a> to get a partially accurate Depth information of the surronding. This is partially inspired from the Turtlebot<a href="#2">[2]</a> but it must be kept in mind the algorithm has be able to model the two wheeled bot to even account for its self balancing action which was solved using accurate System Modelling<a href="#3">[3]</a>.</p>
+
+<p><img src="https://raw.githubusercontent.com/hex-plex/PauciBot-Hardware/master/images/Paucibot.jpg" alt="Bot in all its glory"></p>
+
+<h2 id="design">Design</h2>
+<p>The above is the bot in all its glory, I had built The Hardware before running simulations and testing out its stability as its quite an symmetrical and simple design. This surely resembles turtlebot but has a few changes. Basically the idea was to have a worthy replacement for a turtlebot to test out all the mapping and planning algorithms on it.</p>
+
+<p><br></p>
+
+<p>After the construction it was quite easy to make a 3D design for the simulators. My Weapon of choice Phobos<a href="#4">[4]</a> and <a href="https://www.blender.org/" rel="external nofollow noopener" target="_blank">Blender</a>.</p>
+
+<p>Below is a simple design of the bot in blender.</p>
+
+<p><img src="https://raw.githubusercontent.com/hex-plex/PauciBot-Hardware/master/images/Blender_Modelling.png" alt="Blender Design"></p>
+
+<p>With some Phobos magics <img class="emoji" title=":tada:" alt=":tada:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f389.png" height="20" width="20"><img class="emoji" title=":tada:" alt=":tada:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f389.png" height="20" width="20"></p>
+
+<p><img src="https://raw.githubusercontent.com/hex-plex/PauciBot-Hardware/master/images/URDF_generation.png" alt="Phobos"></p>
+
+<p>We can set the parameters required for generating URDF of the bot.</p>
+
+<p>Exporting it just makes the work run naturally with Gazebo, PyBullet and any other Simulator of choice. The below is a simple <strong>PID control on the Pitch</strong> of the Bot.</p>
+
+<p><img src="https://raw.githubusercontent.com/hex-plex/PauciBot-Hardware/master/images/PyBullet-PID.png" alt="PyBullet PID"></p>
+
+<p>You can get the same output running the following in the terminal.</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/hex-plex/PauciBot-Hardware.git
+<span class="nb">cd </span>PauciBot-Hardware
+python scripts/trial.py
+</code></pre></div></div>
+
+<h2 id="under-development">Under-Development</h2>
+<p>The Main objective was that I wanted to explore the Difficulties faced when taking the Project from simulation to reality and vice versa. The Main tool is <strong>ROS</strong> as its a well established community with most useful tools opensourced for all. Hence I would like to release The bot with a ROS package. I have been currently working on the same for the past few months.</p>
+
+<p>Hope to see you there soon. : )</p>
+
+<h2 id="components">Components</h2>
+<p>The whole body is made of Ply wood and solid wood. And the wheels are just off the shelf RC car wheels with a 11.1 V LiPo battery.</p>
+<ul>
+  <li>
+    <h4 id="arduino-mega-2560">Arduino Mega 2560</h4>
+    <p>I have used this for controlling the motor drivers and getting a Odometry and runnning a baseline self balancing algorithm.</p>
+  </li>
+  <li>
+    <h4 id="nvidia-jetson-nano-4gb">Nvidia Jetson Nano 4GB</h4>
+    <p>This is the ROS hardware Node on the Robot which communicates to a master on the localhost using UDP protocol. This is also used to give the neccesary computational power for onboard Computer Vision algorithms.
+<img src="https://raw.githubusercontent.com/hex-plex/PauciBot-Hardware/master/images/Jetson.jpg" alt="Jetson"></p>
+  </li>
+  <li>
+    <h4 id="mpu9250">MPU9250</h4>
+    <p>Simple sensor for Odometry.</p>
+  </li>
+  <li>
+    <h4 id="l298-motor-driver">L298 Motor Driver</h4>
+    <p>Motor driver for controlling 2 Motors</p>
+  </li>
+  <li>
+    <h4 id="lm2596s-buck">LM2596S Buck</h4>
+    <p>For regulating voltage comming from the battery.</p>
+  </li>
+  <li>
+    <h4 id="logitech-c290">Logitech C290</h4>
+    <p>This is a high quality webcam that can be easily used for capturing images at incredibly high resolution and quality.
+<img src="https://raw.githubusercontent.com/hex-plex/PauciBot-Hardware/master/images/Logi_C290.jpg" alt="Camera"></p>
+  </li>
+</ul>
+
+<h2 id="references">References</h2>
+<p><a id="1">[1]</a> Unsupervised Learning of Depth and Ego-Motion from Monocular Video Using 3D Geometric Constraints. Reza Mahjourian, Martin Wicke, Anelia Angelova <a href="https://sites.google.com/view/vid2depth" rel="external nofollow noopener" target="_blank">[link]</a></p>
+
+<p><a id="2">[2]</a> Turtlebot is a ROS standard platform robot. <a href="https://emanual.robotis.com/docs/en/platform/turtlebot3/overview/" rel="external nofollow noopener" target="_blank">[link]</a></p>
+
+<p><a id="3">[3]</a>
+A Tutorial on Modelling and Control of Two- Wheeled Self-Balancing Robot with Stepper Motor <a href="https://www.researchgate.net/publication/334731253_A_Tutorial_on_Modelling_and_Control_of_Two-_Wheeled_Self-Balancing_Robot_with_Stepper_Motor" rel="external nofollow noopener" target="_blank">[link]</a></p>
+
+<p><a id="4">[4]</a> Phobos is an add-on for Blender. <a href="https://github.com/dfki-ric/phobos" rel="external nofollow noopener" target="_blank">[link]</a></p>
+</body></html>

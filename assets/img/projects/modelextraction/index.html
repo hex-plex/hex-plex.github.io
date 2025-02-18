@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body>
+<p>Please go through the slides linked above or watch through our presentation below.</p>
+
+<iframe src="https://drive.google.com/file/d/1l75HNPUfXPEQmIOUbBsiiD6kHIoHM8gi/preview?t=2823&amp;end=3080" width="720" height="405"></iframe>
+
+<h2 id="end-to-end-approach">End to End Approach</h2>
+
+<p><img src="https://raw.githubusercontent.com/COPS-IITBHU/Model-Extraction-Attacks-Video-Classification/master/media/end_to_end.png" alt=""></p>
+
+<h2 id="installation">Installation</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>pip <span class="nb">install </span>vidmodex <span class="c">## Stable version</span>
+<span class="nv">$ </span>pip <span class="nb">install </span>git+https://github.com/hex-plex/Model-Extraction-Attacks-Video-Classification <span class="c">## Latest development</span>
+</code></pre></div></div>
+
+<h2 id="usage">Usage</h2>
+<p>Simple snippet explaining the usage :</p>
+
+<h3 id="blackbox-extraction">BlackBox Extraction</h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Black Box Victim: SwinT, Student: ViViT, Generator: Tgan
+</span>
+<span class="kn">from</span> <span class="n">vidmodex.models</span> <span class="kn">import</span> <span class="n">ViViT</span> <span class="k">as</span> <span class="n">Student</span>
+<span class="kn">from</span> <span class="n">vidmodex.models</span> <span class="kn">import</span> <span class="n">SwinT</span> <span class="k">as</span> <span class="n">Victim</span>
+<span class="kn">from</span> <span class="n">vidmodex.generator</span> <span class="kn">import</span> <span class="n">Tgan</span> <span class="k">as</span> <span class="n">Generator</span>
+
+<span class="n">custom_config</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">custom_config</span><span class="p">[</span><span class="sh">"</span><span class="s">num_classes</span><span class="sh">"</span><span class="p">]</span> <span class="o">=</span> <span class="mi">400</span>
+
+<span class="nf">blackbox_main</span><span class="p">(</span><span class="n">custom_config</span><span class="p">)</span>
+</code></pre></div></div>
+<h3 id="greybox-extraction">GreyBox Extraction</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Grey Box Victim: SwinT, Student: ViViT, Generator: Tgan, Dataset: Kinetics 400
+</span>
+<span class="kn">from</span> <span class="n">vidmodex.models</span> <span class="kn">import</span> <span class="n">ViViT</span> <span class="k">as</span> <span class="n">Student</span>
+<span class="kn">from</span> <span class="n">vidmodex.models</span> <span class="kn">import</span> <span class="n">SwinT</span> <span class="k">as</span> <span class="n">Victim</span>
+<span class="kn">from</span> <span class="n">vidmodex.generator</span> <span class="kn">import</span> <span class="n">Tgan</span> <span class="k">as</span> <span class="n">Generator</span>
+
+<span class="n">custom_config</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">custom_config</span><span class="p">[</span><span class="sh">"</span><span class="s">csv_file</span><span class="sh">"</span><span class="p">]</span> <span class="o">=</span> <span class="sh">"</span><span class="s">ENTER-THE-LOCATION-OF-DATA-CSV</span><span class="sh">"</span>
+<span class="n">custom_config</span><span class="p">[</span><span class="sh">"</span><span class="s">root_dir</span><span class="sh">"</span><span class="p">]</span> <span class="o">=</span> <span class="sh">"</span><span class="s">ENTER-THE-LOCATION-OF-DATA-ROOT</span><span class="sh">"</span>
+<span class="n">custom_config</span><span class="p">[</span><span class="sh">"</span><span class="s">ucf_gan_weights</span><span class="sh">"</span><span class="p">]</span> <span class="o">=</span> <span class="sh">"</span><span class="s">ENTER-THE-LOCATION-OF-UCF-WEIGHTS</span><span class="sh">"</span> <span class="ow">or</span> <span class="sh">"</span><span class="s">state_normal81000.ckpt</span><span class="sh">"</span>
+<span class="n">custom_config</span><span class="p">[</span><span class="sh">"</span><span class="s">num_classes</span><span class="sh">"</span><span class="p">]</span> <span class="o">=</span> <span class="mi">400</span>
+
+<span class="nf">greybox_main</span><span class="p">(</span><span class="n">custom_config</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h2 id="references">References</h2>
+
+<p><a href="#1">[1]</a> <strong>ViViT: A Video Vision Transformer</strong> [https://arxiv.org/abs/2103.15691] [cs.CV] 1 Nov 2021</p>
+
+<p><a href="#2">[2]</a> <strong>MoViNets: Mobile Video Networks for Efficient Video Recognition</strong> [https://arxiv.org/abs/2103.11511] [cs.CV] 18 Apr 2021</p>
+
+<p><a href="#3">[3]</a> <strong>Swin Transformer: Hierarchical Vision Transformer using Shifted Windows</strong> [https://arxiv.org/abs/2103.14030] [cs.CV] 17 Aug 2021</p>
+
+<p><a href="#4">[4]</a> <strong>Temporal Generative Adversarial Nets with Singular Value Clipping</strong> [https://arxiv.org/abs/1611.06624] [cs.LG] 18 Aug 2017</p>
+
+<p><a href="#5">[5]</a> <strong>Data-Free Model Extraction</strong> [https://arxiv.org/abs/2011.14779] [cs.LG] 31 Mar 2021</p>
+
+<p><a href="#6">[6]</a> <strong>MAZE: Data-Free Model Stealing Attack Using Zeroth-Order Gradient Estimation</strong> [https://arxiv.org/abs/2005.03161] [stat.ML] 6 May 2020</p>
+
+<p><a href="#7">[7]</a> <strong>Robustness and Diversity Seeking Data-Free Knowledge Distillation</strong> [https://arxiv.org/abs/2011.03749] [cs.LG] 10 Feb 2021</p>
+</body></html>
