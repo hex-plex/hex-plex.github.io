@@ -2,7 +2,7 @@
 layout: about
 title: about
 permalink: /
-subtitle: Research Fellow @ Microsoft Research.
+subtitle: Research Engineer @ Scaled Foundations.
 
 
 profile:
